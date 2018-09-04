@@ -20,7 +20,7 @@ class Manager
 
     protected function dbConnect()
     {
-        $this->_db = new \PDO('mysql:host=localhost;dbname=test;charset=utf8','root','');
+        $this->_db = new \PDO('mysql:host=localhost;dbname=NewYork;charset=utf8','root','');
     }
 
     /**
