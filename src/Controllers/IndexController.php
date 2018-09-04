@@ -2,7 +2,8 @@
 
 namespace Julien\Controllers;
 
-class IndexController {
+class IndexController extends Controller
+{
     public function index()
     {
         echo "Bonjour ";
