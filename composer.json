@@ -1,0 +1,17 @@
+{
+    "name": "julien/test",
+    "authors": [
+        {
+            "name": "jbeunaiche",
+            "email": "jbeunaiche@gmail.com"
+        }
+    ],
+    "require": {
+        },
+    "autoload": {
+      "psr-4": {
+        "Julien\\": "src/"
+        
+      }
+    }
+}
