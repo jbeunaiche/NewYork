@@ -58,10 +58,7 @@ class ComposerStaticInit2332048827286f8b471ed0d6b86f8bcd
 
     public static $classMap = array (
         'Julien\\Controllers\\IndexController' => __DIR__ . '/../..' . '/src/Controllers/IndexController.php',
-        'Julien\\Controllers\\TestController' => __DIR__ . '/../..' . '/src/Controllers/TestController.php',
-        'Julien\\Models\\Entity\\Test' => __DIR__ . '/../..' . '/src/Models/Entity/Test.php',
         'Julien\\Models\\Manager' => __DIR__ . '/../..' . '/src/Models/Manager.php',
-        'Julien\\Models\\Manager\\TestManager' => __DIR__ . '/../..' . '/src/Models/Manager/TestManager.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',

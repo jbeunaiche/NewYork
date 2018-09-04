@@ -7,10 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Julien\\Controllers\\IndexController' => $baseDir . '/src/Controllers/IndexController.php',
-    'Julien\\Controllers\\TestController' => $baseDir . '/src/Controllers/TestController.php',
-    'Julien\\Models\\Entity\\Test' => $baseDir . '/src/Models/Entity/Test.php',
     'Julien\\Models\\Manager' => $baseDir . '/src/Models/Manager.php',
-    'Julien\\Models\\Manager\\TestManager' => $baseDir . '/src/Models/Manager/TestManager.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Twig\\Cache\\CacheInterface' => $vendorDir . '/twig/twig/src/Cache/CacheInterface.php',
