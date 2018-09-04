@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MVC Test - Index</title>
+        <style>
+          body {
+            
+            color: red;
+          }
+          .username {
+            color: green;
+          }
+        </style>
+    </head>
+    <body>
+      <h2>List: </h2>
+      {% for item in list  %}
+        <li class="test">{{ item.title }}</li>
+      {% endfor %}
+     
+    </body>
+</html>
