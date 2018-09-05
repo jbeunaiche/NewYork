@@ -54,7 +54,7 @@
                                 </div>
 
                                 <div class="item">
-                                    <img src="public/assets/images/central.jpg" alt="" />
+                                    <a href="index.php?c=map&t=central"><img src="public/assets/images/central.jpg" alt="" /></a>
                                 </div>
 
                                 <div class="item">
@@ -84,11 +84,54 @@
     </div>
 
 </div>
+<section id="our-portfolio" class="sections">
+            <div class="container">
 
-<h2>Liste des sorties: </h2>
-      {% for item in list  %}
-        <li class="test">{{ item.title }}</li>
-      {% endfor %}
+                <div class="row">
+                    <div class="heading">
+                        <div class="title text-center arrow-right">
+                            <h4 class="">Les sorties à New York </h4>
+                            <img class="hidden-xs" src="public/assets/images/right-arrow.png" alt="" />
+
+                        </div>
+                    </div>	
+
+
+                    <!-- Example row of columns -->
+ {% for item in list  %}
+                    <div class="portfolio-wrap">
+                       
+                        <div class="portfolio">
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="portfolio-item">
+                                    <h4>{{ item.title }}</h4>
+                                    <p>
+                                        {{ item.content }}
+                                    </p>
+                                    <button class="btn pt-btn btn-primary">Voir l'article</button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <img class="portfolio-img img-responsive" src="public/assets/images/central.jpg" alt="" />
+                            </div>
+
+                        </div>
+
+
+
+                        
+                    </div>
+                    <hr>
+{% endfor %}
+                </div>
+            </div>
+
+
+            <!-- /container -->       
+        </section>
+
 
 
 
