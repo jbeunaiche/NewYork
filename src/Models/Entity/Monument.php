@@ -7,13 +7,9 @@ class Monument
 {
     
     private $id;
-    
-    private $name;
-    
-    private $price;
-    
-    private $latitude;
- 
+    private $name;    
+    private $price;    
+    private $latitude; 
     private $longitude;
 
     public function __construct($value = [])
