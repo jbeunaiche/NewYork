@@ -1,0 +1,81 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+<title>Midtown Manhattan</title>
+{% endblock %}
+
+{% block content %}
+
+<header id="home" class="sections">
+    <div class="container">
+
+        <div class="row">
+            <div class="homepage-style">
+
+
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="unique-apps">
+                        <h2>MIDTOWN MANHATTAN</h2>
+                        <p>
+                            Midtown Manhattan est une des trois parties de l’île de Manhattan à New York.
+                            Les autres deux sont Uptown et Downtown Manhattan.<br>
+                            Ce centre d’affaires de la ville compte des dizaines de gratte-ciels.<br>
+                            Chaque jour, plus de 3 millions de personnes venant des banlieues, travaillent ici.<br>
+                            On y trouve des places et des bâtiments connus dans le monde entier.
+
+                        </p>
+
+                        <div class="home-btn"><button class="btn btn-primary">Voir la carte des monuments<span><i class="fa fa-paper-plane"></i></span></button></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="slider-area">
+
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+
+                                <div class="item active">
+                                    <img src="public/assets/images/times1.jpg" alt="" />
+                                </div>
+
+                                <div class="item">
+                                    <img src="public/assets/images/grand.jpg" alt="" />
+                                </div>
+
+                                <div class="item">
+                                    <img src="public/assets/images/times1.jpg" alt="" />
+                                </div>
+
+                                <div class="item">
+                                    <img src="public/assets/images/empire.jpg" alt="" />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</header>
+<br>
+
+
+{% endblock %}
