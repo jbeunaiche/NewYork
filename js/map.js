@@ -15,10 +15,6 @@ var Maps = { // Creation de l'objet Maps avec les propriétés et les valeurs
             zoom: 14
         });
     },
-
-
-
-    
-
-
 };
+
+

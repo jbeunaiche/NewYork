@@ -8,16 +8,13 @@ use Julien\Models\Entity\Monument;
 class MonumentManager extends Manager
 
 {
-    public function getMonument()
-    {
-        
-    $req = $this->_db->prepare('SELECT id, name, longitude, latitude FROM monument');
-    $reponse = $req->execute() or die('Erreur');
-    while($ligne = $reponse->fetch(PDO::FETCH_ASSOC))
-    {
-        $data []= $ligne;
-    }
-    $encode_donnees = json_encode($data);
-        
-    }
+    public function getMonument(){
+    $req = $this->_db->prepare('SELECT id, name, latitude, longitude FROM monument ');
+	$req->execute();
+	$req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Monument::class);
+	$liste = $req->fetchAll();
+	return $liste;
+	var_dump $liste;
+    
+}
 }

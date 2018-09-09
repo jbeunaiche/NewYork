@@ -18,4 +18,5 @@ class NewsManager extends Manager
 		$post = $req->fetchAll();
 		return $post;
   }
+  
 }
