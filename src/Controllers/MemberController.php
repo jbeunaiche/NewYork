@@ -15,28 +15,22 @@ class MemberController extends Controller
         exit();
     }
 
-    public function loginMember ($pseudo, $password)
+    public function login ($pseudo, $password)
     {
         if (isset($_POST['login'])) {
-            if (isset($_POST['g-recaptcha-response'])) {
-                $recaptcha = new Recaptcha();
-                $resp = $recaptcha->verify ($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-            } else {
-                
-                exit();
-            }
+            
         }
         $logManager = new MemberManager();
         $user = $logManager->getMember ($pseudo);
         if (password_verify ($password, $user['password'])) {
             $_SESSION['pseudo'] = $user[0];
-            header ('Location: index.php?action=admin');
+            echo $this->twig->render('home.twig');
         } else {
             echo 'Le mot de passe est invalide.';
         }
     }
 
-    public function login ()
+    public function connexion ()
     {
         echo $this->twig->render('connexion.twig');
 
