@@ -1,5 +1,4 @@
 <?php
-// Connexion..
 
 namespace Julien\Models\Manager;
  
