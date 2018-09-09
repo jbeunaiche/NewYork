@@ -13,10 +13,11 @@ class MonumentManager extends Manager
         
     $req = $this->_db->prepare('SELECT * FROM monument');
     $req->execute();
-    $data = $req->fetchAll(\PDO::FETCH_ASSOC);
-    $liste = json_encode($data);
-    echo $liste;
-    var_dump $liste;
+    
+    while ($data = $req->fetch()){
+      $data = array();
+        $data["name"] = 
+    }
     }
     
 }
