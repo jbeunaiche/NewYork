@@ -1,4 +1,5 @@
 <?php
+// Connexion..
 
 namespace Julien\Models\Manager;
  
@@ -17,6 +18,6 @@ class MemberManager extends Manager
   $req->execute();
   $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Member');
   $member = $req->fetch();
-  return $member;
+  return $member; 
  }
 }
