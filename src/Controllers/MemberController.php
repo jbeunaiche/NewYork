@@ -26,7 +26,7 @@ class MemberController extends Controller
             $_SESSION['pseudo'] = $user[0];
             echo $this->twig->render('home.twig');
         } else {
-            echo 'Le mot de passe est invalide.';
+            echo 'Le mot de passe est incorrect.'; 
         }
     }
 
