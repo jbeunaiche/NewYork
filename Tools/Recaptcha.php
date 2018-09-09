@@ -8,8 +8,7 @@ private $secret= "6LfFD2QUAAAAALYc_-m5VTW5dvVp3ERBqj2BZER8";
   
 private $response;
 private $remoteip;
-    
-    
+  
     public function verify($gcaptcha, $ip)
     {
         $this->response = htmlspecialchars($gcaptcha);

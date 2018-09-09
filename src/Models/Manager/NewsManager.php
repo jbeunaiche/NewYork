@@ -18,5 +18,15 @@ class NewsManager extends Manager
 		$post = $req->fetchAll();
 		return $post;
   }
+  public function getPost($id)
+	{
+		$req = $this->_db->prepare('SELECT id, title, content FROM news WHERE id = :id');
+		$req->bindValue(':id', (int)$id);
+		$req->execute();
+		$req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, News::class);
+		$post = $req->fetch();
+		return $post;
+		
+	}
   
 }
