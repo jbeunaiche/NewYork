@@ -15,4 +15,8 @@ var Maps = {
     },
 };
 
+$.ajax({
+		url : "Models/MonumentManager.php",
+	})
+
 

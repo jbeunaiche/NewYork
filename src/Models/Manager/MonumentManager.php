@@ -13,11 +13,9 @@ class MonumentManager extends Manager
         
     $req = $this->_db->prepare('SELECT * FROM monument');
     $req->execute();
-    
-    while ($data = $req->fetch()){
-      $data = array();
-        $data["name"] = 
-    }
+    $liste = $req->fetchAll();
+    $json = json_encode($liste);
+    echo $json;
     }
     
 }

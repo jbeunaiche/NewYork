@@ -21,7 +21,7 @@ class MemberController extends Controller
         $user = $logManager->getMember ($pseudo);
         if (password_verify ($password, $user['password'])) {
             $_SESSION['pseudo'] = $user[0];
-            echo $this->twig->render('home.twig');
+            echo $this->twig->render('admin.twig');
         } else {
             echo 'Le mot de passe est invalide.';
         }
