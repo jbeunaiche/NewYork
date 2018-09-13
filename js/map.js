@@ -12,22 +12,19 @@ function initMap() {
 	
 	// Nous ajoutons un marqueur
 var marker = new google.maps.Marker({
-	// Nous définissons sa position (syntaxe json)
 	position: {lat: lat, lng: lon},
-	// Nous définissons à quelle carte il est ajouté
 	map: map
 });
 	// Nous appelons la fonction ajax de jQuery
 	$.ajax({
-		// On pointe vers le fichier selectData.php
+		// On pointe vers le fichier l'url
 		url : "http://localhost/newyork/index.php?c=map&t=getMonument",
 	}).done(function(json){ // Si on obtient une réponse, elle est stockée dans la variable json
-		// On construit l'objet villes à partir de la variable json 
+		// On construit l'objet monuments à partir de la variable json
 		var monuments = JSON.parse(json);
-		// On parcourt l'objet villes
+		// On parcourt l'objet monuments
 		for(monument in monuments){
 			var marker = new google.maps.Marker({
-				// parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
 				position: {lat: parseFloat(monuments[monument].lat), lng: parseFloat(monuments[monument].lon)},
 				title: monuments[monument].name,
 				map: map
