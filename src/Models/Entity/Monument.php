@@ -7,10 +7,9 @@ class Monument
 {
     
     private $id;
-    private $name;    
-    private $price;    
-    private $latitude; 
-    private $longitude;
+    private $name;
+    private $lat; 
+    private $lon;
 
     public function __construct($value = [])
 
@@ -59,23 +58,19 @@ class Monument
   return $this->name;
  }
 
-    public function longitude()
+    public function lon()
 
  {
-  return $this->longitude;
+  return $this->long;
  }
 
-    public function latitude()
+    public function lat()
 
  {
-  return $this->latitude;
+  return $this->lat;
  }
     
-       public function price()
-
- {
-  return $this->price;
- }
+ 
 
     public function setId($id)
 
@@ -95,22 +90,18 @@ class Monument
   }
  }
 
-    public function setLatitude($latitude)
+    public function setLat($lat)
     {
  
-   $this->latitude = $latitude;
+   $this->lat = $lat;
   
  }
 
-    public function setLongitude($longitude)
+    public function setLon($lon)
 
  {
-  $this->longitude = $longitude;
+  $this->lon = $lon;
  }
     
-     public function setPrice($price)
 
- {
-  $this->price = $price;
- }
 }

@@ -14,8 +14,8 @@ class MonumentManager extends Manager
     $req = $this->_db->prepare('SELECT * FROM monument');
     $req->execute();
     $liste = $req->fetchAll();
-    $json = json_encode($liste);
-    echo $json;
+    return $liste;
+
     }
     
 }

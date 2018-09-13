@@ -2,6 +2,7 @@
 
 namespace Julien\Controllers;
 
+use Julien\Models\Manager\MonumentManager;
 use Julien\Models\Manager\NewsManager;
 
 class MapController extends Controller
@@ -25,5 +26,14 @@ class MapController extends Controller
     {
      
         echo $this->twig->render('districts/brooklyn.twig');
+    }
+
+    public function getMonument(){
+
+        $monumentmanager = new MonumentManager();
+        $liste = $monumentmanager-> getMonument();
+        $json = json_encode($liste);
+        echo $json;
+
     }
 }
