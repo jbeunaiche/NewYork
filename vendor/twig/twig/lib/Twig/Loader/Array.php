@@ -36,7 +36,7 @@ final class Twig_Loader_Array implements Twig_LoaderInterface, Twig_ExistsLoader
     /**
      * Adds or overrides a template.
      *
-     * @param string $name     The template name
+     * @param string $name The template name
      * @param string $template The template source
      */
     public function setTemplate($name, $template)
@@ -46,7 +46,7 @@ final class Twig_Loader_Array implements Twig_LoaderInterface, Twig_ExistsLoader
 
     public function getSourceContext($name)
     {
-        $name = (string) $name;
+        $name = (string)$name;
         if (!isset($this->templates[$name])) {
             throw new Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
         }
@@ -65,7 +65,7 @@ final class Twig_Loader_Array implements Twig_LoaderInterface, Twig_ExistsLoader
             throw new Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
         }
 
-        return $name.':'.$this->templates[$name];
+        return $name . ':' . $this->templates[$name];
     }
 
     public function isFresh($name, $time)

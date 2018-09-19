@@ -54,8 +54,8 @@ class Twig_Compiler
     /**
      * Compiles a node.
      *
-     * @param Twig_Node $node        The node to compile
-     * @param int       $indentation The current indentation
+     * @param Twig_Node $node The node to compile
+     * @param int $indentation The current indentation
      *
      * @return $this
      */
@@ -82,48 +82,6 @@ class Twig_Compiler
         }
 
         $node->compile($this);
-
-        return $this;
-    }
-
-    /**
-     * Adds a raw string to the compiled code.
-     *
-     * @param string $string The string
-     *
-     * @return $this
-     */
-    public function raw($string)
-    {
-        $this->source .= $string;
-
-        return $this;
-    }
-
-    /**
-     * Writes a string to the compiled code by adding indentation.
-     *
-     * @return $this
-     */
-    public function write(...$strings)
-    {
-        foreach ($strings as $string) {
-            $this->source .= str_repeat(' ', $this->indentation * 4).$string;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Adds a quoted string to the compiled code.
-     *
-     * @param string $value The string
-     *
-     * @return $this
-     */
-    public function string($value)
-    {
-        $this->source .= sprintf('"%s"', addcslashes($value, "\0\t\"\$\\"));
 
         return $this;
     }
@@ -172,6 +130,34 @@ class Twig_Compiler
     }
 
     /**
+     * Adds a raw string to the compiled code.
+     *
+     * @param string $string The string
+     *
+     * @return $this
+     */
+    public function raw($string)
+    {
+        $this->source .= $string;
+
+        return $this;
+    }
+
+    /**
+     * Adds a quoted string to the compiled code.
+     *
+     * @param string $value The string
+     *
+     * @return $this
+     */
+    public function string($value)
+    {
+        $this->source .= sprintf('"%s"', addcslashes($value, "\0\t\"\$\\"));
+
+        return $this;
+    }
+
+    /**
      * Adds debugging information.
      *
      * @return $this
@@ -186,6 +172,20 @@ class Twig_Compiler
             $this->debugInfo[$this->sourceLine] = $node->getTemplateLine();
 
             $this->lastLine = $node->getTemplateLine();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Writes a string to the compiled code by adding indentation.
+     *
+     * @return $this
+     */
+    public function write(...$strings)
+    {
+        foreach ($strings as $string) {
+            $this->source .= str_repeat(' ', $this->indentation * 4) . $string;
         }
 
         return $this;
@@ -235,7 +235,7 @@ class Twig_Compiler
 
     public function getVarName()
     {
-        return sprintf('__internal_%s', hash('sha256', __METHOD__.$this->varNameSalt++));
+        return sprintf('__internal_%s', hash('sha256', __METHOD__ . $this->varNameSalt++));
     }
 }
 

@@ -1,106 +1,117 @@
 {% extends 'layout.twig' %}
 
 {% block head %}
-<title>Accueil</title>
+    <title>Accueil</title>
 {% endblock %}
 
 {% block content %}
 
-<div class='preloader'><div class='loaded'>&nbsp;</div></div>
+    <div class='preloader'>
+        <div class='loaded'>&nbsp;</div>
+    </div>
 
-<!--Home page style-->
-<header id="home" class="sections">
-    <div class="container">
+    <!--Home page style-->
+    <header id="home" class="sections">
+        <div class="container">
 
-        <div class="row">
-            <div class="homepage-style">
+            <div class="row">
+                <div class="homepage-style">
 
-                <div class="top-arrow hidden-xs text-center"><img src="public/assets/images/top-arrow.png" alt="" /></div>
-
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="unique-apps">
-                        <h2>PREPAREZ VOTRE VOYAGE <br>POUR NEW YORK </h2>
-                        <p>
-                        Votre départ pour NEW-YORK approche et vous ne savez pas quelles visites faire dans les différents quartiers ?<br> Vous souhaitez en visiter
-                            le plus possible sans perdre de temps ?<br> <br>Planifiez votre voyage avec nos cartes par quartier.<br> De Financial district à Central Park
-                            en passant par Times Square et Brooklyn ne ratez rien de Big Apple !! Cliquez sur l'image du quartier que vous voulez visiter.
-                        </p>
-
+                    <div class="top-arrow hidden-xs text-center"><img src="public/assets/images/top-arrow.png" alt=""/>
                     </div>
-                </div>
 
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="slider-area">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="unique-apps">
+                            <h2>PREPAREZ VOTRE VOYAGE <br>POUR NEW YORK </h2>
+                            <p>
+                                Votre départ pour NEW-YORK approche et vous ne savez pas quelles visites faire dans les
+                                différents quartiers ?<br> Vous souhaitez en visiter
+                                le plus possible sans perdre de temps ?<br> <br>Planifiez votre voyage avec nos cartes
+                                par quartier.<br> De Financial district à Central Park
+                                en passant par Times Square et Brooklyn ne ratez rien de Big Apple !! Cliquez sur
+                                l'image du quartier que vous voulez visiter.
+                            </p>
 
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                        </div>
+                    </div>
 
-                            </ol>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="slider-area">
 
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
+                                 data-interval="3000">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
 
-                                <div class="item active">
-                                    <a href="index.php?c=map&t=brooklyn"><img src="public/assets/images/brooklyn.jpg" alt="" /></a>
-                                </div>
+                                </ol>
 
-                                <div class="item">
-                                    <a href="index.php?c=map&t=financial"><img src="public/assets/images/financial.jpg" alt="" /></a>
-                                </div>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
 
-                                <div class="item">
-                                    <a href="index.php?c=map&t=central"><img src="public/assets/images/central.jpg" alt="" /></a>
-                                </div>
+                                    <div class="item active">
+                                        <a href="index.php?c=map&t=brooklyn"><img
+                                                    src="public/assets/images/brooklyn.jpg" alt=""/></a>
+                                    </div>
 
-                                <div class="item">
-                                    <a href="index.php?c=map&t=midtown"><img src="public/assets/images/times.jpg" alt="" /></a>
+                                    <div class="item">
+                                        <a href="index.php?c=map&t=financial"><img
+                                                    src="public/assets/images/financial.jpg" alt=""/></a>
+                                    </div>
+
+                                    <div class="item">
+                                        <a href="index.php?c=map&t=central"><img src="public/assets/images/central.jpg"
+                                                                                 alt=""/></a>
+                                    </div>
+
+                                    <div class="item">
+                                        <a href="index.php?c=map&t=midtown"><img src="public/assets/images/times.jpg"
+                                                                                 alt=""/></a>
+                                    </div>
+
                                 </div>
 
                             </div>
 
                         </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <div class="scroll-top">
+
+        <div class="scrollup">
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+
+    </div>
+    <section id="our-portfolio" class="sections">
+        <div class="container">
+
+            <div class="row">
+                <div class="heading">
+                    <div class="title text-center arrow-right">
+                        <h4 class="">Les sorties à New York </h4>
+                        <img class="hidden-xs" src="public/assets/images/right-arrow.png" alt=""/>
 
                     </div>
                 </div>
 
-            </div>
-        </div>
 
-    </div>
-
-</header>
-
-
-
-<div class="scroll-top">
-
-    <div class="scrollup">
-        <i class="fa fa-angle-double-up"></i>
-    </div>
-
-</div>
-<section id="our-portfolio" class="sections">
-            <div class="container">
-
-                <div class="row">
-                    <div class="heading">
-                        <div class="title text-center arrow-right">
-                            <h4 class="">Les sorties à New York </h4>
-                            <img class="hidden-xs" src="public/assets/images/right-arrow.png" alt="" />
-
-                        </div>
-                    </div>	
-
-
-                    <!-- Example row of columns -->
- {% for item in list  %}
+                <!-- Example row of columns -->
+                {% for item in list %}
                     <div class="portfolio-wrap">
-                       
+
                         <div class="portfolio">
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -109,28 +120,29 @@
                                     <p>
                                         {{ item.content }}
                                     </p>
-                                    <a href="index.php?c=news&t=single&amp;id=<?= {{ item.id }}"><button class="btn pt-btn btn-primary">Voir l'article</button></a>
+                                    <a href="index.php?c=news&t=single&amp;id=<?= {{ item.id }}">
+                                        <button class="btn pt-btn btn-primary">Voir l'article</button>
+                                    </a>
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <img class="portfolio-img img-responsive" src="public/assets/images/central.jpg" alt="" />
+                                <img class="portfolio-img img-responsive" src="public/assets/images/central.jpg"
+                                     alt=""/>
                             </div>
 
                         </div>
 
 
-
-                        
                     </div>
                     <hr>
-{% endfor %}
-                </div>
+                {% endfor %}
             </div>
+        </div>
 
 
-            <!-- /container -->       
-        </section>
+        <!-- /container -->
+    </section>
 
 
 

@@ -9,6 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 class Twig_Node_Expression_GetAttr extends Twig_Node_Expression
 {
     public function __construct(Twig_Node_Expression $node, Twig_Node_Expression $attribute, Twig_Node_Expression $arguments = null, $type, $lineno)
@@ -32,9 +33,9 @@ class Twig_Node_Expression_GetAttr extends Twig_Node_Expression
             && !$this->getAttribute('is_defined_test')
             && Twig_Template::ARRAY_CALL === $this->getAttribute('type')
         ) {
-            $var = '$'.$compiler->getVarName();
+            $var = '$' . $compiler->getVarName();
             $compiler
-                ->raw('(('.$var.' = ')
+                ->raw('((' . $var . ' = ')
                 ->subcompile($this->getNode('node'))
                 ->raw(') && is_array(')
                 ->raw($var)
@@ -44,8 +45,7 @@ class Twig_Node_Expression_GetAttr extends Twig_Node_Expression
                 ->raw($var)
                 ->raw('[')
                 ->subcompile($this->getNode('attribute'))
-                ->raw('] ?? null) : null)')
-            ;
+                ->raw('] ?? null) : null)');
 
             return;
         }

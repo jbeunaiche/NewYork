@@ -95,6 +95,14 @@ class Twig_Tests_Node_Expression_FilterTest extends Twig_Test_NodeTestCase
         return $tests;
     }
 
+    protected function createFilter($node, $name, array $arguments = array())
+    {
+        $name = new Twig_Node_Expression_Constant($name, 1);
+        $arguments = new Twig_Node($arguments);
+
+        return new Twig_Node_Expression_Filter($node, $name, $arguments, 1);
+    }
+
     /**
      * @expectedException        Twig_Error_Syntax
      * @expectedExceptionMessage Unknown argument "foobar" for filter "date(format, timezone)" at line 1.
@@ -125,18 +133,11 @@ class Twig_Tests_Node_Expression_FilterTest extends Twig_Test_NodeTestCase
         $compiler->compile($node);
     }
 
-    protected function createFilter($node, $name, array $arguments = array())
-    {
-        $name = new Twig_Node_Expression_Constant($name, 1);
-        $arguments = new Twig_Node($arguments);
-
-        return new Twig_Node_Expression_Filter($node, $name, $arguments, 1);
-    }
-
     protected function getEnvironment()
     {
         $env = new Twig_Environment(new Twig_Loader_Array(array()));
-        $env->addFilter(new Twig_Filter('anonymous', function () {}));
+        $env->addFilter(new Twig_Filter('anonymous', function () {
+        }));
 
         return $env;
     }

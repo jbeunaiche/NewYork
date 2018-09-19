@@ -10,10 +10,11 @@ class IndexController extends Controller
     {
         $newsmanager = new NewsManager();
         $lists = $newsmanager->getList();
-        
+
         echo $this->twig->render('home.twig',
-                                [
-                                    'list' => $lists
-                                ]);
+            [
+                'list' => $lists
+            ]);
     }
+
 }

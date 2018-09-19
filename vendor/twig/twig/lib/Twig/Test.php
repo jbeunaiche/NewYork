@@ -27,14 +27,14 @@ class Twig_Test
     /**
      * Creates a template test.
      *
-     * @param string        $name     Name of this test
+     * @param string $name Name of this test
      * @param callable|null $callable A callable implementing the test. If null, you need to overwrite the "node_class" option to customize compilation.
-     * @param array         $options  Options array
+     * @param array $options Options array
      */
     public function __construct(string $name, $callable = null, array $options = array())
     {
         if (__CLASS__ !== get_class($this)) {
-            @trigger_error('Overriding '.__CLASS__.' is deprecated since version 2.4.0 and the class will be final in 3.0.', E_USER_DEPRECATED);
+            @trigger_error('Overriding ' . __CLASS__ . ' is deprecated since version 2.4.0 and the class will be final in 3.0.', E_USER_DEPRECATED);
         }
 
         $this->name = $name;
@@ -74,7 +74,7 @@ class Twig_Test
 
     public function isDeprecated()
     {
-        return (bool) $this->options['deprecated'];
+        return (bool)$this->options['deprecated'];
     }
 
     public function getDeprecatedVersion()

@@ -7,7 +7,7 @@ $target = isset($_GET['t']) ? $_GET['t'] : "index";
 $getParams = isset($_GET['params']) ? $_GET['params'] : null;
 $postParams = isset($_POST['params']) ? $_POST['params'] : null;
 $params = [
-    "get"  => $getParams,
+    "get" => $getParams,
     "post" => $postParams
 ];
 

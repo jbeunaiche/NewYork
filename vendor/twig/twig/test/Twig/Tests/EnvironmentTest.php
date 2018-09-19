@@ -131,7 +131,7 @@ class Twig_Tests_EnvironmentTest extends \PHPUnit\Framework\TestCase
 
     public function testExtensionsAreNotInitializedWhenRenderingACompiledTemplate()
     {
-        $cache = new Twig_Cache_Filesystem($dir = sys_get_temp_dir().'/twig');
+        $cache = new Twig_Cache_Filesystem($dir = sys_get_temp_dir() . '/twig');
         $options = array('cache' => $cache, 'auto_reload' => false, 'debug' => false);
 
         // force compilation
@@ -145,8 +145,7 @@ class Twig_Tests_EnvironmentTest extends \PHPUnit\Framework\TestCase
             ->getMockBuilder('Twig_Environment')
             ->setConstructorArgs(array($loader, $options))
             ->setMethods(array('initExtensions'))
-            ->getMock()
-        ;
+            ->getMock();
 
         $twig->expects($this->never())->method('initExtensions');
 
@@ -182,6 +181,21 @@ class Twig_Tests_EnvironmentTest extends \PHPUnit\Framework\TestCase
             ->method('load');
 
         $twig->loadTemplate($templateName);
+    }
+
+    protected function getMockLoader($templateName, $templateContent)
+    {
+        $loader = $this->getMockBuilder('Twig_LoaderInterface')->getMock();
+        $loader->expects($this->any())
+            ->method('getSourceContext')
+            ->with($templateName)
+            ->will($this->returnValue(new Twig_Source($templateContent, $templateName)));
+        $loader->expects($this->any())
+            ->method('getCacheKey')
+            ->with($templateName)
+            ->will($this->returnValue($templateName));
+
+        return $loader;
     }
 
     public function testAutoReloadCacheHit()
@@ -378,28 +392,13 @@ class Twig_Tests_EnvironmentTest extends \PHPUnit\Framework\TestCase
 
         $twig->loadTemplate('base1.html.twig');
     }
-
-    protected function getMockLoader($templateName, $templateContent)
-    {
-        $loader = $this->getMockBuilder('Twig_LoaderInterface')->getMock();
-        $loader->expects($this->any())
-          ->method('getSourceContext')
-          ->with($templateName)
-          ->will($this->returnValue(new Twig_Source($templateContent, $templateName)));
-        $loader->expects($this->any())
-          ->method('getCacheKey')
-          ->with($templateName)
-          ->will($this->returnValue($templateName));
-
-        return $loader;
-    }
 }
 
 class CorruptCache implements Twig_CacheInterface
 {
     public function generateKey($name, $className)
     {
-        return $name.':'.$className;
+        return $name . ':' . $className;
     }
 
     public function write($key, $content)
@@ -478,6 +477,7 @@ class Twig_Tests_EnvironmentTest_Extension extends Twig_Extension implements Twi
         );
     }
 }
+
 class_alias('Twig_Tests_EnvironmentTest_Extension', 'Twig\Tests\EnvironmentTest\Extension', false);
 
 class Twig_Tests_EnvironmentTest_TokenParser extends Twig_TokenParser

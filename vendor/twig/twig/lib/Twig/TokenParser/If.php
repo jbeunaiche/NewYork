@@ -30,7 +30,8 @@ final class Twig_TokenParser_If extends Twig_TokenParser
         $lineno = $token->getLine();
         $expr = $this->parser->getExpressionParser()->parseExpression();
         $stream = $this->parser->getStream();
-        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */ 3);
+        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */
+            3);
         $body = $this->parser->subparse(array($this, 'decideIfFork'));
         $tests = array($expr, $body);
         $else = null;
@@ -39,13 +40,15 @@ final class Twig_TokenParser_If extends Twig_TokenParser
         while (!$end) {
             switch ($stream->next()->getValue()) {
                 case 'else':
-                    $stream->expect(/* Twig_Token::BLOCK_END_TYPE */ 3);
+                    $stream->expect(/* Twig_Token::BLOCK_END_TYPE */
+                        3);
                     $else = $this->parser->subparse(array($this, 'decideIfEnd'));
                     break;
 
                 case 'elseif':
                     $expr = $this->parser->getExpressionParser()->parseExpression();
-                    $stream->expect(/* Twig_Token::BLOCK_END_TYPE */ 3);
+                    $stream->expect(/* Twig_Token::BLOCK_END_TYPE */
+                        3);
                     $body = $this->parser->subparse(array($this, 'decideIfFork'));
                     $tests[] = $expr;
                     $tests[] = $body;
@@ -60,9 +63,15 @@ final class Twig_TokenParser_If extends Twig_TokenParser
             }
         }
 
-        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */ 3);
+        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */
+            3);
 
         return new Twig_Node_If(new Twig_Node($tests), $else, $lineno, $this->getTag());
+    }
+
+    public function getTag()
+    {
+        return 'if';
     }
 
     public function decideIfFork(Twig_Token $token)
@@ -73,11 +82,6 @@ final class Twig_TokenParser_If extends Twig_TokenParser
     public function decideIfEnd(Twig_Token $token)
     {
         return $token->test(array('endif'));
-    }
-
-    public function getTag()
-    {
-        return 'if';
     }
 }
 

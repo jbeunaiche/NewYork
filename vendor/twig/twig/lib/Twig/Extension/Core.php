@@ -19,7 +19,7 @@ final class Twig_Extension_Core extends Twig_Extension
     /**
      * Defines a new escaper to be used via the escape filter.
      *
-     * @param string   $strategy The strategy name that should be used as a strategy in the escape call
+     * @param string $strategy The strategy name that should be used as a strategy in the escape call
      * @param callable $callable A valid PHP callable
      */
     public function setEscaper($strategy, callable $callable)
@@ -40,7 +40,7 @@ final class Twig_Extension_Core extends Twig_Extension
     /**
      * Sets the default format to be used by the date filter.
      *
-     * @param string $format             The default date format string
+     * @param string $format The default date format string
      * @param string $dateIntervalFormat The default date interval format string
      */
     public function setDateFormat($format = null, $dateIntervalFormat = null)
@@ -65,16 +65,6 @@ final class Twig_Extension_Core extends Twig_Extension
     }
 
     /**
-     * Sets the default timezone to be used by the date filter.
-     *
-     * @param DateTimeZone|string $timezone The default timezone string or a DateTimeZone object
-     */
-    public function setTimezone($timezone)
-    {
-        $this->timezone = $timezone instanceof DateTimeZone ? $timezone : new DateTimeZone($timezone);
-    }
-
-    /**
      * Gets the default timezone to be used by the date filter.
      *
      * @return DateTimeZone The default timezone currently in use
@@ -89,15 +79,13 @@ final class Twig_Extension_Core extends Twig_Extension
     }
 
     /**
-     * Sets the default format to be used by the number_format filter.
+     * Sets the default timezone to be used by the date filter.
      *
-     * @param int    $decimal      the number of decimal places to use
-     * @param string $decimalPoint the character(s) to use for the decimal point
-     * @param string $thousandSep  the character(s) to use for the thousands separator
+     * @param DateTimeZone|string $timezone The default timezone string or a DateTimeZone object
      */
-    public function setNumberFormat($decimal, $decimalPoint, $thousandSep)
+    public function setTimezone($timezone)
     {
-        $this->numberFormat = array($decimal, $decimalPoint, $thousandSep);
+        $this->timezone = $timezone instanceof DateTimeZone ? $timezone : new DateTimeZone($timezone);
     }
 
     /**
@@ -108,6 +96,18 @@ final class Twig_Extension_Core extends Twig_Extension
     public function getNumberFormat()
     {
         return $this->numberFormat;
+    }
+
+    /**
+     * Sets the default format to be used by the number_format filter.
+     *
+     * @param int $decimal the number of decimal places to use
+     * @param string $decimalPoint the character(s) to use for the decimal point
+     * @param string $thousandSep the character(s) to use for the thousands separator
+     */
+    public function setNumberFormat($decimal, $decimalPoint, $thousandSep)
+    {
+        $this->numberFormat = array($decimal, $decimalPoint, $thousandSep);
     }
 
     public function getTokenParsers()
@@ -259,7 +259,7 @@ final class Twig_Extension_Core extends Twig_Extension
  * Cycles over a value.
  *
  * @param ArrayAccess|array $values
- * @param int               $position The cycle position
+ * @param int $position The cycle position
  *
  * @return string The next value in the cycle
  */
@@ -278,7 +278,7 @@ function twig_cycle($values, $position)
  * - a random character from a string
  * - a random integer between 0 and the integer parameter.
  *
- * @param Twig_Environment                   $env
+ * @param Twig_Environment $env
  * @param Traversable|array|int|float|string $values The values to pick a random item from
  *
  * @throws Twig_Error_Runtime when $values is an empty array (does not apply to an empty string which is returned as is)
@@ -337,10 +337,10 @@ function twig_random(Twig_Environment $env, $values = null)
  *   {{ post.published_at|date("m/d/Y") }}
  * </pre>
  *
- * @param Twig_Environment                      $env
- * @param DateTimeInterface|DateInterval|string $date     A date
- * @param string|null                           $format   The target format, null to use the default
- * @param DateTimeZone|string|null|false        $timezone The target timezone, null to use the default, false to leave unchanged
+ * @param Twig_Environment $env
+ * @param DateTimeInterface|DateInterval|string $date A date
+ * @param string|null $format The target format, null to use the default
+ * @param DateTimeZone|string|null|false $timezone The target timezone, null to use the default, false to leave unchanged
  *
  * @return string The formatted date
  */
@@ -365,9 +365,9 @@ function twig_date_format_filter(Twig_Environment $env, $date, $format = null, $
  *   {{ post.published_at|date_modify("-1day")|date("m/d/Y") }}
  * </pre>
  *
- * @param Twig_Environment         $env
- * @param DateTimeInterface|string $date     A date
- * @param string                   $modifier A modifier string
+ * @param Twig_Environment $env
+ * @param DateTimeInterface|string $date A date
+ * @param string $modifier A modifier string
  *
  * @return DateTimeInterface A new date object
  */
@@ -387,8 +387,8 @@ function twig_date_modify_filter(Twig_Environment $env, $date, $modifier)
  *    {% endif %}
  * </pre>
  *
- * @param Twig_Environment               $env
- * @param DateTimeInterface|string|null  $date     A date or null to use the current time
+ * @param Twig_Environment $env
+ * @param DateTimeInterface|string|null $date A date or null to use the current time
  * @param DateTimeZone|string|null|false $timezone The target timezone, null to use the default, false to leave unchanged
  *
  * @return DateTime A DateTime instance
@@ -422,9 +422,9 @@ function twig_date_converter(Twig_Environment $env, $date = null, $timezone = nu
         return new DateTime($date, false !== $timezone ? $timezone : $env->getExtension('Twig_Extension_Core')->getTimezone());
     }
 
-    $asString = (string) $date;
+    $asString = (string)$date;
     if (ctype_digit($asString) || (!empty($asString) && '-' === $asString[0] && ctype_digit(substr($asString, 1)))) {
-        $date = new DateTime('@'.$date);
+        $date = new DateTime('@' . $date);
     } else {
         $date = new DateTime($date, $env->getExtension('Twig_Extension_Core')->getTimezone());
     }
@@ -439,7 +439,7 @@ function twig_date_converter(Twig_Environment $env, $date = null, $timezone = nu
 /**
  * Replaces strings within a string.
  *
- * @param string            $str  String to replace in
+ * @param string $str String to replace in
  * @param array|Traversable $from Replace values
  *
  * @return string
@@ -458,9 +458,9 @@ function twig_replace_filter($str, $from)
 /**
  * Rounds a number.
  *
- * @param int|float $value     The value to round
+ * @param int|float $value The value to round
  * @param int|float $precision The rounding precision
- * @param string    $method    The method to use for rounding
+ * @param string $method The method to use for rounding
  *
  * @return int|float The rounded number
  */
@@ -485,10 +485,10 @@ function twig_round($value, $precision = 0, $method = 'common')
  * environment object.
  *
  * @param Twig_Environment $env
- * @param mixed            $number       A float/int/string of the number to format
- * @param int              $decimal      the number of decimal points to display
- * @param string           $decimalPoint the character(s) to use for the decimal point
- * @param string           $thousandSep  the character(s) to use for the thousands separator
+ * @param mixed $number A float/int/string of the number to format
+ * @param int $decimal the number of decimal points to display
+ * @param string $decimalPoint the character(s) to use for the decimal point
+ * @param string $thousandSep the character(s) to use for the thousands separator
  *
  * @return string The formatted number
  */
@@ -507,7 +507,7 @@ function twig_number_format_filter(Twig_Environment $env, $number, $decimal = nu
         $thousandSep = $defaults[2];
     }
 
-    return number_format((float) $number, $decimal, $decimalPoint, $thousandSep);
+    return number_format((float)$number, $decimal, $decimalPoint, $thousandSep);
 }
 
 /**
@@ -563,10 +563,10 @@ function twig_array_merge($arr1, $arr2)
  * Slices a variable.
  *
  * @param Twig_Environment $env
- * @param mixed            $item         A variable
- * @param int              $start        Start of the slice
- * @param int              $length       Size of the slice
- * @param bool             $preserveKeys Whether to preserve key or not (when the input is an array)
+ * @param mixed $item A variable
+ * @param int $start Start of the slice
+ * @param int $length Size of the slice
+ * @param bool $preserveKeys Whether to preserve key or not (when the input is an array)
  *
  * @return mixed The sliced variable
  */
@@ -592,16 +592,16 @@ function twig_slice(Twig_Environment $env, $item, $start, $length = null, $prese
         return array_slice($item, $start, $length, $preserveKeys);
     }
 
-    $item = (string) $item;
+    $item = (string)$item;
 
-    return (string) mb_substr($item, $start, $length, $env->getCharset());
+    return (string)mb_substr($item, $start, $length, $env->getCharset());
 }
 
 /**
  * Returns the first element of the item.
  *
  * @param Twig_Environment $env
- * @param mixed            $item A variable
+ * @param mixed $item A variable
  *
  * @return mixed The first element of the item
  */
@@ -616,7 +616,7 @@ function twig_first(Twig_Environment $env, $item)
  * Returns the last element of the item.
  *
  * @param Twig_Environment $env
- * @param mixed            $item A variable
+ * @param mixed $item A variable
  *
  * @return mixed The last element of the item
  */
@@ -640,8 +640,8 @@ function twig_last(Twig_Environment $env, $item)
  *  {# returns 123 #}
  * </pre>
  *
- * @param array  $value An array
- * @param string $glue  The separator
+ * @param array $value An array
+ * @param string $glue The separator
  *
  * @return string The concatenated string
  */
@@ -651,7 +651,7 @@ function twig_join_filter($value, $glue = '')
         $value = iterator_to_array($value, false);
     }
 
-    return implode($glue, (array) $value);
+    return implode($glue, (array)$value);
 }
 
 /**
@@ -672,9 +672,9 @@ function twig_join_filter($value, $glue = '')
  * </pre>
  *
  * @param Twig_Environment $env
- * @param string           $value     A string
- * @param string           $delimiter The delimiter
- * @param int              $limit     The limit
+ * @param string $value A string
+ * @param string $delimiter The delimiter
+ * @param int $limit The limit
  *
  * @return array The split string as an array
  */
@@ -767,9 +767,9 @@ function twig_get_array_keys_filter($array)
 /**
  * Reverses a variable.
  *
- * @param Twig_Environment         $env
- * @param array|Traversable|string $item         An array, a Traversable instance, or a string
- * @param bool                     $preserveKeys Whether to preserve key or not
+ * @param Twig_Environment $env
+ * @param array|Traversable|string $item An array, a Traversable instance, or a string
+ * @param bool $preserveKeys Whether to preserve key or not
  *
  * @return mixed The reversed input
  */
@@ -783,7 +783,7 @@ function twig_reverse_filter(Twig_Environment $env, $item, $preserveKeys = false
         return array_reverse($item, $preserveKeys);
     }
 
-    $string = (string) $item;
+    $string = (string)$item;
 
     $charset = $env->getCharset();
 
@@ -830,7 +830,7 @@ function twig_in_filter($value, $compare)
     if (is_array($compare)) {
         return in_array($value, $compare, is_object($value) || is_resource($value));
     } elseif (is_string($compare) && (is_string($value) || is_int($value) || is_float($value))) {
-        return '' === $value || false !== strpos($compare, (string) $value);
+        return '' === $value || false !== strpos($compare, (string)$value);
     } elseif ($compare instanceof Traversable) {
         if (is_object($value) || is_resource($value)) {
             foreach ($compare as $item) {
@@ -881,10 +881,10 @@ function twig_trim_filter($string, $characterMask = null, $side = 'both')
  * Escapes a string.
  *
  * @param Twig_Environment $env
- * @param mixed            $string     The value to be escaped
- * @param string           $strategy   The escaping strategy
- * @param string           $charset    The charset
- * @param bool             $autoescape Whether the function is called by the auto-escaping feature (true) or by the developer (false)
+ * @param mixed $string The value to be escaped
+ * @param string $strategy The escaping strategy
+ * @param string $charset The charset
+ * @param bool $autoescape Whether the function is called by the auto-escaping feature (true) or by the developer (false)
  *
  * @return string
  */
@@ -896,7 +896,7 @@ function twig_escape_filter(Twig_Environment $env, $string, $strategy = 'html', 
 
     if (!is_string($string)) {
         if (is_object($string) && method_exists($string, '__toString')) {
-            $string = (string) $string;
+            $string = (string)$string;
         } elseif (in_array($strategy, array('html', 'js', 'css', 'html_attr', 'url'))) {
             return $string;
         }
@@ -1015,13 +1015,13 @@ function twig_escape_filter(Twig_Environment $env, $string, $strategy = 'html', 
                         $hex = '0';
                     }
 
-                    return '\\'.$hex.' ';
+                    return '\\' . $hex . ' ';
                 }
 
                 // \uHHHH
                 $char = twig_convert_encoding($char, 'UTF-16BE', 'UTF-8');
 
-                return '\\'.ltrim(strtoupper(bin2hex($char)), '0').' ';
+                return '\\' . ltrim(strtoupper(bin2hex($char)), '0') . ' ';
             }, $string);
 
             if ('UTF-8' !== $charset) {
@@ -1075,10 +1075,10 @@ function twig_escape_filter(Twig_Environment $env, $string, $strategy = 'html', 
                  * replace it with while grabbing the hex value of the character.
                  */
                 if (1 == strlen($chr)) {
-                    $hex = strtoupper(substr('00'.bin2hex($chr), -2));
+                    $hex = strtoupper(substr('00' . bin2hex($chr), -2));
                 } else {
                     $chr = twig_convert_encoding($chr, 'UTF-16BE', 'UTF-8');
-                    $hex = strtoupper(substr('0000'.bin2hex($chr), -4));
+                    $hex = strtoupper(substr('0000' . bin2hex($chr), -4));
                 }
 
                 $int = hexdec($hex);
@@ -1143,8 +1143,8 @@ function twig_convert_encoding($string, $to, $from)
 /**
  * Returns the length of a variable.
  *
- * @param Twig_Environment $env   A Twig_Environment instance
- * @param mixed            $thing A variable
+ * @param Twig_Environment $env A Twig_Environment instance
+ * @param mixed $thing A variable
  *
  * @return int The length of the value
  */
@@ -1163,7 +1163,7 @@ function twig_length_filter(Twig_Environment $env, $thing)
     }
 
     if (method_exists($thing, '__toString') && !$thing instanceof \Countable) {
-        return mb_strlen((string) $thing, $env->getCharset());
+        return mb_strlen((string)$thing, $env->getCharset());
     }
 
     if ($thing instanceof \Countable || is_array($thing)) {
@@ -1181,7 +1181,7 @@ function twig_length_filter(Twig_Environment $env, $thing)
  * Converts a string to uppercase.
  *
  * @param Twig_Environment $env
- * @param string           $string A string
+ * @param string $string A string
  *
  * @return string The uppercased string
  */
@@ -1194,7 +1194,7 @@ function twig_upper_filter(Twig_Environment $env, $string)
  * Converts a string to lowercase.
  *
  * @param Twig_Environment $env
- * @param string           $string A string
+ * @param string $string A string
  *
  * @return string The lowercased string
  */
@@ -1207,7 +1207,7 @@ function twig_lower_filter(Twig_Environment $env, $string)
  * Returns a titlecased string.
  *
  * @param Twig_Environment $env
- * @param string           $string A string
+ * @param string $string A string
  *
  * @return string The titlecased string
  */
@@ -1224,7 +1224,7 @@ function twig_title_string_filter(Twig_Environment $env, $string)
  * Returns a capitalized string.
  *
  * @param Twig_Environment $env
- * @param string           $string A string
+ * @param string $string A string
  *
  * @return string The capitalized string
  */
@@ -1232,7 +1232,7 @@ function twig_capitalize_string_filter(Twig_Environment $env, $string)
 {
     $charset = $env->getCharset();
 
-    return mb_strtoupper(mb_substr($string, 0, 1, $charset), $charset).mb_strtolower(mb_substr($string, 1, null, $charset), $charset);
+    return mb_strtoupper(mb_substr($string, 0, 1, $charset), $charset) . mb_strtolower(mb_substr($string, 1, null, $charset), $charset);
 }
 
 /**
@@ -1268,7 +1268,7 @@ function twig_test_empty($value)
     }
 
     if (is_object($value) && method_exists($value, '__toString')) {
-        return '' === (string) $value;
+        return '' === (string)$value;
     }
 
     return '' === $value || false === $value || null === $value || array() === $value;
@@ -1297,12 +1297,12 @@ function twig_test_iterable($value)
  * Renders a template.
  *
  * @param Twig_Environment $env
- * @param array            $context
- * @param string|array     $template      The template to render or an array of templates to try consecutively
- * @param array            $variables     The variables to pass to the template
- * @param bool             $withContext
- * @param bool             $ignoreMissing Whether to ignore missing templates or not
- * @param bool             $sandboxed     Whether to sandbox the template or not
+ * @param array $context
+ * @param string|array $template The template to render or an array of templates to try consecutively
+ * @param array $variables The variables to pass to the template
+ * @param bool $withContext
+ * @param bool $ignoreMissing Whether to ignore missing templates or not
+ * @param bool $sandboxed Whether to sandbox the template or not
  *
  * @return string The rendered template
  */
@@ -1351,8 +1351,8 @@ function twig_include(Twig_Environment $env, $context, $template, $variables = a
  * Returns a template content without rendering it.
  *
  * @param Twig_Environment $env
- * @param string           $name          The template name
- * @param bool             $ignoreMissing Whether to ignore missing templates or not
+ * @param string $name The template name
+ * @param bool $ignoreMissing Whether to ignore missing templates or not
  *
  * @return string The template source
  */
@@ -1371,15 +1371,15 @@ function twig_source(Twig_Environment $env, $name, $ignoreMissing = false)
 /**
  * Provides the ability to get constants from instances as well as class/global constants.
  *
- * @param string      $constant The name of the constant
- * @param null|object $object   The object to get the constant from
+ * @param string $constant The name of the constant
+ * @param null|object $object The object to get the constant from
  *
  * @return string
  */
 function twig_constant($constant, $object = null)
 {
     if (null !== $object) {
-        $constant = get_class($object).'::'.$constant;
+        $constant = get_class($object) . '::' . $constant;
     }
 
     return constant($constant);
@@ -1388,15 +1388,15 @@ function twig_constant($constant, $object = null)
 /**
  * Checks if a constant exists.
  *
- * @param string      $constant The name of the constant
- * @param null|object $object   The object to get the constant from
+ * @param string $constant The name of the constant
+ * @param null|object $object The object to get the constant from
  *
  * @return bool
  */
 function twig_constant_is_defined($constant, $object = null)
 {
     if (null !== $object) {
-        $constant = get_class($object).'::'.$constant;
+        $constant = get_class($object) . '::' . $constant;
     }
 
     return defined($constant);
@@ -1406,8 +1406,8 @@ function twig_constant_is_defined($constant, $object = null)
  * Batches item.
  *
  * @param array $items An array of items
- * @param int   $size  The size of the batch
- * @param mixed $fill  A value used to fill missing items
+ * @param int $size The size of the batch
+ * @param mixed $fill A value used to fill missing items
  *
  * @return array
  */
@@ -1437,12 +1437,12 @@ function twig_array_batch($items, $size, $fill = null)
 /**
  * Returns the attribute value for a given array/object.
  *
- * @param mixed  $object            The object or array from where to get the item
- * @param mixed  $item              The item to get from the array or object
- * @param array  $arguments         An array of arguments to pass if the item is an object method
- * @param string $type              The type of attribute (@see Twig_Template constants)
- * @param bool   $isDefinedTest     Whether this is only a defined check
- * @param bool   $ignoreStrictCheck Whether to ignore the strict attribute check or not
+ * @param mixed $object The object or array from where to get the item
+ * @param mixed $item The item to get from the array or object
+ * @param array $arguments An array of arguments to pass if the item is an object method
+ * @param string $type The type of attribute (@see Twig_Template constants)
+ * @param bool $isDefinedTest Whether this is only a defined check
+ * @param bool $ignoreStrictCheck Whether to ignore the strict attribute check or not
  *
  * @return mixed The attribute value, or a Boolean when $isDefinedTest is true, or null when the attribute is not set and $ignoreStrictCheck is true
  *
@@ -1450,11 +1450,13 @@ function twig_array_batch($items, $size, $fill = null)
  *
  * @internal
  */
-function twig_get_attribute(Twig_Environment $env, Twig_Source $source, $object, $item, array $arguments = array(), $type = /* Twig_Template::ANY_CALL */ 'any', $isDefinedTest = false, $ignoreStrictCheck = false, $sandboxed = false)
+function twig_get_attribute(Twig_Environment $env, Twig_Source $source, $object, $item, array $arguments = array(), $type = /* Twig_Template::ANY_CALL */
+'any', $isDefinedTest = false, $ignoreStrictCheck = false, $sandboxed = false)
 {
     // array
-    if (/* Twig_Template::METHOD_CALL */ 'method' !== $type) {
-        $arrayItem = is_bool($item) || is_float($item) ? (int) $item : $item;
+    if (/* Twig_Template::METHOD_CALL */
+        'method' !== $type) {
+        $arrayItem = is_bool($item) || is_float($item) ? (int)$item : $item;
 
         if ((is_array($object) && (isset($object[$arrayItem]) || array_key_exists($arrayItem, $object)))
             || ($object instanceof ArrayAccess && isset($object[$arrayItem]))
@@ -1466,7 +1468,8 @@ function twig_get_attribute(Twig_Environment $env, Twig_Source $source, $object,
             return $object[$arrayItem];
         }
 
-        if (/* Twig_Template::ARRAY_CALL */ 'array' === $type || !is_object($object)) {
+        if (/* Twig_Template::ARRAY_CALL */
+            'array' === $type || !is_object($object)) {
             if ($isDefinedTest) {
                 return false;
             }
@@ -1485,7 +1488,8 @@ function twig_get_attribute(Twig_Environment $env, Twig_Source $source, $object,
                 } else {
                     $message = sprintf('Key "%s" for array with keys "%s" does not exist.', $arrayItem, implode(', ', array_keys($object)));
                 }
-            } elseif (/* Twig_Template::ARRAY_CALL */ 'array' === $type) {
+            } elseif (/* Twig_Template::ARRAY_CALL */
+                'array' === $type) {
                 if (null === $object) {
                     $message = sprintf('Impossible to access a key ("%s") on a null variable.', $item);
                 } else {
@@ -1526,8 +1530,9 @@ function twig_get_attribute(Twig_Environment $env, Twig_Source $source, $object,
     }
 
     // object property
-    if (/* Twig_Template::METHOD_CALL */ 'method' !== $type) {
-        if (isset($object->$item) || array_key_exists((string) $item, $object)) {
+    if (/* Twig_Template::METHOD_CALL */
+        'method' !== $type) {
+        if (isset($object->$item) || array_key_exists((string)$item, $object)) {
             if ($isDefinedTest) {
                 return true;
             }
@@ -1564,7 +1569,7 @@ function twig_get_attribute(Twig_Environment $env, Twig_Source $source, $object,
             } elseif ('h' === $lcName[0] && 0 === strpos($lcName, 'has')) {
                 $name = substr($method, 3);
                 $lcName = substr($lcName, 3);
-                if (in_array('is'.$lcName, $lcMethods)) {
+                if (in_array('is' . $lcName, $lcMethods)) {
                     continue;
                 }
             } else {

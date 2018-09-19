@@ -22,7 +22,7 @@ final class Twig_TokenStream
     private $source;
 
     /**
-     * @param array       $tokens An array of tokens
+     * @param array $tokens An array of tokens
      * @param Twig_Source $source
      */
     public function __construct(array $tokens, Twig_Source $source = null)
@@ -42,6 +42,18 @@ final class Twig_TokenStream
     }
 
     /**
+     * Tests a token, sets the pointer to the next one and returns it or throws a syntax error.
+     *
+     * @return Twig_Token|null The next token if the condition is true, null otherwise
+     */
+    public function nextIf($primary, $secondary = null)
+    {
+        if ($this->tokens[$this->current]->test($primary, $secondary)) {
+            return $this->next();
+        }
+    }
+
+    /**
      * Sets the pointer to the next token and returns the old one.
      *
      * @return Twig_Token
@@ -56,18 +68,6 @@ final class Twig_TokenStream
     }
 
     /**
-     * Tests a token, sets the pointer to the next one and returns it or throws a syntax error.
-     *
-     * @return Twig_Token|null The next token if the condition is true, null otherwise
-     */
-    public function nextIf($primary, $secondary = null)
-    {
-        if ($this->tokens[$this->current]->test($primary, $secondary)) {
-            return $this->next();
-        }
-    }
-
-    /**
      * Tests a token and returns it or throws a syntax error.
      *
      * @return Twig_Token
@@ -78,7 +78,7 @@ final class Twig_TokenStream
         if (!$token->test($type, $value)) {
             $line = $token->getLine();
             throw new Twig_Error_Syntax(sprintf('%sUnexpected token "%s" of value "%s" ("%s" expected%s).',
-                $message ? $message.'. ' : '',
+                $message ? $message . '. ' : '',
                 Twig_Token::typeToEnglish($token->getType()), $token->getValue(),
                 Twig_Token::typeToEnglish($type), $value ? sprintf(' with value "%s"', $value) : ''),
                 $line,
@@ -123,7 +123,8 @@ final class Twig_TokenStream
      */
     public function isEOF()
     {
-        return /* Twig_Token::EOF_TYPE */ -1 === $this->tokens[$this->current]->getType();
+        return /* Twig_Token::EOF_TYPE */
+            -1 === $this->tokens[$this->current]->getType();
     }
 
     /**

@@ -1,76 +1,78 @@
 {% extends 'layout.twig' %}
 
 {% block head %}
-<title>News from New York </title>
+    <title>News from New York </title>
 {% endblock %}
 
 {% block content %}
 
-<header id="home" class="sections">
-    <div class="container">
+    <header id="home" class="sections">
+        <div class="container">
 
-        <div class="row">
-            <div class="homepage-style">
+            <div class="row">
+                <div class="homepage-style">
 
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="unique-apps">
+                            <h2>{{ single.title }}</h2>
+                            <p>
+                                {% for item in comments %}
 
+                                    {{ item.author }}
 
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="unique-apps">
-                        <h2>{{ single.title }}</h2>
-                        <p>
-                            Avec ses tours de verre et son ambiance particulier, le Financial District est l'un des lieux incontournables à New York.
+                                {% endfor %}
 
+                            </p>
 
-                        </p>
-
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="slider-area">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="slider-area">
 
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
+                                 data-interval="3000">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
 
-                            </ol>
+                                </ol>
 
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
 
-                                <div class="item active">
-                                    <img src="public/assets/images/times.jpg" alt="" />
-                                </div>
+                                    <div class="item active">
+                                        <img src="public/assets/images/times.jpg" alt=""/>
+                                    </div>
 
-                                <div class="item">
-                                    <img src="public/assets/images/financial.jpg" alt="" />
-                                </div>
+                                    <div class="item">
+                                        <img src="public/assets/images/financial.jpg" alt=""/>
+                                    </div>
 
-                                <div class="item">
-                                    <img src="public/assets/images/times1.jpg" alt="" />
-                                </div>
+                                    <div class="item">
+                                        <img src="public/assets/images/times1.jpg" alt=""/>
+                                    </div>
 
-                                <div class="item">
-                                    <img src="public/assets/images/empire.jpg" alt="" />
+                                    <div class="item">
+                                        <img src="public/assets/images/empire.jpg" alt=""/>
+                                    </div>
+
                                 </div>
 
                             </div>
 
                         </div>
-
                     </div>
-                </div>
 
+                </div>
             </div>
+
         </div>
 
-    </div>
-
-</header>
-<br>
+    </header>
+    <br>
 
 {% endblock %}

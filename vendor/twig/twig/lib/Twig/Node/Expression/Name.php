@@ -9,6 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 class Twig_Node_Expression_Name extends Twig_Node_Expression
 {
     private $specialVars = array(
@@ -45,15 +46,13 @@ class Twig_Node_Expression_Name extends Twig_Node_Expression
             $compiler
                 ->raw('$context[')
                 ->string($name)
-                ->raw(']')
-            ;
+                ->raw(']');
         } else {
             if ($this->getAttribute('ignore_strict_check') || !$compiler->getEnvironment()->isStrictVariables()) {
                 $compiler
                     ->raw('($context[')
                     ->string($name)
-                    ->raw('] ?? null)')
-                ;
+                    ->raw('] ?? null)');
             } else {
                 $compiler
                     ->raw('(isset($context[')
@@ -67,8 +66,7 @@ class Twig_Node_Expression_Name extends Twig_Node_Expression
                     ->raw(' does not exist.\', ')
                     ->repr($this->lineno)
                     ->raw(', $this->source); })()')
-                    ->raw(')')
-                ;
+                    ->raw(')');
             }
         }
     }

@@ -14,32 +14,6 @@ class Twig_Tests_Extension_SandboxTest extends \PHPUnit\Framework\TestCase
     protected static $params;
     protected static $templates;
 
-    protected function setUp()
-    {
-        self::$params = array(
-            'name' => 'Fabien',
-            'obj' => new FooObject(),
-            'arr' => array('obj' => new FooObject()),
-        );
-
-        self::$templates = array(
-            '1_basic1' => '{{ obj.foo }}',
-            '1_basic2' => '{{ name|upper }}',
-            '1_basic3' => '{% if name %}foo{% endif %}',
-            '1_basic4' => '{{ obj.bar }}',
-            '1_basic5' => '{{ obj }}',
-            '1_basic6' => '{{ arr.obj }}',
-            '1_basic7' => '{{ cycle(["foo","bar"], 1) }}',
-            '1_basic8' => '{{ obj.getfoobar }}{{ obj.getFooBar }}',
-            '1_basic9' => '{{ obj.foobar }}{{ obj.fooBar }}',
-            '1_basic' => '{% if obj.foo %}{{ obj.foo|upper }}{% endif %}',
-            '1_layout' => '{% block content %}{% endblock %}',
-            '1_child' => "{% extends \"1_layout\" %}\n{% block content %}\n{{ \"a\"|json_encode }}\n{% endblock %}",
-            '1_include' => '{{ include("1_basic1", sandboxed=true) }}',
-            '1_range_operator' => '{{ (1..2)[0] }}',
-        );
-    }
-
     /**
      * @expectedException        Twig_Sandbox_SecurityError
      * @expectedExceptionMessage Filter "json_encode" is not allowed in "1_child" at line 3.
@@ -48,6 +22,16 @@ class Twig_Tests_Extension_SandboxTest extends \PHPUnit\Framework\TestCase
     {
         $twig = $this->getEnvironment(true, array(), self::$templates, array('block'));
         $twig->loadTemplate('1_child')->render(array());
+    }
+
+    protected function getEnvironment($sandboxed, $options, $templates, $tags = array(), $filters = array(), $methods = array(), $properties = array(), $functions = array())
+    {
+        $loader = new Twig_Loader_Array($templates);
+        $twig = new Twig_Environment($loader, array_merge(array('debug' => true, 'cache' => false, 'autoescape' => false), $options));
+        $policy = new Twig_Sandbox_SecurityPolicy($tags, $filters, $methods, $properties, $functions);
+        $twig->addExtension(new Twig_Extension_Sandbox($policy, $sandboxed));
+
+        return $twig;
     }
 
     public function testSandboxGloballySet()
@@ -277,14 +261,30 @@ EOF
         $this->assertFalse($twig->getExtension('Twig_Extension_Sandbox')->isSandboxed(), 'Sandboxed include() function call should not leave Sandbox enabled when an error occurs.');
     }
 
-    protected function getEnvironment($sandboxed, $options, $templates, $tags = array(), $filters = array(), $methods = array(), $properties = array(), $functions = array())
+    protected function setUp()
     {
-        $loader = new Twig_Loader_Array($templates);
-        $twig = new Twig_Environment($loader, array_merge(array('debug' => true, 'cache' => false, 'autoescape' => false), $options));
-        $policy = new Twig_Sandbox_SecurityPolicy($tags, $filters, $methods, $properties, $functions);
-        $twig->addExtension(new Twig_Extension_Sandbox($policy, $sandboxed));
+        self::$params = array(
+            'name' => 'Fabien',
+            'obj' => new FooObject(),
+            'arr' => array('obj' => new FooObject()),
+        );
 
-        return $twig;
+        self::$templates = array(
+            '1_basic1' => '{{ obj.foo }}',
+            '1_basic2' => '{{ name|upper }}',
+            '1_basic3' => '{% if name %}foo{% endif %}',
+            '1_basic4' => '{{ obj.bar }}',
+            '1_basic5' => '{{ obj }}',
+            '1_basic6' => '{{ arr.obj }}',
+            '1_basic7' => '{{ cycle(["foo","bar"], 1) }}',
+            '1_basic8' => '{{ obj.getfoobar }}{{ obj.getFooBar }}',
+            '1_basic9' => '{{ obj.foobar }}{{ obj.fooBar }}',
+            '1_basic' => '{% if obj.foo %}{{ obj.foo|upper }}{% endif %}',
+            '1_layout' => '{% block content %}{% endblock %}',
+            '1_child' => "{% extends \"1_layout\" %}\n{% block content %}\n{{ \"a\"|json_encode }}\n{% endblock %}",
+            '1_include' => '{{ include("1_basic1", sandboxed=true) }}',
+            '1_range_operator' => '{{ (1..2)[0] }}',
+        );
     }
 }
 

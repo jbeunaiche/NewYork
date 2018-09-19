@@ -21,17 +21,17 @@ abstract class Twig_BaseNodeVisitor implements Twig_NodeVisitorInterface
         return $this->doEnterNode($node, $env);
     }
 
-    final public function leaveNode(Twig_Node $node, Twig_Environment $env)
-    {
-        return $this->doLeaveNode($node, $env);
-    }
-
     /**
      * Called before child nodes are visited.
      *
      * @return Twig_Node The modified node
      */
     abstract protected function doEnterNode(Twig_Node $node, Twig_Environment $env);
+
+    final public function leaveNode(Twig_Node $node, Twig_Environment $env)
+    {
+        return $this->doLeaveNode($node, $env);
+    }
 
     /**
      * Called after child nodes are visited.

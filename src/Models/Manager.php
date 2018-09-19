@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Julien\Models;
 
@@ -20,7 +20,7 @@ class Manager
 
     protected function dbConnect()
     {
-        $this->_db = new \PDO('mysql:host=localhost;dbname=newyork;charset=utf8','root','');
+        $this->_db = new \PDO('mysql:host=localhost;dbname=newyork;charset=utf8', 'root', '');
     }
 
     /**

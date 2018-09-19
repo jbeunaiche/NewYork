@@ -13,7 +13,7 @@ class Twig_Tests_Loader_ChainTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetSourceContext()
     {
-        $path = __DIR__.'/../Fixtures';
+        $path = __DIR__ . '/../Fixtures';
         $loader = new Twig_Loader_Chain(array(
             new Twig_Loader_Array(array('foo' => 'bar')),
             new Twig_Loader_Array(array('errors/index.html' => 'baz')),
@@ -28,7 +28,7 @@ class Twig_Tests_Loader_ChainTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('baz', $loader->getSourceContext('errors/index.html')->getCode());
 
         $this->assertEquals('errors/base.html', $loader->getSourceContext('errors/base.html')->getName());
-        $this->assertEquals(realpath($path.'/errors/base.html'), realpath($loader->getSourceContext('errors/base.html')->getPath()));
+        $this->assertEquals(realpath($path . '/errors/base.html'), realpath($loader->getSourceContext('errors/base.html')->getPath()));
         $this->assertNotEquals('baz', $loader->getSourceContext('errors/base.html')->getCode());
     }
 

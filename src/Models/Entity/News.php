@@ -3,7 +3,7 @@
 namespace Julien\Models\Entity;
 
 class News
-    
+
 {
     private $id;
     private $title;
@@ -11,19 +11,17 @@ class News
 
     public function __construct($value = [])
     {
-        if (!empty($value))
-        {
+        if (!empty($value)) {
             $this->hydrate($value);
         }
     }
+
     public function hydrate(array $data)
     {
-        foreach($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
             $method = 'set' . ucfirst($key);
 
-            if (method_exists($this, $method))
-            {
+            if (method_exists($this, $method)) {
                 $this->$method($value);
             }
         }
@@ -59,6 +57,5 @@ class News
         $this->content = $content;
     }
 
-    
 
 }

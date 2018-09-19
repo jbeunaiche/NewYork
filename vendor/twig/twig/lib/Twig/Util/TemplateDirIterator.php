@@ -21,7 +21,7 @@ class Twig_Util_TemplateDirIterator extends IteratorIterator
 
     public function key()
     {
-        return (string) parent::key();
+        return (string)parent::key();
     }
 }
 

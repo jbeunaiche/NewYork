@@ -29,8 +29,7 @@ class Twig_Node_Spaceless extends Twig_Node implements Twig_NodeOutputInterface
             ->addDebugInfo($this)
             ->write("ob_start();\n")
             ->subcompile($this->getNode('body'))
-            ->write("echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));\n")
-        ;
+            ->write("echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));\n");
     }
 }
 

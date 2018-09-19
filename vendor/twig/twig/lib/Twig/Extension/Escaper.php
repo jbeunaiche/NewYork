@@ -41,23 +41,6 @@ final class Twig_Extension_Escaper extends Twig_Extension
     }
 
     /**
-     * Sets the default strategy to use when not defined by the user.
-     *
-     * The strategy can be a valid PHP callback that takes the template
-     * name as an argument and returns the strategy to use.
-     *
-     * @param string|false|callable $defaultStrategy An escaping strategy
-     */
-    public function setDefaultStrategy($defaultStrategy)
-    {
-        if ('name' === $defaultStrategy) {
-            $defaultStrategy = array('Twig_FileExtensionEscapingStrategy', 'guess');
-        }
-
-        $this->defaultStrategy = $defaultStrategy;
-    }
-
-    /**
      * Gets the default strategy to use when not defined by the user.
      *
      * @param string $name The template name
@@ -73,6 +56,23 @@ final class Twig_Extension_Escaper extends Twig_Extension
         }
 
         return $this->defaultStrategy;
+    }
+
+    /**
+     * Sets the default strategy to use when not defined by the user.
+     *
+     * The strategy can be a valid PHP callback that takes the template
+     * name as an argument and returns the strategy to use.
+     *
+     * @param string|false|callable $defaultStrategy An escaping strategy
+     */
+    public function setDefaultStrategy($defaultStrategy)
+    {
+        if ('name' === $defaultStrategy) {
+            $defaultStrategy = array('Twig_FileExtensionEscapingStrategy', 'guess');
+        }
+
+        $this->defaultStrategy = $defaultStrategy;
     }
 }
 

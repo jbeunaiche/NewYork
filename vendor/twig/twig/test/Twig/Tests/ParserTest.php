@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 class Twig_Tests_ParserTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -52,6 +53,18 @@ class Twig_Tests_ParserTest extends \PHPUnit\Framework\TestCase
         $m->setAccessible(true);
 
         $this->assertEquals($expected, $m->invoke($parser, $input));
+    }
+
+    protected function getParser()
+    {
+        $parser = new Twig_Parser(new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock()));
+        $parser->setParent(new Twig_Node());
+
+        $p = new ReflectionProperty($parser, 'stream');
+        $p->setAccessible(true);
+        $p->setValue($parser, new Twig_TokenStream(array()));
+
+        return $parser;
     }
 
     public function getFilterBodyNodesData()
@@ -104,7 +117,7 @@ class Twig_Tests_ParserTest extends \PHPUnit\Framework\TestCase
 
         $m = new ReflectionMethod($parser, 'filterBodyNodes');
         $m->setAccessible(true);
-        $m->invoke($parser, new Twig_Node_Text(chr(0xEF).chr(0xBB).chr(0xBF), 1));
+        $m->invoke($parser, new Twig_Node_Text(chr(0xEF) . chr(0xBB) . chr(0xBF), 1));
     }
 
     public function testParseIsReentrant()
@@ -144,24 +157,12 @@ class Twig_Tests_ParserTest extends \PHPUnit\Framework\TestCase
     {{ foo }}
 {% endmacro %}
 EOF
-        , 'index')));
+            , 'index')));
 
         // The getVarName() must not depend on the template loaders,
         // If this test does not throw any exception, that's good.
         // see https://github.com/symfony/symfony/issues/4218
         $this->addToAssertionCount(1);
-    }
-
-    protected function getParser()
-    {
-        $parser = new Twig_Parser(new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock()));
-        $parser->setParent(new Twig_Node());
-
-        $p = new ReflectionProperty($parser, 'stream');
-        $p->setAccessible(true);
-        $p->setValue($parser, new Twig_TokenStream(array()));
-
-        return $parser;
     }
 }
 

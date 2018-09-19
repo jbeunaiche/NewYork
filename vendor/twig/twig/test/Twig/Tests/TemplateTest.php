@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 class Twig_Tests_TemplateTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -255,7 +256,7 @@ class Twig_Tests_TemplateTest extends \PHPUnit\Framework\TestCase
         );
 
         $objectArray = new Twig_TemplateArrayAccessObject();
-        $stdObject = (object) $array;
+        $stdObject = (object)$array;
         $magicPropertyObject = new Twig_TemplateMagicPropertyObject();
         $propertyObject = new Twig_TemplatePropertyObject();
         $propertyObject1 = new Twig_TemplatePropertyObjectAndIterator();
@@ -270,31 +271,31 @@ class Twig_Tests_TemplateTest extends \PHPUnit\Framework\TestCase
 
         $basicTests = array(
             // array(defined, value, property to fetch)
-            array(true,  'defined', 'defined'),
-            array(false, null,      'undefined'),
-            array(false, null,      'protected'),
-            array(true,  0,         'zero'),
-            array(true,  1,         1),
-            array(true,  1,         1.0),
-            array(true,  null,      'null'),
-            array(true,  true,      'bar'),
-            array(true,  true,      'foo'),
-            array(true,  'baz',     'baz'),
-            array(true,  'baf',     'baf'),
-            array(true,  '09',      '09'),
-            array(true,  '+4',      '+4'),
+            array(true, 'defined', 'defined'),
+            array(false, null, 'undefined'),
+            array(false, null, 'protected'),
+            array(true, 0, 'zero'),
+            array(true, 1, 1),
+            array(true, 1, 1.0),
+            array(true, null, 'null'),
+            array(true, true, 'bar'),
+            array(true, true, 'foo'),
+            array(true, 'baz', 'baz'),
+            array(true, 'baf', 'baf'),
+            array(true, '09', '09'),
+            array(true, '+4', '+4'),
         );
         $testObjects = array(
             // array(object, type of fetch)
-            array($array,               $arrayType),
-            array($objectArray,         $arrayType),
-            array($stdObject,           $anyType),
+            array($array, $arrayType),
+            array($objectArray, $arrayType),
+            array($stdObject, $anyType),
             array($magicPropertyObject, $anyType),
-            array($methodObject,        $methodType),
-            array($methodObject,        $anyType),
-            array($propertyObject,      $anyType),
-            array($propertyObject1,     $anyType),
-            array($propertyObject2,     $anyType),
+            array($methodObject, $methodType),
+            array($methodObject, $anyType),
+            array($propertyObject, $anyType),
+            array($propertyObject1, $anyType),
+            array($propertyObject2, $anyType),
         );
 
         $tests = array();
@@ -320,12 +321,12 @@ class Twig_Tests_TemplateTest extends \PHPUnit\Framework\TestCase
 
         // additional method tests
         $tests = array_merge($tests, array(
-            array(true, 'defined', $methodObject, 'defined',    array(), $methodType),
-            array(true, 'defined', $methodObject, 'DEFINED',    array(), $methodType),
+            array(true, 'defined', $methodObject, 'defined', array(), $methodType),
+            array(true, 'defined', $methodObject, 'DEFINED', array(), $methodType),
             array(true, 'defined', $methodObject, 'getDefined', array(), $methodType),
             array(true, 'defined', $methodObject, 'GETDEFINED', array(), $methodType),
-            array(true, 'static',  $methodObject, 'static',     array(), $methodType),
-            array(true, 'static',  $methodObject, 'getStatic',  array(), $methodType),
+            array(true, 'static', $methodObject, 'static', array(), $methodType),
+            array(true, 'static', $methodObject, 'getStatic', array(), $methodType),
 
             array(true, '__call_undefined', $magicMethodObject, 'undefined', array(), $methodType),
             array(true, '__call_UNDEFINED', $magicMethodObject, 'UNDEFINED', array(), $methodType),
@@ -423,6 +424,10 @@ class Twig_TemplateTest extends Twig_Template
         return array();
     }
 
+    public function block_name($context, array $blocks = array())
+    {
+    }
+
     protected function doGetParent(array $context)
     {
         return false;
@@ -431,16 +436,10 @@ class Twig_TemplateTest extends Twig_Template
     protected function doDisplay(array $context, array $blocks = array())
     {
     }
-
-    public function block_name($context, array $blocks = array())
-    {
-    }
 }
 
 class Twig_TemplateArrayAccessObject implements ArrayAccess
 {
-    protected $protected = 'protected';
-
     public $attributes = array(
         'defined' => 'defined',
         'zero' => 0,
@@ -453,6 +452,7 @@ class Twig_TemplateArrayAccessObject implements ArrayAccess
         '09' => '09',
         '+4' => '+4',
     );
+    protected $protected = 'protected';
 
     public function offsetExists($name)
     {
@@ -541,14 +541,14 @@ class Twig_TemplatePropertyObjectAndArrayAccess extends Twig_TemplatePropertyObj
         'baz' => 'baz',
     );
 
-    public function offsetExists($offset)
-    {
-        return array_key_exists($offset, $this->data);
-    }
-
     public function offsetGet($offset)
     {
         return $this->offsetExists($offset) ? $this->data[$offset] : 'n/a';
+    }
+
+    public function offsetExists($offset)
+    {
+        return array_key_exists($offset, $this->data);
     }
 
     public function offsetSet($offset, $value)
@@ -572,6 +572,11 @@ class Twig_TemplatePropertyObjectDefinedWithUndefinedValue
 
 class Twig_TemplateMethodObject
 {
+    public static function getStatic()
+    {
+        return 'static';
+    }
+
     public function getDefined()
     {
         return 'defined';
@@ -640,11 +645,6 @@ class Twig_TemplateMethodObject
     {
         return 'protected';
     }
-
-    public static function getStatic()
-    {
-        return 'static';
-    }
 }
 
 class Twig_TemplateGetIsMethods
@@ -660,21 +660,19 @@ class Twig_TemplateGetIsMethods
 
 class Twig_TemplateMethodAndPropObject
 {
+    public $b = 'b_prop';
     private $a = 'a_prop';
+    private $c = 'c_prop';
 
     public function getA()
     {
         return 'a';
     }
 
-    public $b = 'b_prop';
-
     public function getB()
     {
         return 'b';
     }
-
-    private $c = 'c_prop';
 
     private function getC()
     {
@@ -686,7 +684,7 @@ class Twig_TemplateMagicMethodObject
 {
     public function __call($method, $arguments)
     {
-        return '__call_'.$method;
+        return '__call_' . $method;
     }
 }
 

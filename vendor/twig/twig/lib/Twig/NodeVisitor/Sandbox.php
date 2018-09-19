@@ -21,6 +21,11 @@ final class Twig_NodeVisitor_Sandbox extends Twig_BaseNodeVisitor
     private $filters;
     private $functions;
 
+    public function getPriority()
+    {
+        return 0;
+    }
+
     protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
     {
         if ($node instanceof Twig_Node_Module) {
@@ -69,11 +74,6 @@ final class Twig_NodeVisitor_Sandbox extends Twig_BaseNodeVisitor
         }
 
         return $node;
-    }
-
-    public function getPriority()
-    {
-        return 0;
     }
 }
 

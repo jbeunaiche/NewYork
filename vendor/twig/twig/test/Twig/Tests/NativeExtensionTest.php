@@ -24,6 +24,6 @@ class Twig_Tests_NativeExtensionTest extends \PHPUnit\Framework\TestCase
         $output = $twig->render('index', compact('d1', 'd2'));
 
         // If it fails, PHP will crash.
-        $this->assertEquals($output, $d1->date.$d2->date);
+        $this->assertEquals($output, $d1->date . $d2->date);
     }
 }

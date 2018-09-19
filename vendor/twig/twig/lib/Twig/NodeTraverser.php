@@ -22,7 +22,7 @@ final class Twig_NodeTraverser
     private $visitors = array();
 
     /**
-     * @param Twig_Environment            $env
+     * @param Twig_Environment $env
      * @param Twig_NodeVisitorInterface[] $visitors
      */
     public function __construct(Twig_Environment $env, array $visitors = array())

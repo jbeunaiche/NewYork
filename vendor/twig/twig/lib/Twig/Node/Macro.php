@@ -33,16 +33,14 @@ class Twig_Node_Macro extends Twig_Node
     {
         $compiler
             ->addDebugInfo($this)
-            ->write(sprintf('public function macro_%s(', $this->getAttribute('name')))
-        ;
+            ->write(sprintf('public function macro_%s(', $this->getAttribute('name')));
 
         $count = count($this->getNode('arguments'));
         $pos = 0;
         foreach ($this->getNode('arguments') as $name => $default) {
             $compiler
-                ->raw('$__'.$name.'__ = ')
-                ->subcompile($default)
-            ;
+                ->raw('$__' . $name . '__ = ')
+                ->subcompile($default);
 
             if (++$pos < $count) {
                 $compiler->raw(', ');
@@ -57,28 +55,24 @@ class Twig_Node_Macro extends Twig_Node
             ->raw('...$__varargs__')
             ->raw(")\n")
             ->write("{\n")
-            ->indent()
-        ;
+            ->indent();
 
         $compiler
             ->write("\$context = \$this->env->mergeGlobals(array(\n")
-            ->indent()
-        ;
+            ->indent();
 
         foreach ($this->getNode('arguments') as $name => $default) {
             $compiler
                 ->write('')
                 ->string($name)
-                ->raw(' => $__'.$name.'__')
-                ->raw(",\n")
-            ;
+                ->raw(' => $__' . $name . '__')
+                ->raw(",\n");
         }
 
         $compiler
             ->write('')
             ->string(self::VARARGS_NAME)
-            ->raw(' => ')
-        ;
+            ->raw(' => ');
 
         $compiler
             ->raw("\$__varargs__,\n")
@@ -98,8 +92,7 @@ class Twig_Node_Macro extends Twig_Node
             ->outdent()
             ->write("}\n")
             ->outdent()
-            ->write("}\n\n")
-        ;
+            ->write("}\n\n");
     }
 }
 

@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 class Twig_Tests_NodeVisitor_OptimizerTest extends \PHPUnit\Framework\TestCase
 {
     public function testRenderBlockOptimizer()
@@ -48,6 +49,22 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends \PHPUnit\Framework\TestCase
         }
     }
 
+    public function checkForConfiguration(Twig_Node $node, $target, $withLoop)
+    {
+        foreach ($node as $n) {
+            if ($n instanceof Twig_Node_For) {
+                if ($target === $n->getNode('value_target')->getAttribute('name')) {
+                    return $withLoop == $n->getAttribute('with_loop');
+                }
+            }
+
+            $ret = $this->checkForConfiguration($n, $target, $withLoop);
+            if (null !== $ret) {
+                return $ret;
+            }
+        }
+    }
+
     public function getTestsForForOptimizer()
     {
         return array(
@@ -85,21 +102,5 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends \PHPUnit\Framework\TestCase
 
             array('{% for i in foo %}{{ include("foo", { "foo": loop.index }, with_context = false) }}{% endfor %}', array('i' => true)),
         );
-    }
-
-    public function checkForConfiguration(Twig_Node $node, $target, $withLoop)
-    {
-        foreach ($node as $n) {
-            if ($n instanceof Twig_Node_For) {
-                if ($target === $n->getNode('value_target')->getAttribute('name')) {
-                    return $withLoop == $n->getAttribute('with_loop');
-                }
-            }
-
-            $ret = $this->checkForConfiguration($n, $target, $withLoop);
-            if (null !== $ret) {
-                return $ret;
-            }
-        }
     }
 }

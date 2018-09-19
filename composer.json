@@ -1,18 +1,17 @@
 {
-    "name": "julien/test",
-    "authors": [
-        {
-            "name": "jbeunaiche",
-            "email": "jbeunaiche@gmail.com"
-        }
-    ],
-    "require": {
-        "twig/twig": "^2.5"
-    },
-    "autoload": {
-      "psr-4": {
-        "Julien\\": "src/"
-        
-      }
+  "name": "julien/test",
+  "authors": [
+    {
+      "name": "jbeunaiche",
+      "email": "jbeunaiche@gmail.com"
     }
+  ],
+  "require": {
+    "twig/twig": "^2.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Julien\\": "src/"
+    }
+  }
 }

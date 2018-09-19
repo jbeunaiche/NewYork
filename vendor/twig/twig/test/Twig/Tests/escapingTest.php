@@ -148,29 +148,24 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
 
     protected $env;
 
-    protected function setUp()
-    {
-        $this->env = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock());
-    }
-
     public function testHtmlEscapingConvertsSpecialChars()
     {
         foreach ($this->htmlSpecialChars as $key => $value) {
-            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'html'), 'Failed to escape: '.$key);
+            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'html'), 'Failed to escape: ' . $key);
         }
     }
 
     public function testHtmlAttributeEscapingConvertsSpecialChars()
     {
         foreach ($this->htmlAttrSpecialChars as $key => $value) {
-            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'html_attr'), 'Failed to escape: '.$key);
+            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'html_attr'), 'Failed to escape: ' . $key);
         }
     }
 
     public function testJavascriptEscapingConvertsSpecialChars()
     {
         foreach ($this->jsSpecialChars as $key => $value) {
-            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'js'), 'Failed to escape: '.$key);
+            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'js'), 'Failed to escape: ' . $key);
         }
     }
 
@@ -187,7 +182,7 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
     public function testCssEscapingConvertsSpecialChars()
     {
         foreach ($this->cssSpecialChars as $key => $value) {
-            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'css'), 'Failed to escape: '.$key);
+            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'css'), 'Failed to escape: ' . $key);
         }
     }
 
@@ -204,13 +199,9 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
     public function testUrlEscapingConvertsSpecialChars()
     {
         foreach ($this->urlSpecialChars as $key => $value) {
-            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'url'), 'Failed to escape: '.$key);
+            $this->assertEquals($value, twig_escape_filter($this->env, $key, 'url'), 'Failed to escape: ' . $key);
         }
     }
-
-    /**
-     * Range tests to confirm escaped range of characters is within OWASP recommendation.
-     */
 
     /**
      * Only testing the first few 2 ranges on this prot. function as that's all these
@@ -228,6 +219,10 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Range tests to confirm escaped range of characters is within OWASP recommendation.
+     */
+
+    /**
      * Convert a Unicode Codepoint to a literal UTF-8 character.
      *
      * @param int $codepoint Unicode codepoint in hex notation
@@ -241,18 +236,18 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
         }
         if ($codepoint < 0x800) {
             return chr($codepoint >> 6 & 0x3f | 0xc0)
-                .chr($codepoint & 0x3f | 0x80);
+                . chr($codepoint & 0x3f | 0x80);
         }
         if ($codepoint < 0x10000) {
             return chr($codepoint >> 12 & 0x0f | 0xe0)
-                .chr($codepoint >> 6 & 0x3f | 0x80)
-                .chr($codepoint & 0x3f | 0x80);
+                . chr($codepoint >> 6 & 0x3f | 0x80)
+                . chr($codepoint & 0x3f | 0x80);
         }
         if ($codepoint < 0x110000) {
             return chr($codepoint >> 18 & 0x07 | 0xf0)
-                .chr($codepoint >> 12 & 0x3f | 0x80)
-                .chr($codepoint >> 6 & 0x3f | 0x80)
-                .chr($codepoint & 0x3f | 0x80);
+                . chr($codepoint >> 12 & 0x3f | 0x80)
+                . chr($codepoint >> 6 & 0x3f | 0x80)
+                . chr($codepoint & 0x3f | 0x80);
         }
         throw new Exception('Codepoint requested outside of Unicode range.');
     }
@@ -262,8 +257,8 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
         $immune = array(',', '.', '_'); // Exceptions to escaping ranges
         for ($chr = 0; $chr < 0xFF; ++$chr) {
             if ($chr >= 0x30 && $chr <= 0x39
-            || $chr >= 0x41 && $chr <= 0x5A
-            || $chr >= 0x61 && $chr <= 0x7A) {
+                || $chr >= 0x41 && $chr <= 0x5A
+                || $chr >= 0x61 && $chr <= 0x7A) {
                 $literal = $this->codepointToUtf8($chr);
                 $this->assertEquals($literal, twig_escape_filter($this->env, $literal, 'js'));
             } else {
@@ -285,8 +280,8 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
         $immune = array(',', '.', '-', '_'); // Exceptions to escaping ranges
         for ($chr = 0; $chr < 0xFF; ++$chr) {
             if ($chr >= 0x30 && $chr <= 0x39
-            || $chr >= 0x41 && $chr <= 0x5A
-            || $chr >= 0x61 && $chr <= 0x7A) {
+                || $chr >= 0x41 && $chr <= 0x5A
+                || $chr >= 0x61 && $chr <= 0x7A) {
                 $literal = $this->codepointToUtf8($chr);
                 $this->assertEquals($literal, twig_escape_filter($this->env, $literal, 'html_attr'));
             } else {
@@ -308,8 +303,8 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
         // CSS has no exceptions to escaping ranges
         for ($chr = 0; $chr < 0xFF; ++$chr) {
             if ($chr >= 0x30 && $chr <= 0x39
-            || $chr >= 0x41 && $chr <= 0x5A
-            || $chr >= 0x61 && $chr <= 0x7A) {
+                || $chr >= 0x41 && $chr <= 0x5A
+                || $chr >= 0x61 && $chr <= 0x7A) {
                 $literal = $this->codepointToUtf8($chr);
                 $this->assertEquals($literal, twig_escape_filter($this->env, $literal, 'css'));
             } else {
@@ -320,5 +315,10 @@ class Twig_Test_EscapingTest extends \PHPUnit\Framework\TestCase
                     "$literal should be escaped!");
             }
         }
+    }
+
+    protected function setUp()
+    {
+        $this->env = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock());
     }
 }

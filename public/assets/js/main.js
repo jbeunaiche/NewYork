@@ -2,10 +2,10 @@
 
 
 jQuery(document).ready(function ($) {
-	$(window).load(function () {
-		$(".loaded").fadeOut();
-		$(".preloader").delay(1000).fadeOut("slow");
-	});
+    $(window).load(function () {
+        $(".loaded").fadeOut();
+        $(".preloader").delay(1000).fadeOut("slow");
+    });
 
     /*---------------------------------------------*
      * Mobile menu
@@ -25,56 +25,52 @@ jQuery(document).ready(function ($) {
             }
         }
     });
-	
 
-	/*---------------------------------------------*
+
+    /*---------------------------------------------*
      * Menu Background Change
      ---------------------------------------------*/
-	
-	var windowWidth = $(window).width();
+
+    var windowWidth = $(window).width();
     if (windowWidth > 757) {
 
-        
-          
-            $(window).scroll(function () {
-                if ($(this).scrollTop() >200) {
-                    $('.navbar').fadeIn(200);
-                    $('.navbar').addClass('menu-bg');
 
-                } else {
-                    
-                    $('.navbar').removeClass('menu-bg');
-                }
-            });
-        
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+                $('.navbar').fadeIn(200);
+                $('.navbar').addClass('menu-bg');
+
+            } else {
+
+                $('.navbar').removeClass('menu-bg');
+            }
+        });
+
     }
-		$('#bs-example-navbar-collapse-1').localScroll();
-		
-	/*---------------------------------------------*
+    $('#bs-example-navbar-collapse-1').localScroll();
+
+    /*---------------------------------------------*
      * Scroll Up
-     ---------------------------------------------*/	
-		$(window).scroll(function(){
+     ---------------------------------------------*/
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 600) {
             $('.scrollup').fadeIn('slow');
         } else {
             $('.scrollup').fadeOut('slow');
         }
-		});
-		
-		$('.scrollup').click(function(){
-			$("html, body").animate({ scrollTop: 0 },1000);
-			return false;
-		});
-		
-	
+    });
+
+    $('.scrollup').click(function () {
+        $("html, body").animate({scrollTop: 0}, 1000);
+        return false;
+    });
 
 
     /*---------------------------------------------*
      * STICKY scroll
      ---------------------------------------------*/
 
-		$.localScroll();
-
+    $.localScroll();
 
 
     /*---------------------------------------------*
@@ -85,8 +81,6 @@ jQuery(document).ready(function ($) {
 //        delay: 10,
 //        time: 2000
 //    });
-
-
 
 
     /*---------------------------------------------*

@@ -21,6 +21,11 @@ final class Twig_Profiler_NodeVisitor_Profiler extends Twig_BaseNodeVisitor
         $this->extensionName = $extensionName;
     }
 
+    public function getPriority()
+    {
+        return 0;
+    }
+
     protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
     {
         return $node;
@@ -54,11 +59,6 @@ final class Twig_Profiler_NodeVisitor_Profiler extends Twig_BaseNodeVisitor
     private function getVarName()
     {
         return sprintf('__internal_%s', hash('sha256', $this->extensionName));
-    }
-
-    public function getPriority()
-    {
-        return 0;
     }
 }
 

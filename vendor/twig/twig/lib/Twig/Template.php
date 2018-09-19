@@ -68,14 +68,54 @@ abstract class Twig_Template
      */
     abstract public function getDebugInfo();
 
-    /**
-     * Returns information about the original template source code.
-     *
-     * @return Twig_Source
-     */
-    public function getSourceContext()
+    public function isTraitable()
     {
-        return new Twig_Source('', $this->getTemplateName());
+        return true;
+    }
+
+    /**
+     * Renders a parent block.
+     *
+     * This method is for internal use only and should never be called
+     * directly.
+     *
+     * @param string $name The block name to render from the parent
+     * @param array $context The context
+     * @param array $blocks The current set of blocks
+     *
+     * @return string The rendered block
+     *
+     * @internal
+     */
+    public function renderParentBlock($name, array $context, array $blocks = array())
+    {
+        ob_start();
+        $this->displayParentBlock($name, $context, $blocks);
+
+        return ob_get_clean();
+    }
+
+    /**
+     * Displays a parent block.
+     *
+     * This method is for internal use only and should never be called
+     * directly.
+     *
+     * @param string $name The block name to display from the parent
+     * @param array $context The context
+     * @param array $blocks The current set of blocks
+     *
+     * @internal
+     */
+    public function displayParentBlock($name, array $context, array $blocks = array())
+    {
+        if (isset($this->traits[$name])) {
+            $this->traits[$name][0]->displayBlock($name, $context, $blocks, false);
+        } elseif (false !== $parent = $this->getParent($context)) {
+            $parent->displayBlock($name, $context, $blocks, false);
+        } else {
+            throw new Twig_Error_Runtime(sprintf('The template has no parent and no traits defining the "%s" block.', $name), -1, $this->getSourceContext());
+        }
     }
 
     /**
@@ -125,32 +165,49 @@ abstract class Twig_Template
         return false;
     }
 
-    public function isTraitable()
+    protected function loadTemplate($template, $templateName = null, $line = null, $index = null)
     {
-        return true;
+        try {
+            if (is_array($template)) {
+                return $this->env->resolveTemplate($template);
+            }
+
+            if ($template instanceof self) {
+                return $template;
+            }
+
+            if ($template instanceof Twig_TemplateWrapper) {
+                return $template;
+            }
+
+            return $this->env->loadTemplate($template, $index);
+        } catch (Twig_Error $e) {
+            if (!$e->getSourceContext()) {
+                $e->setSourceContext($templateName ? new Twig_Source('', $templateName) : $this->getSourceContext());
+            }
+
+            if ($e->getTemplateLine()) {
+                throw $e;
+            }
+
+            if (!$line) {
+                $e->guess();
+            } else {
+                $e->setTemplateLine($line);
+            }
+
+            throw $e;
+        }
     }
 
     /**
-     * Displays a parent block.
+     * Returns information about the original template source code.
      *
-     * This method is for internal use only and should never be called
-     * directly.
-     *
-     * @param string $name    The block name to display from the parent
-     * @param array  $context The context
-     * @param array  $blocks  The current set of blocks
-     *
-     * @internal
+     * @return Twig_Source
      */
-    public function displayParentBlock($name, array $context, array $blocks = array())
+    public function getSourceContext()
     {
-        if (isset($this->traits[$name])) {
-            $this->traits[$name][0]->displayBlock($name, $context, $blocks, false);
-        } elseif (false !== $parent = $this->getParent($context)) {
-            $parent->displayBlock($name, $context, $blocks, false);
-        } else {
-            throw new Twig_Error_Runtime(sprintf('The template has no parent and no traits defining the "%s" block.', $name), -1, $this->getSourceContext());
-        }
+        return new Twig_Source('', $this->getTemplateName());
     }
 
     /**
@@ -159,10 +216,10 @@ abstract class Twig_Template
      * This method is for internal use only and should never be called
      * directly.
      *
-     * @param string $name      The block name to display
-     * @param array  $context   The context
-     * @param array  $blocks    The current set of blocks
-     * @param bool   $useBlocks Whether to use the current set of blocks
+     * @param string $name The block name to display
+     * @param array $context The context
+     * @param array $blocks The current set of blocks
+     * @param bool $useBlocks Whether to use the current set of blocks
      *
      * @internal
      */
@@ -213,37 +270,15 @@ abstract class Twig_Template
     }
 
     /**
-     * Renders a parent block.
-     *
-     * This method is for internal use only and should never be called
-     * directly.
-     *
-     * @param string $name    The block name to render from the parent
-     * @param array  $context The context
-     * @param array  $blocks  The current set of blocks
-     *
-     * @return string The rendered block
-     *
-     * @internal
-     */
-    public function renderParentBlock($name, array $context, array $blocks = array())
-    {
-        ob_start();
-        $this->displayParentBlock($name, $context, $blocks);
-
-        return ob_get_clean();
-    }
-
-    /**
      * Renders a block.
      *
      * This method is for internal use only and should never be called
      * directly.
      *
-     * @param string $name      The block name to render
-     * @param array  $context   The context
-     * @param array  $blocks    The current set of blocks
-     * @param bool   $useBlocks Whether to use the current set of blocks
+     * @param string $name The block name to render
+     * @param array $context The context
+     * @param array $blocks The current set of blocks
+     * @param bool $useBlocks Whether to use the current set of blocks
      *
      * @return string The rendered block
      *
@@ -263,9 +298,9 @@ abstract class Twig_Template
      * This method checks blocks defined in the current template
      * or defined in "used" traits or defined in parent templates.
      *
-     * @param string $name    The block name
-     * @param array  $context The context
-     * @param array  $blocks  The current set of blocks
+     * @param string $name The block name
+     * @param array $context The context
+     * @param array $blocks The current set of blocks
      *
      * @return bool true if the block exists, false otherwise
      *
@@ -295,7 +330,7 @@ abstract class Twig_Template
      * or defined in "used" traits or defined in parent templates.
      *
      * @param array $context The context
-     * @param array $blocks  The current set of blocks
+     * @param array $blocks The current set of blocks
      *
      * @return array An array of block names
      *
@@ -310,41 +345,6 @@ abstract class Twig_Template
         }
 
         return array_unique($names);
-    }
-
-    protected function loadTemplate($template, $templateName = null, $line = null, $index = null)
-    {
-        try {
-            if (is_array($template)) {
-                return $this->env->resolveTemplate($template);
-            }
-
-            if ($template instanceof self) {
-                return $template;
-            }
-
-            if ($template instanceof Twig_TemplateWrapper) {
-                return $template;
-            }
-
-            return $this->env->loadTemplate($template, $index);
-        } catch (Twig_Error $e) {
-            if (!$e->getSourceContext()) {
-                $e->setSourceContext($templateName ? new Twig_Source('', $templateName) : $this->getSourceContext());
-            }
-
-            if ($e->getTemplateLine()) {
-                throw $e;
-            }
-
-            if (!$line) {
-                $e->guess();
-            } else {
-                $e->setTemplateLine($line);
-            }
-
-            throw $e;
-        }
     }
 
     /**
@@ -362,11 +362,6 @@ abstract class Twig_Template
         return $this->blocks;
     }
 
-    public function display(array $context, array $blocks = array())
-    {
-        $this->displayWithErrorHandling($this->env->mergeGlobals($context), array_merge($this->blocks, $blocks));
-    }
-
     public function render(array $context)
     {
         $level = ob_get_level();
@@ -382,6 +377,11 @@ abstract class Twig_Template
         }
 
         return ob_get_clean();
+    }
+
+    public function display(array $context, array $blocks = array())
+    {
+        $this->displayWithErrorHandling($this->env->mergeGlobals($context), array_merge($this->blocks, $blocks));
     }
 
     protected function displayWithErrorHandling(array $context, array $blocks = array())
@@ -410,7 +410,7 @@ abstract class Twig_Template
      * Auto-generated method to display the template with the given context.
      *
      * @param array $context An array of parameters to pass to the template
-     * @param array $blocks  An array of blocks to pass to the template
+     * @param array $blocks An array of blocks to pass to the template
      */
     abstract protected function doDisplay(array $context, array $blocks = array());
 }

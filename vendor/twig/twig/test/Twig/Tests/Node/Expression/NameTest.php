@@ -30,7 +30,7 @@ class Twig_Tests_Node_Expression_NameTest extends Twig_Test_NodeTestCase
         $output = '(isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new Twig_Error_Runtime(\'Variable "foo" does not exist.\', 1, $this->source); })())';
 
         return array(
-            array($node, "// line 1\n".$output, $env),
+            array($node, "// line 1\n" . $output, $env),
             array($node, $this->getVariableGetter('foo', 1), $env1),
             array($self, "// line 1\n\$this->getTemplateName()"),
             array($context, "// line 1\n\$context"),

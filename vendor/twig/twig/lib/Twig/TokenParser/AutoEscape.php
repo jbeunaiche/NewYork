@@ -19,7 +19,8 @@ final class Twig_TokenParser_AutoEscape extends Twig_TokenParser
         $lineno = $token->getLine();
         $stream = $this->parser->getStream();
 
-        if ($stream->test(/* Twig_Token::BLOCK_END_TYPE */ 3)) {
+        if ($stream->test(/* Twig_Token::BLOCK_END_TYPE */
+            3)) {
             $value = 'html';
         } else {
             $expr = $this->parser->getExpressionParser()->parseExpression();
@@ -29,21 +30,23 @@ final class Twig_TokenParser_AutoEscape extends Twig_TokenParser
             $value = $expr->getAttribute('value');
         }
 
-        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */ 3);
+        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */
+            3);
         $body = $this->parser->subparse(array($this, 'decideBlockEnd'), true);
-        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */ 3);
+        $stream->expect(/* Twig_Token::BLOCK_END_TYPE */
+            3);
 
         return new Twig_Node_AutoEscape($value, $body, $lineno, $this->getTag());
-    }
-
-    public function decideBlockEnd(Twig_Token $token)
-    {
-        return $token->test('endautoescape');
     }
 
     public function getTag()
     {
         return 'autoescape';
+    }
+
+    public function decideBlockEnd(Twig_Token $token)
+    {
+        return $token->test('endautoescape');
     }
 }
 
