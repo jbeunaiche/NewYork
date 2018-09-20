@@ -16,7 +16,8 @@ class NewsController extends Controller
 
         echo $this->twig->render('singlenews.twig',
             [
-                'comments' => $comment
+                'comments' => $comment,
+                'single' => $single
             ]);
 
     }

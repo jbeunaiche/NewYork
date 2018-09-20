@@ -1,10 +1,14 @@
-var lat = "40.784457";
-var lon = "-73.963204";
+
 var map = null;
 
 
+
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
+    var myMap = document.getElementById("map");
+    var lat = myMap.dataset.lat;
+    var lon = myMap.dataset.lon;
+    //console.log("test " + lat + " " + lon);
+    map = new google.maps.Map(myMap, {
         center: new google.maps.LatLng(lat, lon),
         zoom: 14,
 
@@ -15,12 +19,10 @@ function initMap() {
         map: map
     });
 
-    // Nous appelons la fonction ajax de jQuery
+
     $.ajax({
-        // On pointe vers le fichier l'url
         url: "http://localhost/newyork/index.php?c=map&t=getMonument",
-    }).done(function (json) { // Si on obtient une réponse, elle est stockée dans la variable json
-        // On construit l'objet monuments à partir de la variable json
+    }).done(function (json) {
         var monuments = JSON.parse(json);
         // On parcourt l'objet monuments
         for (monument in monuments) {
@@ -28,7 +30,20 @@ function initMap() {
                 position: {lat: parseFloat(monuments[monument].lat), lng: parseFloat(monuments[monument].lon)},
                 title: monuments[monument].name,
                 map: map
+
             });
+
+            var content = monuments[monument].price;
+
+            var infowindow = new google.maps.InfoWindow({
+                content: content
+            });
+
+            google.maps.event.addListener(marker,'click',function() {
+                infowindow.open(map, marker);
+
+            });
+
 
         }
     });
@@ -36,6 +51,5 @@ function initMap() {
 }
 
 window.onload = function () {
-    // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
     initMap();
 };
