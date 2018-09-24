@@ -4,6 +4,7 @@ namespace Julien\Models\Manager;
 
 use Julien\Models\Manager;
 use Julien\Models\Entity\Comment;
+use Julien\Models\Entity\News;
 
 class CommentManager extends Manager
 {
@@ -16,6 +17,24 @@ class CommentManager extends Manager
         $listsComments = $req->fetchAll(\PDO::FETCH_CLASS, "Julien\Models\Entity\Comment");
         $req->closeCursor();
         return $listsComments;
+    }
+
+    public function getSignaled()
+    {
+        $signaledList = array();
+        $req = $this->_db->query('SELECT comment.*, news.title FROM comment LEFT JOIN post ON comment.postid = post.id WHERE status > 0');
+        $i = 0;
+        $req->setFetchMode(\PDO::FETCH_ASSOC);
+        while ($comment = $req->fetch())
+        {
+            $news = new News(['id' =>$comment['id'],'title' => $comment['title']]);
+            $com = new Comment([ 'author' => $comment['author'], 'comment' => $comment['comment'] , 'createdCom' => $comment['createdCom'] , 'status' =>$comment['status'], 'news' => $news ]);
+            $signaledList[$i++]= $com;
+
+        }
+        $req->closeCursor();
+        return $signaledList;
+
     }
 
 

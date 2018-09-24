@@ -6,6 +6,7 @@ use Julien\Models\Entity\News;
 use Julien\Models\Entity\Monument;
 use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\MonumentManager;
+use Julien\Models\Manager\CommentManager;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,12 @@ class AdminController extends Controller
             [
                 'list' => $lists
             ]);
+    }
+
+    public function addViewNews()
+    {
+        echo $this->twig->render('admin/add-news.twig');
+
     }
 
     public function deleteNews()
@@ -72,6 +79,19 @@ class AdminController extends Controller
             echo $this->twig->render('admin/list-monuments.twig');
 
         }
+    }
+
+    public function listComments()
+    {
+
+        $commentmanager = new CommentManager($_GET);
+        $comment      = $commentmanager->getSignaled();
+
+        echo $this->twig->render('admin/comments.twig',
+            [
+                'comments' => $comment,
+
+            ]);
     }
 
 

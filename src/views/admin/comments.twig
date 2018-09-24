@@ -48,7 +48,7 @@
         <div class="heading">
             <div class="title text-center arrow-left">
 
-                <h4 class="">Liste des articles</h4>
+                <h4 class="">Liste des commentaires signalés</h4>
             </div>
         </div>
 
@@ -57,30 +57,47 @@
 
             <div class="main-package text-center">
 
-                <a href="index.php?c=admin&t=addViewNews">
-                    <button class="btn pt-btn btn-primary">Ajouter un article</button>
-                </a>
-                <br><br><br>
-                {% for item in list %}
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <div class="package-item basic">
 
-                        <h5>Titre de l'article : {{ item.title }}</h5>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
 
-                        <ul>
+                                    <th>Chapitre</th>
+                                    <th>Auteur</th>
+                                    <th>Commentaire</th>
+                                    <th>Supprimer</th>
+                                    <th>Modifier le statut du commentaire</th>
+
+                                </tr>
+                                </thead>
+
+                                <tr>
+                                    <td>
+                                        {{ comment.author }}
+
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+
+                                    <td><a href="index.php?action=deleteCom&amp;id=<?= ($val->getPost()->getId()); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
+                                    <td><a href="index.php?action=change&amp;id=<?= ($val->getPost()->getId()); ?>"><button type="button" class="btn btn-outline-warning">Modifier le statut du commentaire</button></a></td>
 
 
-                            <li>Article n° : {{ item.id }}</li>
-                            <li><a href="index.php?c=admin&t=editNews&amp;id={{ item.id }}">Modifier</a></li>
-                            <li><a href="index.php?c=admin&t=deleteNews&amp;id={{ item.id }}">Supprimer</a></li>
-                        </ul><br>
-                        <div class="pkg-btn"><a href="index.php?c=news&t=single&amp;id={{ item.id }}">Voir l'article</a></div>
 
+                                </tr>
+
+
+                            </table>
+                        </div>
                     </div>
-
-
                 </div>
-                {% endfor %}
+
 
 
             </div>

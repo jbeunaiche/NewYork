@@ -33,14 +33,11 @@ function initMap() {
 
             });
 
-            var content = monuments[monument].price;
 
-            var infowindow = new google.maps.InfoWindow({
-                content: content
-            });
 
             google.maps.event.addListener(marker,'click',function() {
-                infowindow.open(map, marker);
+                document.getElementById("nameM").innerHTML = "Nom du monument :" + monuments[monument].name;
+                document.getElementById("priceM").innerHTML = "Prix :" + monuments[monument].price + "€";
 
             });
 
