@@ -10,6 +10,7 @@ class Monument
     private $name;
     private $lat;
     private $lon;
+    private $price;
 
     public function __construct($value = [])
 
@@ -40,32 +41,6 @@ class Monument
     /**
      * @return mixed
      */
-    public function id()
-
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function name()
-
-    {
-        return $this->name;
-    }
-
-    public function lon()
-
-    {
-        return $this->long;
-    }
-
-    public function lat()
-
-    {
-        return $this->lat;
-    }
 
 
     public function setId($id)
@@ -95,6 +70,51 @@ class Monument
 
     {
         $this->lon = $lon;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLon()
+    {
+        return $this->lon;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 
 

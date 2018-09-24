@@ -31,5 +31,18 @@ class NewsManager extends Manager
 
     }
 
+    public function add(News $news)
+    {
+        $req = $this->_db->prepare('INSERT INTO news(title,content) VALUES(:title, :content)');
+        $req->bindValue(':title', $news->getTitle() , \PDO::PARAM_STR);
+        $req->bindValue(':content', $news->getContent() , \PDO::PARAM_STR);
+        $req->execute();
+    }
+
+    public function delete(News $news)
+    {
+        $this->_db->exec('DELETE FROM news WHERE id = ' . $_GET['id']);
+    }
+
 
 }

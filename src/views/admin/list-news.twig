@@ -12,6 +12,7 @@
 
 </head>
 <body>
+
 <div id="menubar" class="main-menu">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -30,86 +31,64 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.php?c=index&t=home">Accueil</a></li>
+
                     <li><a href="index.php?c=admin&t=admin">Administration</a></li>
-                    <li><a href="index.php?c=member&t=connexion">Se connecter</a></li>
+
 
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 </div>
-{% block content %}{% endblock %}
-<!--Footer-->
-<footer id="footer" class="footer">
+
+<!-- Posts list -->
+<section id="our-package" class="sections lightbg">
     <div class="container">
 
+        <div class="heading">
+            <div class="title text-center arrow-left">
+
+                <h4 class="">Liste des articles</h4>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="main-footer">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="footer-item">
-                        <h2>Suivez Nous</h2>
+
+
+            <div class="main-package text-center">
+                {% for item in list %}
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="package-item basic">
+
+                        <h5>Titre de l'article : {{ item.title }}</h5>
+
                         <ul>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
 
+
+                            <li>Article n° : {{ item.id }}</li>
+                            <li>Modifier</li>
+                            <li><a href="index.php?c=admin&t=deleteNews&amp;id={{ item.id }}">Supprimer</a></li>
                         </ul>
+                        <div class="pkg-btn"><a href="index.php?c=news&t=single&amp;id={{ item.id }}">Voir l'article</a></div>
+
                     </div>
+
+
                 </div>
+                {% endfor %}
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="footer-item">
-                        <h2>Reservez votre avion</h2>
-                        <ul>
-                            <li><a href="#">Air NY</a></li>
-                            <li><a href="#">Air Statue</a></li>
-                            <li><a href="#">Air Empire</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="footer-item">
-                        <h2>Réservez votre hôtel</h2>
-                        <ul>
-                            <li><a href="#">Sleep NY</a></li>
-                            <li><a href="#">Sleep Empire</a></li>
-                            <li><a href="#">Sleep CentralPark</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="footer-item">
-                        <h2>Copyright©</h2>
-                        <ul>
-                            <li><a href="#">jbeunaiche.fr</a></li>
-                            <li>Septembre 2018</li>
-
-                        </ul>
-                    </div>
-                </div>
 
             </div>
 
 
         </div>
     </div>
-
-</footer>
-
+</section>
 <!-- JavaScript -->
 <script src="public/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="public/assets/js/vendor/bootstrap.min.js"></script>
 <script src="public/assets/js/plugins.js"></script>
 <script src="public/assets/js/main.js"></script>
-<script src="js/map.js"></script>
-<script src="js/markerclusterer.js"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXewuqkYjNACyaMsgggn8NSeJaX5DYvTU&callback=initMap" async defer></script>
 
 </body>
 </html>

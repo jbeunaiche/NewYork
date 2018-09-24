@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    {% block head %}{% endblock %}
+
+    <link rel="stylesheet" href="public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/assets/css/plugins.css"/>
+    <link rel="stylesheet" href="public/assets/css/style.css">
+    <link rel="stylesheet" href="public/assets/css/responsive.css"/>
+    <script src="public/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+</head>
+<body>
+
+<div id="menubar" class="main-menu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="public/assets/images/logo.png" alt=""/></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="index.php?c=admin&t=admin">Administration</a></li>
+
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+
+<!-- Posts list -->
+<section id="our-package" class="sections lightbg">
+    <div class="container">
+
+        <div class="heading">
+            <div class="title text-center arrow-left">
+
+                <h4 class="">Liste des Monuments</h4>
+            </div>
+        </div>
+
+        <div class="row">
+
+
+            <div class="main-package text-center">
+
+                <a href="index.php?c=admin&t=addViewMonument">
+                    <button class="btn pt-btn btn-primary">Ajouter un Monument</button>
+                </a>
+                <br><br><br>
+                {% for item in list %}
+
+
+                            <h5>{{ item.id }} {{ item.name }}</h5>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- JavaScript -->
+<script src="public/assets/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="public/assets/js/vendor/bootstrap.min.js"></script>
+<script src="public/assets/js/plugins.js"></script>
+<script src="public/assets/js/main.js"></script>
+
+</body>
+</html>
