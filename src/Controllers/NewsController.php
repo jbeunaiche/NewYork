@@ -11,9 +11,9 @@ class NewsController extends Controller
     public function single()
     {
         $newsmanager = new NewsManager();
-        $single = $newsmanager->getPost($_GET['id']);
+        $single = $newsmanager->getNews($_GET['id']);
         $commentManager = new CommentManager();
-        $comment        = $commentManager->getComments($_GET['id']);
+        $comment = $commentManager->getComments($_GET['id']);
 
         echo $this->twig->render('singlenews.twig',
             [
@@ -23,26 +23,29 @@ class NewsController extends Controller
 
     }
 
-    public function added()
+    public function addComment($varComment)
     {
-        echo $this->twig->render('districts/central.twig');
+        $newsManager    = new NewsManager();
+        $news = new News(['id' => $_POST['postid']]);
+        $comment        = new Comment(
+            [
+                'author' => $author,
+                'comment' => $comment
+            ]
+        );
+        $commentmanager = new CommentManager();
+        $comment-> setNews($news);
+        $commentmanager->addComment($comment);
 
-    }
-
-    public function addPost()
-    {
-        $news        = new News($_POST);
-        $newsmanager = new NewsManager();
-        $newsmanager->add($news); // Méthode add
-        if ($newsmanager === false)
+        if ($commentmanager === false)
         {
             throw new Exception('Impossible d\'ajouter l\'article!');
         }
         else
         {
-
-            echo $this->twig->render('home.twig');
-
+            //$_SESSION['flash'] = 'Commentaire ajouté';
+            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            //exit();
         }
     }
 }

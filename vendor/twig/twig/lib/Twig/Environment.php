@@ -382,6 +382,11 @@ class Twig_Environment
         return $this->loader;
     }
 
+    public function setLoader(Twig_LoaderInterface $loader)
+    {
+        $this->loader = $loader;
+    }
+
     /**
      * Checks if the auto_reload option is enabled.
      *
@@ -472,11 +477,6 @@ class Twig_Environment
         }
 
         return $this->lexer->tokenize($source);
-    }
-
-    public function setLoader(Twig_LoaderInterface $loader)
-    {
-        $this->loader = $loader;
     }
 
     /**

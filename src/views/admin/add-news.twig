@@ -2,7 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    {% block head %}{% endblock %}
+    {% block head %}
+        <title>Ajouter une News</title>
+    {% endblock %}
 
     <link rel="stylesheet" href="public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/assets/css/plugins.css"/>
@@ -51,14 +53,14 @@
                 <form action="index.php?c=admin&t=addNews" method="post">
                     <div>
                         <label for="title">Titre</label><br/>
-                        <input type="text" id="title" name="title" >
+                        <input type="text" id="title" name="params['title']">
                     </div>
                     <div>
-                        <label for="content">Texte de l'article</label><br />
-                        <textarea id="content" name="content"></textarea>
+                        <label for="content">Texte de l'article</label><br/>
+                        <textarea id="content" name="params['content']"></textarea>
                     </div>
                     <br>
-                    <input type="submit" class="btn btn-outline-success" name="add" value="Ajouter l'article" />
+                    <input type="submit" class="btn btn-outline-success" name="add" value="Ajouter l'article"/>
 
                 </form>
             </div>
@@ -113,7 +115,7 @@
 </div>
 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'textarea' });</script>
+<script>tinymce.init({selector: 'textarea'});</script>
 <script src="public/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="public/assets/js/vendor/bootstrap.min.js"></script>
 <script src="public/assets/js/plugins.js"></script>

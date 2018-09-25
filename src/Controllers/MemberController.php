@@ -14,17 +14,17 @@ class MemberController extends Controller
     }
 
 
-    public function login ($pseudo, $password)
+    public function login($pseudo, $password)
     {
 
 
         $logManager = new MemberManager();
-        $user = $logManager->getMember ($pseudo);
-       // var_dump($user);
-        if (password_verify ($password, $user->password())) {
+        $user = $logManager->getMember($pseudo);
+        // var_dump($user);
+        if (password_verify($password, $user->password())) {
             $_SESSION['pseudo'] = $user->pseudo();
 
-           echo $this->twig->render('home.twig');
+            echo $this->twig->render('home.twig');
         } else {
             echo 'Le mot de passe est invalide.';
         }

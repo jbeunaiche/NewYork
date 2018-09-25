@@ -33,11 +33,12 @@ class MonumentManager extends Manager
 
     function addMonument(Monument $monument)
     {
-        $req = $this->_db->prepare('INSERT INTO monument(name, lat, lon, price) VALUES(:name, :lat, :lon, :price))');
-        $req->bindValue(':name', $monument->getName() , \PDO::PARAM_STR);
-        $req->bindValue(':resume', $monument->getLat() , \PDO::PARAM_STR);
-        $req->bindValue(':content', $monument->getLon() , \PDO::PARAM_STR);
-        $req->bindValue(':price', $monument->getPrice() , \PDO::PARAM_STR);
+
+        $req = $this->_db->prepare('INSERT INTO monument(name, lat, lon, price) VALUES(:name, :lat, :lon, :price)');
+        $req->bindValue(':name', $monument->getName(), \PDO::PARAM_STR);
+        $req->bindValue(':lat', $monument->getLat(), \PDO::PARAM_STR);
+        $req->bindValue(':lon', $monument->getLon(), \PDO::PARAM_STR);
+        $req->bindValue(':price', $monument->getPrice(), \PDO::PARAM_STR);
 
 
         $req->execute();

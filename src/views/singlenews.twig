@@ -18,8 +18,7 @@
                             <p>
 
 
-                                    {{ single.content }}
-
+                                {{ single.content }}
 
 
                             </p>
@@ -37,39 +36,38 @@
                                     <div class="card-body">
                                         <form action="index.php?action=addComment" method="post">
                                             <div class="form-group">
-                                                <label for="author">Auteur</label><br />
-                                                <input class="form-control" rows="1" id="author" name="author">
+                                                <label for="author">Auteur</label><br/>
+                                                <input class="form-control" rows="1" id="author" name="params['author']">
                                             </div>
                                             <div class="form-group">
-                                                <label for="comment">Commentaire</label><br />
-                                                <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
+                                                <label for="comment">Commentaire</label><br/>
+                                                <textarea class="form-control" rows="3" id="comment"
+                                                          name="params['comment']"></textarea>
                                             </div>
-                                            <input type="hidden" name="postid" value="<?=$post->getId();?>" />
+                                            <input type="hidden" name="postid" value="{{ news.postid }}"/>
                                             <button type="submit" class="btn btn-primary">Valider</button>
                                         </form>
                                     </div>
                                 </div>
                                 {% for comment in comments %}
-                                <div class="media mb-4">
+                                    <div class="media mb-4">
 
-                                    <div class="media-body">
-                                        <h5 class="mt-0">
-                                            {{ comment.author }}
-                                        </h5>
-                                        {{ comment.comment }}
+                                        <div class="media-body">
+                                            <h5 class="mt-0">
+                                                {{ comment.author }}
+                                            </h5>
+                                            {{ comment.comment }}
+                                        </div>
                                     </div>
-                                </div>
-<hr>
+                                    <hr>
                                 {% endfor %}
                             </div>
 
 
-
+                        </div>
 
                     </div>
-
                 </div>
-            </div>
 
             </div>
 

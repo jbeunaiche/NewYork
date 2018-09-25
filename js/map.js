@@ -1,6 +1,4 @@
-
 var map = null;
-
 
 
 function initMap() {
@@ -24,8 +22,10 @@ function initMap() {
         url: "http://localhost/newyork/index.php?c=map&t=getMonument",
     }).done(function (json) {
         var monuments = JSON.parse(json);
-        // On parcourt l'objet monuments
+        // On parcours l'objet monuments
+
         for (monument in monuments) {
+            let m= monument;
             var marker = new google.maps.Marker({
                 position: {lat: parseFloat(monuments[monument].lat), lng: parseFloat(monuments[monument].lon)},
                 title: monuments[monument].name,
@@ -34,10 +34,11 @@ function initMap() {
             });
 
 
+            google.maps.event.addListener(marker, 'click', function () {
+                console.log(m);
 
-            google.maps.event.addListener(marker,'click',function() {
-                document.getElementById("nameM").innerHTML = "Nom du monument :" + monuments[monument].name;
-                document.getElementById("priceM").innerHTML = "Prix :" + monuments[monument].price + "€";
+                document.getElementById("nameM").innerHTML = "Nom du monument :" + monuments[m].name;
+                document.getElementById("priceM").innerHTML = "Prix :" + monuments[m].price + "€";
 
             });
 

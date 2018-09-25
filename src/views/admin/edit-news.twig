@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     {% block head %}
-        <title>Ajouter un monument</title>
+        <title>Ajouter une News</title>
     {% endblock %}
 
     <link rel="stylesheet" href="public/assets/css/bootstrap.min.css">
@@ -50,26 +50,17 @@
 
 
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <form action="index.php?c=admin&t=addMonument" method="post">
+                <form action="index.php?c=admin&t=editNews" method="post">
                     <div>
-                        <label for="name">Nom du monument</label><br/>
-                        <input type="text" id="name" name="params['name']">
+                        <label for="title">Titre</label><br/>
+                        <input type="text" id="title" name="params['title']" value="{{ news.title }}">
                     </div>
                     <div>
-                        <label for="lat">Latitude</label><br/>
-                        <input type="number" step="any" id="lat" name="params['lat']">
-                    </div>
-                    <div>
-                        <label for="lon">Longitude</label><br/>
-                        <input type="number" step="any" id="lon" name="params['lon']">
-                    </div>
-                    <div>
-                        <label for="price">Prix</label><br/>
-                        <input type="number" id="price" name="params['price']">
+                        <label for="content">Texte de l'article</label><br/>
+                        <textarea id="content" name="params['content']" value="{{ news.content }}"></textarea>
                     </div>
                     <br>
-                    <input type="submit" class="btn btn-outline-success" name="add"
-                           value="Ajouter un nouveau monument"/>
+                    <input type="submit" class="btn btn-outline-success" name="add" value="Ajouter l'article"/>
 
                 </form>
             </div>
@@ -123,7 +114,8 @@
 
 </div>
 
-
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>tinymce.init({selector: 'textarea'});</script>
 <script src="public/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="public/assets/js/vendor/bootstrap.min.js"></script>
 <script src="public/assets/js/plugins.js"></script>

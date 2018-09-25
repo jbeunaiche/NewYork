@@ -9,11 +9,12 @@ class Comment
      * @var
      */
     private $id;
-    private $post;
+    private $news;
     private $author;
     private $comment;
     private $createdCom;
     private $status;
+
     /**
      * Comment constructor.
      * @param array $value
@@ -22,8 +23,7 @@ class Comment
 
     function __construct($value = [])
     {
-        if (!empty($value))
-        {
+        if (!empty($value)) {
             $this->hydrate($value);
         }
     }
@@ -35,8 +35,7 @@ class Comment
 
     function hydrate(array $data)
     {
-        foreach($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
 
             // On récupère le nom du setter correspondant à l'attribut.
 
@@ -44,8 +43,7 @@ class Comment
 
             // Si le setter correspondant existe.
 
-            if (method_exists($this, $method))
-            {
+            if (method_exists($this, $method)) {
 
                 // On appelle le setter.
 
@@ -71,8 +69,7 @@ class Comment
 
     function setId($id)
     {
-        if ($id > 0)
-        {
+        if ($id > 0) {
             $this->id = $id;
         }
     }
@@ -117,8 +114,7 @@ class Comment
 
     function setAuthor($author)
     {
-        if (is_string($author))
-        {
+        if (is_string($author)) {
             $this->author = $author;
         }
     }
@@ -143,8 +139,7 @@ class Comment
 
     function setComment($comment)
     {
-        if (is_string($comment))
-        {
+        if (is_string($comment)) {
             $this->comment = $comment;
 
         }
@@ -179,4 +174,21 @@ class Comment
     {
         return $this->status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
+
+    /**
+     * @param mixed $news
+     */
+    public function setNews($news)
+    {
+        $this->news = $news;
+    }
+
 }

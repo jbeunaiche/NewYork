@@ -41,6 +41,14 @@ class Monument
     /**
      * @return mixed
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
 
 
     public function setId($id)
@@ -51,46 +59,20 @@ class Monument
         }
     }
 
-    public function setName($name)
-
-    {
-        if (is_string($name)) {
-            $this->name = $name;
-        }
-    }
-
-    public function setLat($lat)
-    {
-
-        $this->lat = $lat;
-
-    }
-
-    public function setLon($lon)
-
-    {
-        $this->lon = $lon;
-    }
-
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
     /**
      * @return mixed
      */
     public function getName()
     {
         return $this->name;
+    }
+
+    public function setName($name)
+
+    {
+        if (is_string($name)) {
+            $this->name = $name;
+        }
     }
 
     /**
@@ -101,6 +83,13 @@ class Monument
         return $this->lat;
     }
 
+    public function setLat($lat)
+    {
+
+        $this->lat = $lat;
+
+    }
+
     /**
      * @return mixed
      */
@@ -109,12 +98,23 @@ class Monument
         return $this->lon;
     }
 
+    public function setLon($lon)
+
+    {
+        $this->lon = $lon;
+    }
+
     /**
      * @return mixed
      */
     public function getPrice()
     {
         return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
 

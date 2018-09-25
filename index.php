@@ -15,6 +15,9 @@ if (class_exists($class, true)) {
     $class = new $class();
     if (in_array($target, get_class_methods($class))) {
 
+        if ($params['get'] == null && $params['post'] != null)
+        call_user_func_array([$class, $target], $postParams);
+        else
         call_user_func_array([$class, $target], $params);
     } else {
         call_user_func([$class, "index"]);
