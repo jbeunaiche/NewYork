@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block content %}
-
+    <?php if(isset($_SESSION['flash'])) : ?>
+    <div class="alert alert-dark" role="alert">
+        <?= $_SESSION['flash']; ?>
+    </div>
+    <?php endif; ?>
     <header id="home" class="sections">
         <div class="container">
 
@@ -34,7 +38,7 @@
                                 <div class="card my-4">
                                     <h5 class="card-header">Laissez un commentaire</h5>
                                     <div class="card-body">
-                                        <form action="index.php?action=addComment" method="post">
+                                        <form action="index.php?c=news&t=addComment" method="post">
                                             <div class="form-group">
                                                 <label for="author">Auteur</label><br/>
                                                 <input class="form-control" rows="1" id="author" name="params['author']">
@@ -44,7 +48,7 @@
                                                 <textarea class="form-control" rows="3" id="comment"
                                                           name="params['comment']"></textarea>
                                             </div>
-                                            <input type="hidden" name="postid" value="{{ news.postid }}"/>
+                                            <input type="hidden" name=add />
                                             <button type="submit" class="btn btn-primary">Valider</button>
                                         </form>
                                     </div>
@@ -56,7 +60,7 @@
                                             <h5 class="mt-0">
                                                 {{ comment.author }}
                                             </h5>
-                                            {{ comment.comment }}
+                                            {{ comment.comment }}<a href="index.php?c=admin&t=signalCom&amp;id={{ comment.id }}">(Signaler le commentaire)</a>
                                         </div>
                                     </div>
                                     <hr>

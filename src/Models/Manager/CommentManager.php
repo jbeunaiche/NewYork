@@ -22,20 +22,26 @@ class CommentManager extends Manager
     public function addComment(Comment $comment)
     {
 
-        $req = $this->_db->prepare('INSERT INTO comment (postid, author, comment, createdCom) VALUES(:postid, :author, :comment, NOW())');
+        $req = $this->_db->prepare('INSERT INTO comment (author, comment, createdCom) VALUES(:author, :comment, NOW())');
         $req->bindValue(':author', $comment->getAuthor(), \PDO::PARAM_STR);
         $req->bindValue(':comment', $comment->getComment(), \PDO::PARAM_STR);
-        $req->bindValue(':postid', $comment->getNews()->getId(), \PDO::PARAM_INT);
+        //$req->bindValue(':postid', $comment->getNews()->getId(), \PDO::PARAM_INT);
         $req->execute();
 
 
 
     }
+    public function signal($comment)
+    {
+        $req = $this->_db->prepare('UPDATE comment SET status = 1  WHERE id = :id ');
+        $req->bindValue(':id', (int) $comment->getId());
+        $req->execute();
+    }
 
     public function getSignaled()
     {
         $signaledList = array();
-        $req = $this->_db->query('SELECT comment.*, news.title FROM comment LEFT JOIN post ON comment.postid = post.id WHERE status > 0');
+        $req = $this->_db->query('SELECT comment.*, news.title FROM comment LEFT JOIN news ON comment.postid = news.id WHERE status > 0');
         $i = 0;
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         while ($comment = $req->fetch()) {
@@ -47,6 +53,16 @@ class CommentManager extends Manager
         $req->closeCursor();
         return $signaledList;
 
+    }
+    public function delete(Comment $comment)
+    {
+        $this->_db->exec('DELETE FROM comment WHERE id = ' . $_GET['id']);
+    }
+    public function change($comment)
+    {
+        $req = $this->_db->prepare('UPDATE comment SET status = 0  WHERE id = :id ');
+        $req->bindValue(':id', (int) $comment->getId());
+        $req->execute();
     }
 
 

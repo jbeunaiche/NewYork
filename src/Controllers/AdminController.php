@@ -4,6 +4,7 @@ namespace Julien\Controllers;
 
 use Julien\Models\Entity\News;
 use Julien\Models\Entity\Monument;
+use Julien\Models\Entity\Comment;
 use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\MonumentManager;
 use Julien\Models\Manager\CommentManager;
@@ -16,7 +17,11 @@ class AdminController extends Controller
 
     public function admin()
     {
-        echo $this->twig->render('admin/administration.twig');
+        if (isset($_SESSION['pseudo'])) {
+            echo $this->twig->render('admin/administration.twig');
+        } else {
+            echo "Accès interdit";
+        }
     }
 
     public function listNews()
@@ -32,13 +37,17 @@ class AdminController extends Controller
 
     public function addViewNews()
     {
-        echo $this->twig->render('admin/add-news.twig');
-
+        if (isset($_SESSION['pseudo'])) {
+            echo $this->twig->render('admin/add-news.twig');
+        } else {
+            echo "Veuillez vous connecter";
+        }
     }
 
     public function addNews($title, $content)
 
     {
+
         $news = new News(
             [
                 'title' => $title,
@@ -50,10 +59,11 @@ class AdminController extends Controller
         if ($newsmanager === false) {
             throw new Exception('Impossible d\'ajouter l\'article!');
         } else {
-            //$_SESSION['flash'] = 'Article ajouté';
+
             echo $this->twig->render('admin/administration.twig');
 
         }
+
     }
 
     public function deleteNews()
@@ -71,7 +81,7 @@ class AdminController extends Controller
     public function editNewsView()
     {
         $newsManager = new NewsManager();
-        $news        = $newsManager->getNews($_GET['id']);
+        $news = $newsManager->getNews($_GET['id']);
         echo $this->twig->render('admin/edit-news.twig',
             [
                 'news' => $news
@@ -87,7 +97,7 @@ class AdminController extends Controller
         if ($newsmanager === false) {
             throw new Exception('Impossible d\'ajouter l\'article!');
         } else {
-            //$_SESSION['flash'] = 'Article ajouté';
+
             echo $this->twig->render('admin/administration.twig');
 
         }
@@ -130,23 +140,60 @@ class AdminController extends Controller
         if ($monumentmanager === false) {
             throw new Exception('Impossible d\'ajouter l\'article!');
         } else {
-            //$_SESSION['flash'] = 'Article ajouté';
-            echo $this->twig->render('admin/list-monuments.twig');
 
+            echo $this->twig->render('admin/list-monuments.twig');
         }
     }
+
+    /* Public function pour les commentaires   */
 
     public function listComments()
     {
 
-        $commentmanager = new CommentManager($_GET);
+        $commentmanager = new CommentManager();
         $comment = $commentmanager->getSignaled();
 
         echo $this->twig->render('admin/comments.twig',
             [
-                'comments' => $comment,
+                'comment' => $comment,
 
             ]);
+    }
+
+    public function signalCom($postId)
+    {
+        $comment = new Comment($_GET);
+        $commentmanager = new CommentManager();
+        $commentmanager->signal($comment);
+        if ($commentmanager === false) {
+            throw new Exception('Erreur');
+        } else {
+            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+        }
+    }
+
+    public function deleteComment()
+    {
+        $comment = new Comment($_GET);
+        $commentmanager = new CommentManager();
+        $commentmanager->delete($comment);
+        if ($commentmanager === false) {
+            throw new Exception('Impossible de supprimer');
+        } else {
+            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+        }
+    }
+
+    public function change()
+    {
+        $comment = new Comment($_GET);
+        $commentmanager = new CommentManager();
+        $commentmanager->change($comment);
+        if ($commentmanager === false) {
+            throw new Exception('Erreur');
+        } else {
+            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+        }
     }
 
 

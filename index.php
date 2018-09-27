@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "vendor/autoload.php";
 
 $class = "Julien\\Controllers\\" . (isset($_GET['c']) ? ucfirst($_GET['c']) . 'Controller' : 'IndexController');
