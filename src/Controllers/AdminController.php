@@ -8,7 +8,6 @@ use Julien\Models\Entity\Comment;
 use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\MonumentManager;
 use Julien\Models\Manager\CommentManager;
-use Julien\Models\Manager\MemberManager;
 
 class AdminController extends Controller
 {
