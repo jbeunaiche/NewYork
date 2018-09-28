@@ -53,21 +53,21 @@ class AdminController extends Controller
     {
         if (isset($_SESSION['pseudo'])) {
 
-                $news = new News(
-                    [
-                        'title' => $title,
-                        'content' => $content
-                    ]
-                );
-                $newsmanager = new NewsManager();
-                $newsmanager->add($news);
-                if ($newsmanager === false) {
-                    throw new Exception('Impossible d\'ajouter l\'article!');
-                } else {
+            $news = new News(
+                [
+                    'title' => $title,
+                    'content' => $content
+                ]
+            );
+            $newsmanager = new NewsManager();
+            $newsmanager->add($news);
+            if ($newsmanager === false) {
+                throw new Exception('Impossible d\'ajouter l\'article!');
+            } else {
 
-                    echo $this->twig->render('admin/administration.twig');
+                echo $this->twig->render('admin/administration.twig');
 
-                }
+            }
 
         } else {
             echo "Accès interdit";
