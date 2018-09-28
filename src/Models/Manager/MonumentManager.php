@@ -5,9 +5,16 @@ namespace Julien\Models\Manager;
 use Julien\Models\Manager;
 use Julien\Models\Entity\Monument;
 
+/**
+ * Class MonumentManager
+ * @package Julien\Models\Manager
+ */
 class MonumentManager extends Manager
 
 {
+    /**
+     * @return mixed
+     */
     public function getMonument()
     {
 
@@ -18,6 +25,9 @@ class MonumentManager extends Manager
 
     }
 
+    /**
+     * @return mixed
+     */
     public function getList()
     {
 
@@ -29,6 +39,9 @@ class MonumentManager extends Manager
         return $post;
     }
 
+    /**
+     * @param Monument $monument
+     */
     public
 
     function addMonument(Monument $monument)

@@ -6,9 +6,17 @@ use Julien\Models\Manager;
 use Julien\Models\Entity\Comment;
 use Julien\Models\Entity\News;
 
+/**
+ * Class CommentManager
+ * @package Julien\Models\Manager
+ */
 class CommentManager extends Manager
 {
 
+    /**
+     * @param $newsid
+     * @return mixed
+     */
     public function getComments($newsid)
     {
         $req = $this->_db->prepare('SELECT id, newsid, author, comment, DATE_FORMAT(createdCom, \'%d/%m/%Y à %Hh%imin%ss\') AS createdCom  FROM comment WHERE newsid = :newsid AND status = 0 ORDER BY createdCom DESC ');
@@ -19,6 +27,9 @@ class CommentManager extends Manager
         return $listsComments;
     }
 
+    /**
+     * @param Comment $comment
+     */
     public function addComment(Comment $comment)
     {
 
@@ -31,6 +42,10 @@ class CommentManager extends Manager
 
 
     }
+
+    /**
+     * @param $comment
+     */
     public function signal($comment)
     {
         $req = $this->_db->prepare('UPDATE comment SET status = 1  WHERE id = :id ');
@@ -38,6 +53,9 @@ class CommentManager extends Manager
         $req->execute();
     }
 
+    /**
+     * @return array
+     */
     public function getSignaled()
     {
         $signaledList = array();
@@ -54,10 +72,18 @@ class CommentManager extends Manager
         return $signaledList;
 
     }
+
+    /**
+     * @param Comment $comment
+     */
     public function delete(Comment $comment)
     {
         $this->_db->exec('DELETE FROM comment WHERE id = ' . $_GET['id']);
     }
+
+    /**
+     * @param $comment
+     */
     public function change($comment)
     {
         $req = $this->_db->prepare('UPDATE comment SET status = 0  WHERE id = :id ');

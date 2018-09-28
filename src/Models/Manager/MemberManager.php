@@ -6,10 +6,18 @@ namespace Julien\Models\Manager;
 use Julien\Models\Manager;
 use Julien\Models\Entity\Member;
 
+/**
+ * Class MemberManager
+ * @package Julien\Models\Manager
+ */
 class MemberManager extends Manager
 
 {
 
+    /**
+     * @param $pseudo
+     * @return mixed
+     */
     public function getMember($pseudo)
 
     {

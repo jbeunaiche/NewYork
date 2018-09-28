@@ -6,6 +6,10 @@ use Julien\Models\Manager;
 use Julien\Models\Entity\News;
 use Julien\Models\Entity\Comment;
 
+/**
+ * Class NewsManager
+ * @package Julien\Models\Manager
+ */
 class NewsManager extends Manager
 
 {
@@ -37,7 +41,10 @@ class NewsManager extends Manager
              return $listNews;
          }
   */
-        public function getList()
+    /**
+     * @return mixed
+     */
+    public function getList()
         {
 
             $req = $this->_db->prepare('SELECT id, title, content, DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created FROM news ORDER BY id DESC ');
@@ -49,6 +56,10 @@ class NewsManager extends Manager
         }
 
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getNews($id)
     {
         $req = $this->_db->prepare('SELECT id, title, content FROM news WHERE id = :id');
@@ -60,6 +71,9 @@ class NewsManager extends Manager
 
     }
 
+    /**
+     * @param News $news
+     */
     public function add(News $news)
     {
         $req = $this->_db->prepare('INSERT INTO news(title,content, created) VALUES(:title, :content, NOW())');
@@ -68,11 +82,17 @@ class NewsManager extends Manager
         $req->execute();
     }
 
+    /**
+     * @param News $news
+     */
     public function delete(News $news)
     {
         $this->_db->exec('DELETE FROM news WHERE id = ' . $_GET['id']);
     }
 
+    /**
+     * @param News $news
+     */
     public function edit(News $news)
     {
         $req = $this->_db->prepare('UPDATE news SET title = :title, content = :content WHERE id = :id');
