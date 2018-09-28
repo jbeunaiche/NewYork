@@ -33,7 +33,6 @@ class MapController extends Controller
 
     public function getMonument()
     {
-
         $monumentmanager = new MonumentManager();
         $liste = $monumentmanager->getMonument();
         $json = json_encode($liste);
