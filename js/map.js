@@ -25,14 +25,13 @@ function initMap() {
         // On parcours l'objet monuments
 
         for (monument in monuments) {
-            let m= monument;
+            let m = monument;
             var marker = new google.maps.Marker({
                 position: {lat: parseFloat(monuments[monument].lat), lng: parseFloat(monuments[monument].lon)},
                 title: monuments[monument].name,
                 map: map
 
             });
-
 
             google.maps.event.addListener(marker, 'click', function () {
                 console.log(m);
