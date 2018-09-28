@@ -5,11 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <?php if(isset($_SESSION['flash'])) : ?>
-    <div class="alert alert-dark" role="alert">
-        <?= $_SESSION['flash']; ?>
-    </div>
-    <?php endif; ?>
+
     <header id="home" class="sections">
         <div class="container">
 
@@ -18,11 +14,11 @@
 
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="unique-apps">
-                            <h2>{{ single.title }}</h2>
+                            <h2>{{ single.title |striptags  }}</h2>
                             <p>
 
 
-                                {{ single.content }}
+                                {{ single.content |striptags }}
 
 
                             </p>
@@ -48,7 +44,7 @@
                                                 <textarea class="form-control" rows="3" id="comment"
                                                           name="params['comment']"></textarea>
                                             </div>
-                                            <input type="hidden" name=add />
+                                            <input type="hidden" name="postid" value="{{ news.id }}"/>
                                             <button type="submit" class="btn btn-primary">Valider</button>
                                         </form>
                                     </div>
@@ -58,9 +54,9 @@
 
                                         <div class="media-body">
                                             <h5 class="mt-0">
-                                                {{ comment.author }}
+                                                Posté le  {{ comment.createdCom }} par {{ comment.author |striptags  }}
                                             </h5>
-                                            {{ comment.comment }}<a href="index.php?c=admin&t=signalCom&amp;id={{ comment.id }}">(Signaler le commentaire)</a>
+                                            {{ comment.comment |striptags  }}<a href="index.php?c=admin&t=signalCom&amp;id={{ comment.id }}"> (Signaler le commentaire)</a>
                                         </div>
                                     </div>
                                     <hr>

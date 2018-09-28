@@ -16,7 +16,7 @@ class MemberController extends Controller
 
     public function login($pseudo, $password)
     {
-var_dump($pseudo);
+
         $logManager = new MemberManager();
         $user = $logManager->getMember ($pseudo);
         if (password_verify ($password, $user['password'])) {

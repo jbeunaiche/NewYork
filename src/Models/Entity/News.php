@@ -9,6 +9,7 @@ class News
     private $title;
     private $content;
     private $comments;
+    private $created;
 
     public function __construct($value = [])
     {
@@ -31,6 +32,23 @@ class News
     /**
      * @return mixed
      */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return mixed
+     */
+
     public function getComments()
     {
         return $this->comments;

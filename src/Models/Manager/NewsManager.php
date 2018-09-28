@@ -4,21 +4,50 @@ namespace Julien\Models\Manager;
 
 use Julien\Models\Manager;
 use Julien\Models\Entity\News;
+use Julien\Models\Entity\Comment;
 
 class NewsManager extends Manager
 
 {
+    /*
+      public function getList()
+         {
+             $listNews = array();
+             $i = 0;
+             $req = ('SELECT a.id, a.title, a.content,  COUNT(b.newsid) AS nb  FROM news a LEFT JOIN comment b ON b.newsid = a.id   GROUP BY
+         a.id ');
+             $req = $this->getDb()->query($req);
+             $req->setFetchMode(\PDO::FETCH_ASSOC);
+             while ($news = $req->fetch())
 
-    public function getList()
-    {
+             {
 
-        $req = $this->_db->prepare('SELECT id, title, content FROM news ORDER BY id DESC ');
+                 $comment = new Comment(['id' =>$news['nb']]);
+                 $art = new News(['id' => $news['id'], 'title' => $news['title'], 'content' => $news['content'] , 'comments' => $comment ]);
 
-        $req->execute();
-        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, News::class);
-        $post = $req->fetchAll();
-        return $post;
-    }
+
+                 $listPosts[$i++] = $art;
+                 var_dump ($news['nb']);
+                 var_dump ($news['title']);
+             }
+
+
+
+             $req->closeCursor();
+             return $listNews;
+         }
+  */
+        public function getList()
+        {
+
+            $req = $this->_db->prepare('SELECT id, title, content, DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created FROM news ORDER BY id DESC ');
+
+            $req->execute();
+            $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, News::class);
+            $post = $req->fetchAll();
+            return $post;
+        }
+
 
     public function getNews($id)
     {
@@ -33,7 +62,7 @@ class NewsManager extends Manager
 
     public function add(News $news)
     {
-        $req = $this->_db->prepare('INSERT INTO news(title,content) VALUES(:title, :content)');
+        $req = $this->_db->prepare('INSERT INTO news(title,content, created) VALUES(:title, :content, NOW())');
         $req->bindValue(':title', $news->getTitle(), \PDO::PARAM_STR);
         $req->bindValue(':content', $news->getContent(), \PDO::PARAM_STR);
         $req->execute();
@@ -47,9 +76,9 @@ class NewsManager extends Manager
     public function edit(News $news)
     {
         $req = $this->_db->prepare('UPDATE news SET title = :title, content = :content WHERE id = :id');
-        $req->bindValue(':title', $news->getTitle() , \PDO::PARAM_STR);
-        $req->bindValue(':content', $news->getContent() , \PDO::PARAM_STR);
-        $req->bindValue(':id', $news->getId() , \PDO::PARAM_INT);
+        $req->bindValue(':title', $news->getTitle(), \PDO::PARAM_STR);
+        $req->bindValue(':content', $news->getContent(), \PDO::PARAM_STR);
+        $req->bindValue(':id', $news->getId(), \PDO::PARAM_INT);
         $req->execute();
     }
 

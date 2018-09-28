@@ -9,10 +9,10 @@ use Julien\Models\Entity\News;
 class CommentManager extends Manager
 {
 
-    public function getComments($postid)
+    public function getComments($newsid)
     {
-        $req = $this->_db->prepare('SELECT id, postid, author, comment, DATE_FORMAT(createdCom, \'%d/%m/%Y à %Hh%imin%ss\') AS createdCom  FROM comment WHERE postid = :postid ORDER BY createdCom DESC');
-        $req->bindValue(':postid', (int)$postid);
+        $req = $this->_db->prepare('SELECT id, newsid, author, comment, DATE_FORMAT(createdCom, \'%d/%m/%Y à %Hh%imin%ss\') AS createdCom  FROM comment WHERE newsid = :newsid AND status = 0 ORDER BY createdCom DESC ');
+        $req->bindValue(':newsid', (int)$newsid);
         $req->execute();
         $listsComments = $req->fetchAll(\PDO::FETCH_CLASS, "Julien\Models\Entity\Comment");
         $req->closeCursor();
@@ -25,7 +25,7 @@ class CommentManager extends Manager
         $req = $this->_db->prepare('INSERT INTO comment (author, comment, createdCom) VALUES(:author, :comment, NOW())');
         $req->bindValue(':author', $comment->getAuthor(), \PDO::PARAM_STR);
         $req->bindValue(':comment', $comment->getComment(), \PDO::PARAM_STR);
-        //$req->bindValue(':postid', $comment->getNews()->getId(), \PDO::PARAM_INT);
+        //$req->bindValue(':newsid', $comment->getNews()->getId(), \PDO::PARAM_INT);
         $req->execute();
 
 
@@ -41,7 +41,7 @@ class CommentManager extends Manager
     public function getSignaled()
     {
         $signaledList = array();
-        $req = $this->_db->query('SELECT comment.*, news.title FROM comment LEFT JOIN news ON comment.postid = news.id WHERE status > 0');
+        $req = $this->_db->query('SELECT comment.*, news.title FROM comment LEFT JOIN news ON comment.newsid = news.id WHERE status > 0');
         $i = 0;
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         while ($comment = $req->fetch()) {

@@ -717,7 +717,14 @@ input:-ms-input-placeholder {
 }
 
 /*Home Page Style*/
-
+#conteneur
+{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+    margin-left: 12px;
+    margin-bottom: 45px;
+}
 #home {
     background-color: #ffff5e;
     color: #fff;

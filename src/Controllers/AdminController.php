@@ -8,6 +8,7 @@ use Julien\Models\Entity\Comment;
 use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\MonumentManager;
 use Julien\Models\Manager\CommentManager;
+use Julien\Models\Manager\MemberManager;
 
 class AdminController extends Controller
 {
@@ -26,13 +27,17 @@ class AdminController extends Controller
 
     public function listNews()
     {
-        $newsmanager = new NewsManager();
-        $lists = $newsmanager->getList();
+        if (isset($_SESSION['pseudo'])) {
+            $newsmanager = new NewsManager();
+            $lists = $newsmanager->getList();
 
-        echo $this->twig->render('admin/list-news.twig',
-            [
-                'list' => $lists
-            ]);
+            echo $this->twig->render('admin/list-news.twig',
+                [
+                    'list' => $lists
+                ]);
+        } else {
+            echo "Accès interdit";
+        }
     }
 
     public function addViewNews()
@@ -40,28 +45,32 @@ class AdminController extends Controller
         if (isset($_SESSION['pseudo'])) {
             echo $this->twig->render('admin/add-news.twig');
         } else {
-            echo "Veuillez vous connecter";
+            echo "Accès interdit";
         }
     }
 
     public function addNews($title, $content)
-
     {
+        if (isset($_SESSION['pseudo'])) {
 
-        $news = new News(
-            [
-                'title' => $title,
-                'content' => $content
-            ]
-        );
-        $newsmanager = new NewsManager();
-        $newsmanager->add($news);
-        if ($newsmanager === false) {
-            throw new Exception('Impossible d\'ajouter l\'article!');
+                $news = new News(
+                    [
+                        'title' => $title,
+                        'content' => $content
+                    ]
+                );
+                $newsmanager = new NewsManager();
+                $newsmanager->add($news);
+                if ($newsmanager === false) {
+                    throw new Exception('Impossible d\'ajouter l\'article!');
+                } else {
+
+                    echo $this->twig->render('admin/administration.twig');
+
+                }
+
         } else {
-
-            echo $this->twig->render('admin/administration.twig');
-
+            echo "Accès interdit";
         }
 
     }
@@ -80,26 +89,36 @@ class AdminController extends Controller
 
     public function editNewsView()
     {
-        $newsManager = new NewsManager();
-        $news = $newsManager->getNews($_GET['id']);
-        echo $this->twig->render('admin/edit-news.twig',
-            [
-                'news' => $news
-            ]);
+        if (isset($_SESSION['pseudo'])) {
+
+            $newsManager = new NewsManager();
+            $news = $newsManager->getNews($_GET['id']);
+            echo $this->twig->render('admin/edit-news.twig',
+                [
+                    'news' => $news
+                ]);
+        } else {
+            echo "Accès interdit";
+        }
 
     }
 
     public function editNews()
     {
-        $news = new News($_POST);
-        $newsmanager = new NewsManager();
-        $newsmanager->edit($news);
-        if ($newsmanager === false) {
-            throw new Exception('Impossible d\'ajouter l\'article!');
+        if (isset($_SESSION['pseudo'])) {
+
+            $news = new News($_POST);
+            $newsmanager = new NewsManager();
+            $newsmanager->edit($news);
+            if ($newsmanager === false) {
+                throw new Exception('Impossible d\'ajouter l\'article!');
+            } else {
+
+                echo $this->twig->render('admin/administration.twig');
+
+            }
         } else {
-
-            echo $this->twig->render('admin/administration.twig');
-
+            echo "Accès interdit";
         }
     }
 
@@ -107,18 +126,26 @@ class AdminController extends Controller
 
     public function listMonument()
     {
-        $monumentsmanager = new MonumentManager();
-        $lists = $monumentsmanager->getList();
+        if (isset($_SESSION['pseudo'])) {
+            $monumentsmanager = new MonumentManager();
+            $lists = $monumentsmanager->getList();
 
-        echo $this->twig->render('admin/list-monuments.twig',
-            [
-                'list' => $lists
-            ]);
+            echo $this->twig->render('admin/list-monuments.twig',
+                [
+                    'list' => $lists
+                ]);
+        } else {
+            echo "Accès interdit";
+        }
     }
 
     public function addViewMonument()
     {
-        echo $this->twig->render('admin/add-monument.twig');
+        if (isset($_SESSION['pseudo'])) {
+            echo $this->twig->render('admin/add-monument.twig');
+        } else {
+            echo "Accès interdit";
+        }
 
     }
 
@@ -149,18 +176,22 @@ class AdminController extends Controller
 
     public function listComments()
     {
+        if (isset($_SESSION['pseudo'])) {
+            $commentmanager = new CommentManager();
+            $comment = $commentmanager->getSignaled();
 
-        $commentmanager = new CommentManager();
-        $comment = $commentmanager->getSignaled();
+            echo $this->twig->render('admin/comments.twig',
+                [
+                    'comment' => $comment,
 
-        echo $this->twig->render('admin/comments.twig',
-            [
-                'comment' => $comment,
+                ]);
+        } else {
+            echo "Accès interdit";
+        }
 
-            ]);
     }
 
-    public function signalCom($postId)
+    public function signalCom()
     {
         $comment = new Comment($_GET);
         $commentmanager = new CommentManager();
@@ -174,25 +205,33 @@ class AdminController extends Controller
 
     public function deleteComment()
     {
-        $comment = new Comment($_GET);
-        $commentmanager = new CommentManager();
-        $commentmanager->delete($comment);
-        if ($commentmanager === false) {
-            throw new Exception('Impossible de supprimer');
+        if (isset($_SESSION['pseudo'])) {
+            $comment = new Comment($_GET);
+            $commentmanager = new CommentManager();
+            $commentmanager->delete($comment);
+            if ($commentmanager === false) {
+                throw new Exception('Impossible de supprimer');
+            } else {
+                header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            }
         } else {
-            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            echo "Accès interdit";
         }
     }
 
     public function change()
     {
-        $comment = new Comment($_GET);
-        $commentmanager = new CommentManager();
-        $commentmanager->change($comment);
-        if ($commentmanager === false) {
-            throw new Exception('Erreur');
+        if (isset($_SESSION['pseudo'])) {
+            $comment = new Comment($_GET);
+            $commentmanager = new CommentManager();
+            $commentmanager->change($comment);
+            if ($commentmanager === false) {
+                throw new Exception('Erreur');
+            } else {
+                header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            }
         } else {
-            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            echo "Accès interdit";
         }
     }
 
