@@ -2,6 +2,10 @@
 
 namespace Julien\Models;
 
+/**
+ * Class Manager
+ * @package Julien\Models
+ */
 class Manager
 
 {
@@ -18,6 +22,9 @@ class Manager
         $this->dbConnect();
     }
 
+    /**
+     *
+     */
     protected function dbConnect()
     {
        // $this->_db = new PDO('mysql:host=jbeunaicmcny.mysql.db;dbname=jbeunaicmcny;charset=utf8', 'jbeunaicmcny', 'Keirak07');

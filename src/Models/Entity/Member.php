@@ -2,6 +2,10 @@
 
 namespace Julien\Models\Entity;
 
+/**
+ * Class Member
+ * @package Julien\Models\Entity
+ */
 class Member
 
 {

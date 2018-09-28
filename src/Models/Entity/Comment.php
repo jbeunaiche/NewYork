@@ -2,6 +2,10 @@
 
 namespace Julien\Models\Entity;
 
+/**
+ * Class Comment
+ * @package Julien\Models\Entity
+ */
 class Comment
 
 {
@@ -9,10 +13,25 @@ class Comment
      * @var
      */
     private $id;
+    /**
+     * @var
+     */
     private $news;
+    /**
+     * @var
+     */
     private $author;
+    /**
+     * @var
+     */
     private $comment;
+    /**
+     * @var
+     */
     private $createdCom;
+    /**
+     * @var
+     */
     private $status;
 
     /**

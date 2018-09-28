@@ -2,15 +2,38 @@
 
 namespace Julien\Models\Entity;
 
+/**
+ * Class News
+ * @package Julien\Models\Entity
+ */
 class News
 
 {
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $title;
+    /**
+     * @var
+     */
     private $content;
+    /**
+     * @var
+     */
     private $comments;
+    /**
+     * @var
+     */
     private $created;
 
+    /**
+     * News constructor.
+     * @param array $value
+     */
     public function __construct($value = [])
     {
         if (!empty($value)) {
@@ -18,6 +41,9 @@ class News
         }
     }
 
+    /**
+     * @param array $data
+     */
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
@@ -62,31 +88,49 @@ class News
         $this->comments = $comments;
     }
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @param $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getTitle()
     {
         return $this->title;
     }
 
+    /**
+     * @param $title
+     */
     public function setTitle($title)
     {
         $this->title = $title;
     }
 
+    /**
+     * @return mixed
+     */
     public function getContent()
     {
         return $this->content;
     }
 
+    /**
+     * @param $content
+     */
     public function setContent($content)
     {
         $this->content = $content;

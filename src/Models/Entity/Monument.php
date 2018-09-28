@@ -2,16 +2,39 @@
 
 namespace Julien\Models\Entity;
 
+/**
+ * Class Monument
+ * @package Julien\Models\Entity
+ */
 class Monument
 
 {
 
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $name;
+    /**
+     * @var
+     */
     private $lat;
+    /**
+     * @var
+     */
     private $lon;
+    /**
+     * @var
+     */
     private $price;
 
+    /**
+     * Monument constructor.
+     * @param array $value
+     */
     public function __construct($value = [])
 
     {
@@ -67,6 +90,9 @@ class Monument
         return $this->name;
     }
 
+    /**
+     * @param $name
+     */
     public function setName($name)
 
     {
@@ -83,6 +109,9 @@ class Monument
         return $this->lat;
     }
 
+    /**
+     * @param $lat
+     */
     public function setLat($lat)
     {
 
@@ -98,6 +127,9 @@ class Monument
         return $this->lon;
     }
 
+    /**
+     * @param $lon
+     */
     public function setLon($lon)
 
     {
@@ -112,6 +144,9 @@ class Monument
         return $this->price;
     }
 
+    /**
+     * @param $price
+     */
     public function setPrice($price)
     {
         $this->price = $price;
