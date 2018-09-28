@@ -30,7 +30,6 @@ class MemberController extends Controller
     public function logout ()
     {
         unset($_SESSION['pseudo']);
-
         echo $this->twig->render('home.twig');
         exit();
     }
