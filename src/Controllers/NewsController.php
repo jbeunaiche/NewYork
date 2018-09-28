@@ -2,7 +2,7 @@
 
 namespace Julien\Controllers;
 
-use Julien\Models\Entity\News;
+//use Julien\Models\Entity\News;
 use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\CommentManager;
 use Julien\Models\Entity\Comment;
