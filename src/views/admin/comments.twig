@@ -76,28 +76,29 @@
                                 </tr>
                                 </thead>
                                 {% for item in comment %}
-                                <tr>
-                                    <td>
+                                    <tr>
+                                        <td>
 
-                                        <a href="index.php?c=news&t=single&amp;id={{ news.item.id }}">{{ item.news.title }}</a>
-                                    <td>
-                                        {{ item.author }}
-                                    </td>
-                                    <td>
-                                        {{ item.comment }}
-                                    </td>
+                                            <a href="index.php?c=news&t=single&amp;id={{ news.item.id }}">{{ item.news.title }}</a>
+                                        <td>
+                                            {{ item.author }}
+                                        </td>
+                                        <td>
+                                            {{ item.comment }}
+                                        </td>
 
-                                    <td><a href="index.php?c=admin&t=deleteComment&amp;id={{ item.news.id }}">
-                                            <button type="button" class="btn btn-outline-danger">Supprimer</button>
-                                        </a></td>
-                                    <td><a href="index.php?c=admin&t=change&amp;id={{ item.news.id }}">
-                                            <button type="button" class="btn btn-outline-warning">Modifier le statut du
-                                                commentaire
-                                            </button>
-                                        </a></td>
+                                        <td><a href="index.php?c=admin&t=deleteComment&amp;id={{ item.news.id }}">
+                                                <button type="button" class="btn btn-outline-danger">Supprimer</button>
+                                            </a></td>
+                                        <td><a href="index.php?c=admin&t=change&amp;id={{ item.news.id }}">
+                                                <button type="button" class="btn btn-outline-warning">Modifier le statut
+                                                    du
+                                                    commentaire
+                                                </button>
+                                            </a></td>
 
 
-                                </tr>
+                                    </tr>
 
                                 {% endfor %}
                             </table>
