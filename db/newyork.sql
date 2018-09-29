@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 28 sep. 2018 à 10:05
+-- Généré le :  sam. 29 sep. 2018 à 09:37
 -- Version du serveur :  10.1.32-MariaDB
 -- Version de PHP :  7.2.5
 
@@ -127,7 +127,11 @@ CREATE TABLE `news` (
 INSERT INTO `news` (`id`, `title`, `content`, `created`) VALUES
 (1, 'Fête du hamburger', 'Le 18 septembre a lieu la fête national du hamburger. Chacun a son goût, mais ce restaurant est dans le top 5 pour tout le monde. Five Napkin Burger est un restaurant où l’on peut manger des hamburgers, du sushi et d’autres plats. Le meilleur hamburger est l’Original 5 Napkin Burger avec du fromage spécial et de la sauce.', '2018-09-26 13:00:00'),
 (2, '11 Septembre ', 'Commémoration du 11 septembre..', '2018-09-21 11:18:18'),
-(8, 'NBA', '<p>Reprise de la NBA</p>', '2018-09-26 09:10:05');
+(3, 'NBA', 'Match de pré-saison NBA au Madison Square Garden. ', '2018-09-26 09:10:05'),
+(4, 'San Gennaro - Little Italy', 'C\'est la fête religieuse la plus ancienne et la plus populaire des américains d\'origine italienne. Durant 10 jours, San Gennaro, le saint patron de Naples, est célébré dans tout le pays, et notamment à NY à Little Italy par un festival du 13 au 23 Septembre 2018.', '2018-09-28 15:10:08'),
+(5, 'New York Comic Con', 'La New York Comic Con est la plus grosse convention sur le thème de la bande dessinée d\'Amérique du Nord. Elle rassemble les fanatiques de comics et bien plus encore. Plus de 200.000 personnes y ont participé l\'an passé ! En 2018, New York Comic Con a lieu du 4 au 7 octobre.', '2018-09-28 10:21:09'),
+(6, 'Columbus Day', 'Tous les 2ème lundi d\'octobre, on commémore la découverte de l\'Amérique par Christophe Colomb en 1492. Pour célébrer l\'évènement, tous les ans est organisée la Columbus Day Parade. Cette année, elle aura lieu le lundi 08 Octobre 2018 de 11h30 à 15h00. Le point de départ se situe à l\'angle de fifth avenue et de 44th Street, puis le cortège remonte le long de 72nd Street.\r\nSachez aussi qu\'une messe est organisée à 9h30 à la Cathédrale St Patrick en l\'honneur de Christophe Colomb.', '2018-09-28 11:18:14'),
+(12, 'Le weekend Open House New York', 'Le week-end du 13 et 14 octobre 2018 est organisé l\'Open House New York. Lors de cet événement, vous pouvez visiter plus de 200 immeubles et structures privés dans tous les boroughs de New York (Manhattan, Queens, Bronx, Brooklyn et Staten Island). Il permet aux résidents et aux visiteurs de la ville de voir New York sous un angle différent en leur permettant de visiter des endroits qu\'il est habituellement impossible à voir, car hors limites ou tout simplement privés. Cela ressemble à nos Journées du Patrimoine en France.', '2018-09-28 13:17:17');
 
 --
 -- Index pour les tables déchargées
@@ -190,7 +194,7 @@ ALTER TABLE `monument`
 -- AUTO_INCREMENT pour la table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Contraintes pour les tables déchargées

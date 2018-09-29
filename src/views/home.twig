@@ -117,9 +117,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="portfolio-item">
                                     <h4>{{ item.title |striptags }}</h4>
-                                    <h6> le {{ item.created }}</h6>
+                                    <h6>Publié le {{ item.created }}</h6>
                                     <p>
-                                        {{ item.content |striptags  }}
+                                        {{ item.content |striptags }}
                                     </p>
                                     <a href="index.php?c=news&t=single&amp;id={{ item.id }}">
                                         <button class="btn pt-btn btn-primary">Voir l'article</button>

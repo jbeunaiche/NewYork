@@ -19,7 +19,7 @@ function initMap() {
 
 
     $.ajax({
-        url: "http://localhost/newyork/index.php?c=map&t=getMonument",
+        url: "http://newyork.jbeunaiche.fr/index.php?c=map&t=getMonument",
     }).done(function (json) {
         var monuments = JSON.parse(json);
         // On parcours l'objet monuments

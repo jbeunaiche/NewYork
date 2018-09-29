@@ -21,7 +21,7 @@
     }
 
     .navbar-default {
-        background-color: #ffc038;
+        background-color: #ffff5e;
         border: transparent;
         padding: 20px 0;
     }
@@ -82,7 +82,7 @@
     }
 
     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-        background: #ffc038;
+        background: #ffff5e;
         border: 0;
     }
 

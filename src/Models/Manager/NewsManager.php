@@ -46,9 +46,7 @@ class NewsManager extends Manager
      */
     public function getList()
         {
-
             $req = $this->_db->prepare('SELECT id, title, content, DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created FROM news ORDER BY id DESC ');
-
             $req->execute();
             $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, News::class);
             $post = $req->fetchAll();
