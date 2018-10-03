@@ -20,7 +20,7 @@ if (class_exists($class, true)) {
         else
         call_user_func_array([$class, $target], $params);
     } else {
-        call_user_func([$class, "index"]);
+        header("Location: index.php?c=error&t=erreur");
     }
 } else {
     header("Location: index.php?c=error&t=erreur");

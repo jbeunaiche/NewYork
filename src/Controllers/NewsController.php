@@ -21,16 +21,21 @@ class NewsController extends Controller
      */
     public function single()
     {
-        $newsmanager = new NewsManager();
-        $single = $newsmanager->getNews($_GET['id']);
-        $commentManager = new CommentManager();
-        $comment = $commentManager->getComments($_GET['id']);
+        if (isset($_GET['id']) && $_GET['id'] > 0 ) {
+            $newsmanager = new NewsManager();
+            $single = $newsmanager->getNews($_GET['id']);
+            $commentManager = new CommentManager();
+            $comment = $commentManager->getComments($_GET['id']);
 
-        echo $this->twig->render('singlenews.twig',
-            [
-                'comments' => $comment,
-                'single' => $single
-            ]);
+            echo $this->twig->render('singlenews.twig',
+                [
+                    'comments' => $comment,
+                    'single' => $single
+                ]);
+        }
+        else {
+            header("Location: index.php?c=error&t=erreur");
+        }
 
     }
 

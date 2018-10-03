@@ -74,6 +74,7 @@ class AdminController extends Controller
      */
     public function addNews($title, $content)
     {
+
         if (isset($_SESSION['pseudo'])) {
             if (!empty($title) && !empty($content)) {
                 $news = new News(
