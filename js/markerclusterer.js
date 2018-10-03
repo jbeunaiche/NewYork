@@ -52,9 +52,9 @@
  *                           cluster before the markers are hidden and a count
  *                           is shown.
  *     'styles': (object) An object that has style properties:
- *       'url': (string) The image url.
- *       'height': (number) The image height.
- *       'width': (number) The image width.
+ *       'url': (string) The newsimage url.
+ *       'height': (number) The newsimage height.
+ *       'width': (number) The newsimage width.
  *       'anchor': (Array) The anchor position of the label text.
  *       'textColor': (string) The text color.
  *       'textSize': (number) The text size.
@@ -185,7 +185,7 @@ function MarkerClusterer(map, opt_markers, opt_options) {
 
 
 /**
- * The marker cluster image path.
+ * The marker cluster newsimage path.
  *
  * @type {string}
  * @private
@@ -194,7 +194,7 @@ MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ = '../images/m';
 
 
 /**
- * The marker cluster image path.
+ * The marker cluster newsimage path.
  *
  * @type {string}
  * @private
@@ -348,7 +348,7 @@ MarkerClusterer.prototype.getMaxZoom = function () {
 
 
 /**
- *  The function for calculating the cluster icon image.
+ *  The function for calculating the cluster icon newsimage.
  *
  *  @param {Array.<google.maps.Marker>} markers The markers in the clusterer.
  *  @param {number} numStyles The number of styles available.
@@ -1014,9 +1014,9 @@ Cluster.prototype.updateIcon = function () {
  *
  * @param {Cluster} cluster The cluster to be associated with.
  * @param {Object} styles An object that has style properties:
- *     'url': (string) The image url.
- *     'height': (number) The image height.
- *     'width': (number) The image width.
+ *     'url': (string) The newsimage url.
+ *     'height': (number) The newsimage height.
+ *     'width': (number) The newsimage width.
  *     'anchor': (Array) The anchor position of the label text.
  *     'textColor': (string) The text color.
  *     'textSize': (number) The text size.
@@ -1226,7 +1226,7 @@ ClusterIcon.prototype.setCenter = function (center) {
  */
 ClusterIcon.prototype.createCss = function (pos) {
     var style = [];
-    style.push('background-image:url(' + this.url_ + ');');
+    style.push('background-newsimage:url(' + this.url_ + ');');
     var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '0 0';
     style.push('background-position:' + backgroundPosition + ';');
 

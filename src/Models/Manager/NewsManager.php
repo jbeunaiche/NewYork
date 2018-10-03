@@ -81,7 +81,7 @@ class NewsManager extends Manager
     {
         if( isset($_POST['upload']) ) // si formulaire soumis
         {
-            $content_dir = 'image/'; // dossier où sera déplacé le fichier
+            $content_dir = 'newsimage/'; // dossier où sera déplacé le fichier
 
             $tmp_file = $_FILES['fichier']['tmp_name'];
 
@@ -95,7 +95,7 @@ class NewsManager extends Manager
 
             if( !strstr($type_file, 'JPG') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') )
             {
-                exit("Le fichier n'est pas une image");
+                exit("Le fichier n'est pas une newsimage");
             }
 
             // on copie le fichier dans le dossier de destination
