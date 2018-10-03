@@ -109,7 +109,7 @@
 
 
                 <!-- Example row of columns -->
-                {% if currentPage == 1 %}
+              {% if currentPage == 1 %}
                 {% for item in list %}
                     <div class="portfolio-wrap">
 
@@ -142,7 +142,11 @@
 
                 {% endfor %}
                 {% endif %}
-                
+                {% if currentPage < numberOfPage %}
+                    <a href="index.php?c=admin&t=listNews">Voir toutes les news</a>
+                {% else %}
+                    <li class="disabled">Next</li>
+                {% endif %}
             </div>
         </div>
 

@@ -1,0 +1,61 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+    <title>Accueil</title>
+{% endblock %}
+
+{% block content %}
+
+<section id="our-portfolio" class="sections">
+    <div class="container">
+
+        <div class="row">
+            <div class="heading">
+                <div class="title text-center arrow-right">
+                    <h4 class="">Les sorties à New York </h4>
+                    <img class="hidden-xs" src="public/assets/images/right-arrow.png" alt=""/>
+
+                </div>
+            </div>
+
+
+            <!-- Example row of columns -->
+
+                {% for item in list %}
+                    <div class="portfolio-wrap">
+
+                        <div class="portfolio">
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="portfolio-item">
+                                    <h4>{{ item.title |striptags }}</h4>
+                                    <h6>Publié le {{ item.created }}</h6>
+                                    <p>
+                                        {{ item.content |striptags }}
+                                    </p>
+                                    <h6> {{ item.comments.id }} commentaire(s)</h6>
+                                    <a href="index.php?c=news&t=single&amp;id={{ item.id }}">
+                                        <button class="btn pt-btn btn-primary">Voir l'article</button>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <img class="portfolio-img img-responsive" src="public/assets/images/central.jpg"
+                                     alt=""/>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <hr>
+
+                {% endfor %}
+            
+        </div>
+    </div>
+
+
+    <!-- /container -->
+</section>
