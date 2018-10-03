@@ -109,6 +109,7 @@
 
 
                 <!-- Example row of columns -->
+                {% if currentPage == 1 %}
                 {% for item in list %}
                     <div class="portfolio-wrap">
 
@@ -121,6 +122,7 @@
                                     <p>
                                         {{ item.content |striptags }}
                                     </p>
+                                    <h6> {{ item.comments.id }} commentaire(s)</h6>
                                     <a href="index.php?c=news&t=single&amp;id={{ item.id }}">
                                         <button class="btn pt-btn btn-primary">Voir l'article</button>
                                     </a>
@@ -137,7 +139,10 @@
 
                     </div>
                     <hr>
+
                 {% endfor %}
+                {% endif %}
+                
             </div>
         </div>
 

@@ -50,7 +50,7 @@
 
 
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <form action="index.php?c=admin&t=addNews" method="post">
+                <form action="index.php?c=admin&t=addNews" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="title">Titre</label><br/>
                         <input type="text" id="title" name="params['title']">
@@ -60,6 +60,10 @@
                         <textarea id="content" name="params['content']"></textarea>
                     </div>
                     <br>
+                    <label for="Image">Image de l'article</label>
+                    <input type="file" name="fichier"><br>
+
+
                     <input type="submit" class="btn btn-outline-success" name="add" value="Ajouter l'article"/>
 
                 </form>

@@ -8,6 +8,7 @@ use Julien\Models\Entity\Comment;
 use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\MonumentManager;
 use Julien\Models\Manager\CommentManager;
+use Julien\Models\Manager\MemberManager;
 
 class AdminController extends Controller
 {
@@ -51,27 +52,27 @@ class AdminController extends Controller
     public function addNews($title, $content)
     {
         if (isset($_SESSION['pseudo'])) {
+            if (!empty($title) && !empty($content)) {
+                $news = new News(
+                    [
+                        'title' => $title,
+                        'content' => $content
+                    ]
+                );
+                $newsmanager = new NewsManager();
+                $newsmanager->add($news);
+                if ($newsmanager === false) {
+                    echo('Impossible d\'ajouter l\'article!');
+                } else {
+                    header("Location: index.php?c=admin&t=listNews");
 
-            $news = new News(
-                [
-                    'title' => $title,
-                    'content' => $content
-                ]
-            );
-            $newsmanager = new NewsManager();
-            $newsmanager->add($news);
-            if ($newsmanager === false) {
-                throw new Exception('Impossible d\'ajouter l\'article!');
+                }
             } else {
-
-                echo $this->twig->render('admin/administration.twig');
-
+                echo('Tous les champs ne sont pas remplis !');
             }
-
         } else {
             echo "Accès interdit";
         }
-
     }
 
     public function deleteNews()
@@ -80,9 +81,9 @@ class AdminController extends Controller
         $newsmanager = new NewsManager();
         $newsmanager->delete($news);
         if ($newsmanager === false) {
-            throw new Exception('Impossible de supprimer');
+            echo('Impossible de supprimer');
         } else {
-            echo $this->twig->render('admin/administration.twig');
+            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
         }
     }
 
@@ -102,20 +103,32 @@ class AdminController extends Controller
 
     }
 
-    public function editNews()
+    public function editNews($title, $content, $id)
     {
         if (isset($_SESSION['pseudo'])) {
+            if (!empty($title) && !empty($content)) {
+                $news = new News([
 
-            $news = new News($_POST);
-            $newsmanager = new NewsManager();
-            $newsmanager->edit($news);
+                    'title' => $title,
+                    'content' => $content,
+                    'id' => $id
+
+                ]);
+                $newsmanager = new NewsManager();
+                $newsmanager->edit($news);
+
             if ($newsmanager === false) {
-                throw new Exception('Impossible d\'ajouter l\'article!');
+                echo('Impossible d\'ajouter l\'article!');
             } else {
 
-                echo $this->twig->render('admin/administration.twig');
+                header("Location: index.php?c=admin&t=listNews");
 
             }
+            }
+            else
+                {
+                    echo('Tous les champs ne sont pas remplis !');
+                }
         } else {
             echo "Accès interdit";
         }
@@ -148,13 +161,15 @@ class AdminController extends Controller
 
     }
 
-    public function addMonument($name, $lat, $lon, $price)
+    public function addMonument($name,$description, $lat, $lon, $price)
 
     {
-
+        if (isset($_SESSION['pseudo'])) {
+            if (!empty($name) && !empty($description)&& !empty($lat)&& !empty($lon)&& !empty($price)) {
         $monument = new Monument(
             [
                 'name' => $name,
+                'description' => $description,
                 'lat' => $lat,
                 'lon' => $lon,
                 'price' => $price
@@ -164,10 +179,18 @@ class AdminController extends Controller
         $monumentmanager = new MonumentManager();
         $monumentmanager->addMonument($monument);
         if ($monumentmanager === false) {
-            throw new Exception('Impossible d\'ajouter l\'article!');
+            echo('Impossible d\'ajouter l\'article!');
         } else {
 
-            echo $this->twig->render('admin/list-monuments.twig');
+            header("Location: index.php?c=admin&t=list-monuments");
+        }
+            }
+            else
+            {
+                echo('Tous les champs ne sont pas remplis !');
+            }
+        } else {
+            echo "Accès interdit";
         }
     }
 
@@ -196,7 +219,7 @@ class AdminController extends Controller
         $commentmanager = new CommentManager();
         $commentmanager->signal($comment);
         if ($commentmanager === false) {
-            throw new Exception('Erreur');
+            echo('Erreur');
         } else {
             header("Location:" . $_SERVER['HTTP_REFERER'] . "");
         }

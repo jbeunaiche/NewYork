@@ -2,7 +2,8 @@
 
 namespace Julien\Controllers;
 
-//use Julien\Models\Entity\News;
+
+use Julien\Models\Entity\News;
 use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\CommentManager;
 use Julien\Models\Entity\Comment;
@@ -24,16 +25,21 @@ class NewsController extends Controller
 
     }
 
-    public function addComment($author, $comment)
+    public function addComment($author, $comment, $newsid)
     {
+        $newsManager    = new NewsManager();
+        $news = new News(['id' => $newsid]);
         $comment        = new Comment(
             [
                 'author' => $author,
-                'comment' => $comment
+                'comment' => $comment,
+                'news' => $newsid
 
             ]
         );
+        var_dump($comment);
         $commentmanager = new CommentManager();
+        $comment-> setNews($news);
         $commentmanager->addComment($comment);
 
         if ($commentmanager === false)
@@ -42,7 +48,9 @@ class NewsController extends Controller
         }
         else
         {
-            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+
+           // header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+
         }
     }
 }

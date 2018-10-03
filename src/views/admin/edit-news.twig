@@ -57,10 +57,11 @@
                     </div>
                     <div>
                         <label for="content">Texte de l'article</label><br/>
-                        <textarea id="content" name="params['content']" value="{{ news.content }}"></textarea>
+                        <textarea id="content" name="params['content']">{{ news.content | striptags}}</textarea>
                     </div>
                     <br>
-                    <input type="submit" class="btn btn-outline-success" name="add" value="Ajouter l'article"/>
+                    <input type="hidden" name="params['id']" value="{{ news.id }}" />
+                    <input type="submit" class="btn btn-outline-success" value="Ajouter l'article"/>
 
                 </form>
             </div>

@@ -19,7 +19,8 @@ function initMap() {
 
 
     $.ajax({
-        url: "http://newyork.jbeunaiche.fr/index.php?c=map&t=getMonument",
+        //url: "http://localhost/newyork/index.php?c=map&t=getMonument",
+       url: "http://newyork.jbeunaiche.fr/index.php?c=map&t=getMonument",
     }).done(function (json) {
         var monuments = JSON.parse(json);
         // On parcours l'objet monuments
@@ -38,6 +39,7 @@ function initMap() {
 
                 document.getElementById("nameM").innerHTML = "Nom du monument :" + monuments[m].name;
                 document.getElementById("priceM").innerHTML = "Prix :" + monuments[m].price + "€";
+                document.getElementById("priceM").innerHTML = monuments[m].price + ".";
 
             });
 

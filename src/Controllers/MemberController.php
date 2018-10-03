@@ -16,7 +16,7 @@ class MemberController extends Controller
 
     public function login($pseudo, $password)
     {
-
+        if (!empty($pseudo) && !empty($password)) {
         $logManager = new MemberManager();
         $user = $logManager->getMember ($pseudo);
         if (password_verify ($password, $user['password'])) {
@@ -25,12 +25,17 @@ class MemberController extends Controller
         } else {
             echo 'Le mot de passe est invalide.';
         }
+        }
+        else
+        {
+            echo('Tous les champs ne sont pas remplis !');
+        }
     }
 
     public function logout ()
     {
         unset($_SESSION['pseudo']);
-        echo $this->twig->render('home.twig');
+        header("Location: index.php?c=index&t=index");
         exit();
     }
 }

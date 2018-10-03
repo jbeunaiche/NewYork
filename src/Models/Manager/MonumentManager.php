@@ -31,7 +31,7 @@ class MonumentManager extends Manager
     public function getList()
     {
 
-        $req = $this->_db->prepare('SELECT id, name, price FROM monument ');
+        $req = $this->_db->prepare('SELECT id, name, description, price FROM monument ');
 
         $req->execute();
         $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Monument::class);
@@ -47,8 +47,9 @@ class MonumentManager extends Manager
     function addMonument(Monument $monument)
     {
 
-        $req = $this->_db->prepare('INSERT INTO monument(name, lat, lon, price) VALUES(:name, :lat, :lon, :price)');
+        $req = $this->_db->prepare('INSERT INTO monument(name, description, lat, lon, price) VALUES(:name, :description, :lat, :lon, :price)');
         $req->bindValue(':name', $monument->getName(), \PDO::PARAM_STR);
+        $req->bindValue(':description', $monument->getDescription(), \PDO::PARAM_STR);
         $req->bindValue(':lat', $monument->getLat(), \PDO::PARAM_STR);
         $req->bindValue(':lon', $monument->getLon(), \PDO::PARAM_STR);
         $req->bindValue(':price', $monument->getPrice(), \PDO::PARAM_STR);
