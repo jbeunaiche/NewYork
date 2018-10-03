@@ -79,7 +79,7 @@ class NewsManager extends Manager
      */
     public function add(News $news)
     {
-        if( isset($_POST['upload']) ) // si formulaire soumis
+        if( isset($_POST['upload']) )
         {
             $content_dir = 'newsimage/'; // dossier où sera déplacé le fichier
 
@@ -95,7 +95,7 @@ class NewsManager extends Manager
 
             if( !strstr($type_file, 'JPG') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') )
             {
-                exit("Le fichier n'est pas une newsimage");
+                exit("Le fichier n'est pas une image");
             }
 
             // on copie le fichier dans le dossier de destination
@@ -106,7 +106,7 @@ class NewsManager extends Manager
                 exit("Impossible de copier le fichier dans $content_dir");
             }
 
-            echo "Le fichier a bien été uploadé";
+            
         }
         $req = $this->_db->prepare('INSERT INTO news(title,content, created) VALUES(:title, :content, NOW())');
         $req->bindValue(':title', $news->getTitle(), \PDO::PARAM_STR);
