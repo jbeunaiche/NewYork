@@ -31,6 +31,9 @@ class Monument
      */
     private $price;
 
+    /**
+     * @var
+     */
     private $description;
 
     /**

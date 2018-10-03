@@ -31,6 +31,9 @@ class News
      */
     private $created;
 
+    /**
+     * @var
+     */
     private $image;
 
     /**

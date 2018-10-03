@@ -4,9 +4,18 @@ namespace Julien\Controllers;
 
 use Julien\Models\Manager\MemberManager;
 
+/**
+ * Class MemberController
+ * @package Julien\Controllers
+ */
 class MemberController extends Controller
 
 {
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function connexion()
     {
         echo $this->twig->render('connexion.twig');
@@ -14,6 +23,13 @@ class MemberController extends Controller
     }
 
 
+    /**
+     * @param $pseudo
+     * @param $password
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function login($pseudo, $password)
     {
         if (!empty($pseudo) && !empty($password)) {
@@ -32,6 +48,9 @@ class MemberController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function logout ()
     {
         unset($_SESSION['pseudo']);

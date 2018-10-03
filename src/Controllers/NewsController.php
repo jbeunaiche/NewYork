@@ -8,8 +8,17 @@ use Julien\Models\Manager\NewsManager;
 use Julien\Models\Manager\CommentManager;
 use Julien\Models\Entity\Comment;
 
+/**
+ * Class NewsController
+ * @package Julien\Controllers
+ */
 class NewsController extends Controller
 {
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function single()
     {
         $newsmanager = new NewsManager();
@@ -25,6 +34,27 @@ class NewsController extends Controller
 
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function list()
+    {
+        $newsmanager = new NewsManager();
+        $lists = $newsmanager->getList();
+
+        echo $this->twig->render('news.twig',
+            [
+                'list' => $lists
+            ]);
+    }
+
+    /**
+     * @param $author
+     * @param $comment
+     * @param $newsid
+     */
     public function addComment($author, $comment, $newsid)
     {
         $newsManager    = new NewsManager();
@@ -37,20 +67,22 @@ class NewsController extends Controller
 
             ]
         );
-        var_dump($comment);
+
         $commentmanager = new CommentManager();
         $comment-> setNews($news);
         $commentmanager->addComment($comment);
 
         if ($commentmanager === false)
         {
-            throw new Exception('Impossible d\'ajouter l\'article!');
+            echo ('Impossible d\'ajouter l\'article!');
         }
         else
         {
 
-           // header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+           header("Location:" . $_SERVER['HTTP_REFERER'] . "");
 
         }
     }
+
+
 }

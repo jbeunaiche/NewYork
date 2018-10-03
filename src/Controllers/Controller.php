@@ -7,8 +7,14 @@ use \Twig_Environment;
 
 class Controller
 {
+    /**
+     * @var Twig_Environment
+     */
     protected $twig;
 
+    /**
+     * Controller constructor.
+     */
     function __construct()
     {
 

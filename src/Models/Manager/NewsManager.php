@@ -13,13 +13,22 @@ use Julien\Models\Entity\Comment;
 class NewsManager extends Manager
 
 {
+    /**
+     * @return mixed
+     */
     public function count()
     {
         $result = $this->_db->query('SELECT COUNT(*) FROM news')->fetchColumn();
         return $result;
 
     }
-      public function getList($firstNews = -1, $newsPerPage = -1)
+
+    /**
+     * @param int $firstNews
+     * @param int $newsPerPage
+     * @return array
+     */
+    public function getList($firstNews = -1, $newsPerPage = -1)
          {
              $listNews = array();
              $i = 0;
@@ -50,6 +59,10 @@ class NewsManager extends Manager
          }
 
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getNews($id)
     {
         $req = $this->_db->prepare('SELECT id, title, content FROM news WHERE id = :id');

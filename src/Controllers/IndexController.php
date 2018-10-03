@@ -4,18 +4,18 @@ namespace Julien\Controllers;
 
 use Julien\Models\Manager\NewsManager;
 
+/**
+ * Class IndexController
+ * @package Julien\Controllers
+ */
 class IndexController extends Controller
 {
-   /* public function index()
-    {
-        $newsmanager = new NewsManager();
-        $lists = $newsmanager->getList($firstArticle, $newsPerPage);
 
-        echo $this->twig->render('home.twig',
-            [
-                'list' => $lists
-            ]);
-    }*/
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function index()
     {
         $newsmanager = new NewsManager();

@@ -10,12 +10,21 @@ use Julien\Models\Manager\MonumentManager;
 use Julien\Models\Manager\CommentManager;
 use Julien\Models\Manager\MemberManager;
 
+/**
+ * Class AdminController
+ * @package Julien\Controllers
+ */
 class AdminController extends Controller
 {
 
     /* Public function pour les News  */
 
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function admin()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -25,6 +34,11 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function listNews()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -40,6 +54,11 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function addViewNews()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -49,6 +68,10 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @param $title
+     * @param $content
+     */
     public function addNews($title, $content)
     {
         if (isset($_SESSION['pseudo'])) {
@@ -75,6 +98,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function deleteNews()
     {
         $news = new News($_GET);
@@ -87,6 +113,11 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function editNewsView()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -103,6 +134,11 @@ class AdminController extends Controller
 
     }
 
+    /**
+     * @param $title
+     * @param $content
+     * @param $id
+     */
     public function editNews($title, $content, $id)
     {
         if (isset($_SESSION['pseudo'])) {
@@ -136,6 +172,11 @@ class AdminController extends Controller
 
     /* Public function pour les monuments  */
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function listMonument()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -151,6 +192,11 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function addViewMonument()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -161,7 +207,14 @@ class AdminController extends Controller
 
     }
 
-    public function addMonument($name,$description, $lat, $lon, $price)
+    /**
+     * @param $name
+     * @param $description
+     * @param $lat
+     * @param $lon
+     * @param $price
+     */
+    public function addMonument($name, $description, $lat, $lon, $price)
 
     {
         if (isset($_SESSION['pseudo'])) {
@@ -196,6 +249,11 @@ class AdminController extends Controller
 
     /* Public function pour les commentaires   */
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function listComments()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -213,6 +271,9 @@ class AdminController extends Controller
 
     }
 
+    /**
+     *
+     */
     public function signalCom()
     {
         $comment = new Comment($_GET);
@@ -225,6 +286,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function deleteComment()
     {
         if (isset($_SESSION['pseudo'])) {
@@ -241,6 +305,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function change()
     {
         if (isset($_SESSION['pseudo'])) {

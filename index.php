@@ -23,5 +23,5 @@ if (class_exists($class, true)) {
         call_user_func([$class, "index"]);
     }
 } else {
-    echo "404 - Error";
+    header("Location: index.php?c=error&t=erreur");
 }

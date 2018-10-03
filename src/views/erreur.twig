@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     {% block head %}
-        <title> Liste des News </title>
+        <title>Erreur</title>
     {% endblock %}
 
     <link rel="stylesheet" href="public/assets/css/bootstrap.min.css">
@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li><a href="index.php?c=admin&t=admin">Administration</a></li>
+                    <li><a href="index.php?c=index&t=index">Retour à l'acceuil</a></li>
 
 
                 </ul>
@@ -42,58 +42,23 @@
         </div><!-- /.container-fluid -->
     </nav>
 </div>
+<br><br><br><br><br><br>
+<div class="container">
 
-<!-- Posts list -->
-<section id="our-package" class="sections lightbg">
-    <div class="container">
+    <div class="row">
+        <div class="homepage-style">
 
-        <div class="heading">
-            <div class="title text-center arrow-left">
 
-                <h4 class="">Liste des articles</h4>
+            <h2>Page introuvable... </h2>
             </div>
-        </div>
-
-        <div class="row">
-
-
-            <div class="main-package text-center">
-
-                <a href="index.php?c=admin&t=addViewNews">
-                    <button class="btn pt-btn btn-primary" >Ajouter un article</button>
-                </a>
-                <br><br><br>
-                {% for item in list %}
-                    <div class="col-md-4 col-sm-12 col-xs-12">
-                        <div class="package-item basic">
-
-                            <h5>{{ item.title }}</h5>
-
-                            <ul>
-
-
-                                <li>Article n° : {{ item.id }}</li>
-                                <li><a href="index.php?c=admin&t=editNewsView&amp;id={{ item.id }}">Modifier</a></li>
-                                <li><a href="index.php?c=admin&t=deleteNews&amp;id={{ item.id }}">Supprimer</a></li>
-                            </ul>
-                            <br>
-                            <div class="pkg-btn"><a href="index.php?c=news&t=single&amp;id={{ item.id }}">Voir
-                                    l'article</a></div>
-
-                        </div>
-
-
-                    </div>
-                {% endfor %}
-
-
-            </div>
-
 
         </div>
     </div>
-</section>
-<!-- JavaScript -->
+
+</div>
+
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>tinymce.init({selector: 'textarea'});</script>
 <script src="public/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="public/assets/js/vendor/bootstrap.min.js"></script>
 <script src="public/assets/js/plugins.js"></script>
