@@ -109,38 +109,38 @@
 
 
                 <!-- Example row of columns -->
-              {% if currentPage == 1 %}
-                {% for item in list %}
-                    <div class="portfolio-wrap">
+                {% if currentPage == 1 %}
+                    {% for item in list %}
+                        <div class="portfolio-wrap">
 
-                        <div class="portfolio">
+                            <div class="portfolio">
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="portfolio-item">
-                                    <h4>{{ item.title |striptags }}</h4>
-                                    <h6>Publié le {{ item.created }}</h6>
-                                    <p>
-                                        {{ item.content |striptags }}
-                                    </p>
-                                    <h6> {{ item.comments.id }} commentaire(s)</h6>
-                                    <a href="index.php?c=news&t=single&amp;id={{ item.id }}">
-                                        <button class="btn pt-btn btn-primary">Voir l'article</button>
-                                    </a>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="portfolio-item">
+                                        <h4>{{ item.title |striptags }}</h4>
+                                        <h6>Publié le {{ item.created }}</h6>
+                                        <p>
+                                            {{ item.content |striptags }}
+                                        </p>
+                                        <h6> {{ item.comments.id }} commentaire(s)</h6>
+                                        <a href="index.php?c=news&t=single&amp;id={{ item.id }}">
+                                            <button class="btn pt-btn btn-primary">Voir l'article</button>
+                                        </a>
+                                    </div>
                                 </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <img class="portfolio-img img-responsive" src="public/assets/images/central.jpg"
+                                         alt=""/>
+                                </div>
+
                             </div>
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <img class="portfolio-img img-responsive" src="public/assets/images/central.jpg"
-                                     alt=""/>
-                            </div>
 
                         </div>
+                        <hr>
 
-
-                    </div>
-                    <hr>
-
-                {% endfor %}
+                    {% endfor %}
                 {% endif %}
                 {% if currentPage < numberOfPage %}
                     <a href="index.php?c=news&t=list">Voir toutes les news</a>
