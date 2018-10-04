@@ -1,10 +1,5 @@
 
-#map {
-    height: 500px;
-    width: 70%;
-    margin-right: 20px;
-    border-radius: 30px;
-}
+
 
 #mapfinancial {
     height: 500px;
@@ -680,14 +675,14 @@ h1 span {
 }
 
 /*Home Page Style*/
-#conteneur
-{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 40px;
-    margin-left: 12px;
-    margin-bottom: 45px;
+#map {
+    height: 500px;
+    width: 90%;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 30px;
 }
+
 #home {
     background-color: #ffff5e;
     color: #fff;

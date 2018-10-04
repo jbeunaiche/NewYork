@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="084a5e94-ee3b-4b9a-898a-4f4d033e9d90" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/add-monument.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/add-monument.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/add-news.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/add-news.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/admin/administration.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/administration.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/comments.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/comments.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/edit-news.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/edit-news.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/list-monuments.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/list-monuments.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/list-news.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/list-news.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/erreur.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/erreur.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/layout.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/news.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/news.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/districts/brooklyn.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/districts/brooklyn.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/districts/central.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/districts/central.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/districts/financial.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/districts/financial.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/districts/midtown.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/districts/midtown.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,50 +33,50 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="19" />
-          <entry key="js" value="768" />
+          <entry key="css" value="30" />
+          <entry key="js" value="770" />
           <entry key="md" value="51" />
-          <entry key="php" value="5888" />
+          <entry key="php" value="5891" />
           <entry key="sql" value="12" />
-          <entry key="twig" value="2932" />
+          <entry key="twig" value="2935" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="19" />
-          <entry key="JavaScript" value="768" />
+          <entry key="CSS" value="30" />
+          <entry key="JavaScript" value="770" />
           <entry key="Markdown" value="51" />
-          <entry key="PHP" value="5888" />
+          <entry key="PHP" value="5891" />
           <entry key="SQL" value="12" />
-          <entry key="Twig" value="2932" />
+          <entry key="Twig" value="2935" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="JPG" value="1" />
-          <entry key="css" value="17" />
+          <entry key="css" value="21" />
           <entry key="jpg" value="6" />
-          <entry key="js" value="16" />
+          <entry key="js" value="17" />
           <entry key="json" value="1" />
           <entry key="md" value="1" />
-          <entry key="php" value="260" />
+          <entry key="php" value="261" />
           <entry key="png" value="1" />
           <entry key="rst" value="1" />
           <entry key="sql" value="2" />
-          <entry key="twig" value="220" />
+          <entry key="twig" value="225" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="17" />
+          <entry key="CSS" value="21" />
           <entry key="Image" value="8" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="16" />
+          <entry key="JavaScript" value="17" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="260" />
+          <entry key="PHP" value="261" />
           <entry key="ReST" value="1" />
           <entry key="SQL" value="2" />
-          <entry key="Twig" value="220" />
+          <entry key="Twig" value="225" />
         </counts>
       </usages-collector>
     </session>
@@ -90,46 +87,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/layout.twig">
+        <entry file="file://$PROJECT_DIR$/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            <state relative-caret-position="109">
+              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/news.twig">
+        <entry file="file://$PROJECT_DIR$/src/views/districts/central.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="146" selection-start-line="37" selection-start-column="146" selection-end-line="37" selection-end-column="146" />
+            <state relative-caret-position="466">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/districts/financial.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/singlenews.twig">
+        <entry file="file://$PROJECT_DIR$/src/views/districts/midtown.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/admin/list-monuments.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/admin/list-news.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            <state relative-caret-position="449">
+              <caret line="89" column="8" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -137,44 +125,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/districts/brooklyn.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1462">
-              <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+            <state relative-caret-position="409">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/admin/edit-news.twig">
+        <entry file="file://$PROJECT_DIR$/src/Models/Manager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            <state relative-caret-position="306">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/connexion.twig">
+        <entry file="file://$PROJECT_DIR$/public/assets/css/responsive.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="104" selection-start-line="17" selection-start-column="104" selection-end-line="17" selection-end-column="104" />
+            <state relative-caret-position="177">
+              <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/erreur.twig">
+        <entry file="file://$PROJECT_DIR$/public/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            <state relative-caret-position="109">
+              <caret line="673" column="20" selection-start-line="673" selection-start-column="20" selection-end-line="673" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/home.twig">
+        <entry file="file://$PROJECT_DIR$/public/assets/css/plugins.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2142">
-              <caret line="126" column="151" selection-start-line="126" selection-start-column="151" selection-end-line="126" selection-end-column="151" />
+            <state relative-caret-position="177">
+              <caret line="2797" column="9" selection-start-line="2797" selection-start-column="6" selection-end-line="2797" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/admin/administration.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="113" column="37" selection-start-line="113" selection-start-column="37" selection-end-line="113" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -197,6 +194,8 @@
       <find>articlesPerPage</find>
       <find>carousel</find>
       <find>&lt;button class=&quot;btn pt-btn btn-primary&quot;&gt;</find>
+      <find>row</find>
+      <find>container</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\NewYork</dir>
@@ -218,13 +217,9 @@
         <option value="$PROJECT_DIR$/src/views/404.twig" />
         <option value="$PROJECT_DIR$/db/newyork.sql" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/public/assets/css/style.css" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Comment.php" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Member.php" />
         <option value="$PROJECT_DIR$/public/assets/css/responsive.css" />
-        <option value="$PROJECT_DIR$/src/views/districts/financial.twig" />
-        <option value="$PROJECT_DIR$/src/views/districts/midtown.twig" />
-        <option value="$PROJECT_DIR$/src/views/districts/brooklyn.twig" />
         <option value="$PROJECT_DIR$/tools/Session.php" />
         <option value="$PROJECT_DIR$/src/Tools/Session.php" />
         <option value="$PROJECT_DIR$/src/Controllers/Controller.php" />
@@ -238,26 +233,30 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/src/views/singlenews.twig" />
-        <option value="$PROJECT_DIR$/src/views/districts/central.twig" />
         <option value="$PROJECT_DIR$/src/Models/Manager/NewsManager.php" />
         <option value="$PROJECT_DIR$/src/Models/Manager/MonumentManager.php" />
         <option value="$PROJECT_DIR$/src/Models/Manager/MemberManager.php" />
         <option value="$PROJECT_DIR$/src/Models/Manager/CommentManager.php" />
-        <option value="$PROJECT_DIR$/js/map.js" />
         <option value="$PROJECT_DIR$/src/Controllers/NewsController.php" />
         <option value="$PROJECT_DIR$/src/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/src/views/home.twig" />
-        <option value="$PROJECT_DIR$/src/Models/Manager.php" />
         <option value="$PROJECT_DIR$/src/views/news.twig" />
         <option value="$PROJECT_DIR$/src/views/admin/add-monument.twig" />
         <option value="$PROJECT_DIR$/src/views/admin/add-news.twig" />
-        <option value="$PROJECT_DIR$/src/views/admin/administration.twig" />
         <option value="$PROJECT_DIR$/src/views/admin/comments.twig" />
         <option value="$PROJECT_DIR$/src/views/admin/edit-news.twig" />
         <option value="$PROJECT_DIR$/src/views/admin/list-monuments.twig" />
         <option value="$PROJECT_DIR$/src/views/admin/list-news.twig" />
         <option value="$PROJECT_DIR$/src/views/erreur.twig" />
         <option value="$PROJECT_DIR$/src/views/layout.twig" />
+        <option value="$PROJECT_DIR$/src/views/admin/administration.twig" />
+        <option value="$PROJECT_DIR$/src/views/districts/brooklyn.twig" />
+        <option value="$PROJECT_DIR$/public/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/src/Models/Manager.php" />
+        <option value="$PROJECT_DIR$/js/map.js" />
+        <option value="$PROJECT_DIR$/src/views/districts/central.twig" />
+        <option value="$PROJECT_DIR$/src/views/districts/financial.twig" />
+        <option value="$PROJECT_DIR$/src/views/districts/midtown.twig" />
       </list>
     </option>
   </component>
@@ -297,6 +296,29 @@
             <path>
               <item name="NewYork" type="b2602c69:ProjectViewProjectNode" />
               <item name="NewYork" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewYork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewYork" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewYork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewYork" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewYork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewYork" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewYork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewYork" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NewYork" type="b2602c69:ProjectViewProjectNode" />
@@ -421,12 +443,12 @@
       <updated>1536566339998</updated>
       <workItem from="1536566344141" duration="6465000" />
       <workItem from="1536839634160" duration="4267000" />
-      <workItem from="1536850192044" duration="154287000" />
+      <workItem from="1536850192044" duration="155584000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165019000" />
+    <option name="totallyTimeSpent" value="166316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -515,30 +537,8 @@
     <entry file="file://$PROJECT_DIR$/public/assets/css/._style.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/._responsive.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap-theme.min.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/plugins.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1856" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/responsive.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1138">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="678" column="20" lean-forward="true" selection-start-line="678" selection-start-column="20" selection-end-line="678" selection-end-column="20" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tools/Session.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -643,27 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/districts/central.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/districts/financial.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="83" column="12" lean-forward="true" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/districts/midtown.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Manager/MonumentManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -698,13 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Manager/NewsManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-149">
@@ -735,13 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Manager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/admin/add-monument.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -750,13 +715,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/admin/add-news.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/admin/administration.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
@@ -788,13 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/districts/brooklyn.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -837,6 +788,79 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/._responsive.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/plugins.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="2797" column="9" selection-start-line="2797" selection-start-column="6" selection-end-line="2797" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/responsive.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/admin/administration.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="113" column="37" selection-start-line="113" selection-start-column="37" selection-end-line="113" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/districts/brooklyn.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="673" column="20" selection-start-line="673" selection-start-column="20" selection-end-line="673" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Manager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/districts/central.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/districts/financial.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/districts/midtown.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="89" column="8" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
         </state>
       </provider>
     </entry>
