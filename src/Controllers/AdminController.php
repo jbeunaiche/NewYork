@@ -219,7 +219,7 @@ class AdminController extends Controller
 
     {
         if (isset($_SESSION['pseudo'])) {
-            if (!empty($name) && !empty($description)&& !empty($lat)&& !empty($lon)&& !empty($price)) {
+            if (!empty($name) && !empty($description)&& !empty($lat)&& !empty($lon)) {
         $monument = new Monument(
             [
                 'name' => $name,
@@ -236,7 +236,7 @@ class AdminController extends Controller
             echo('Impossible d\'ajouter l\'article!');
         } else {
 
-            header("Location: index.php?c=admin&t=list-monuments");
+            header("Location: index.php?c=admin&t=listMonument");
         }
             }
             else
