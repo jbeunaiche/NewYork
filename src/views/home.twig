@@ -123,9 +123,9 @@
                                             {{ item.content |striptags }}
                                         </p>
                                         <h6> {{ item.comments.id }} commentaire(s)</h6>
-                                        <a href="index.php?c=news&t=single&amp;id={{ item.id }}">
-                                            <button class="btn pt-btn btn-primary">Voir l'article</button>
-                                        </a>
+
+                                            <button class="btn pt-btn btn-primary"><a href="index.php?c=news&t=single&amp;id={{ item.id }}">Voir l'article </a></button>
+
                                     </div>
                                 </div>
 
@@ -143,7 +143,7 @@
                     {% endfor %}
                 {% endif %}
                 {% if currentPage < numberOfPage %}
-                    <a href="index.php?c=news&t=list">Voir toutes les news</a>
+                    <a href="index.php?c=news&t=suite">Voir toutes les news</a>
                 {% else %}
                     <li class="disabled">Next</li>
                 {% endif %}

@@ -44,7 +44,7 @@ class NewsController extends Controller
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function list()
+    public function suite()
     {
         $newsmanager = new NewsManager();
         $lists = $newsmanager->getList();

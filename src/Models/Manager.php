@@ -27,9 +27,9 @@ class Manager
      */
     protected function dbConnect()
     {
-        $this->_db = new \PDO('mysql:host=jbeunaicmcny.mysql.db;dbname=jbeunaicmcny;charset=utf8', 'jbeunaicmcny', 'Keirak07');
+        //$this->_db = new \PDO('mysql:host=jbeunaicmcny.mysql.db;dbname=jbeunaicmcny;charset=utf8', 'jbeunaicmcny', 'Keirak07');
 
-        //$this->_db = new \PDO('mysql:host=localhost;dbname=newyork;charset=utf8', 'root', '');
+        $this->_db = new \PDO('mysql:host=localhost;dbname=newyork;charset=utf8', 'root', '');
     }
 
     /**

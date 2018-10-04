@@ -34,16 +34,13 @@
                                         {{ item.content |striptags }}
                                     </p>
                                     <h6> {{ item.comments.id }} commentaire(s)</h6>
-                                    <a href="index.php?c=news&t=single&amp;id={{ item.id }}">
-                                        <button class="btn pt-btn btn-primary">Voir l'article</button>
-                                    </a>
+
+                                        <button class="btn pt-btn btn-primary"><a href="index.php?c=news&t=single&amp;id={{ item.id }}">Voir l'article</a></button>
+
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <img class="portfolio-img img-responsive" src="public/assets/images/central.jpg"
-                                     alt=""/>
-                            </div>
+
 
                         </div>
 
