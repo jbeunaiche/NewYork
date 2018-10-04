@@ -13,7 +13,6 @@ use Julien\Models\Entity\Member;
 class MemberManager extends Manager
 
 {
-
     /**
      * @param $pseudo
      * @return mixed

@@ -58,7 +58,6 @@ class NewsManager extends Manager
              return $listNews;
          }
 
-
     /**
      * @param $id
      * @return mixed
@@ -84,7 +83,6 @@ class NewsManager extends Manager
         $req = $this->_db->prepare('INSERT INTO news(title,content, created) VALUES(:title, :content, NOW())');
         $req->bindValue(':title', $news->getTitle(), \PDO::PARAM_STR);
         $req->bindValue(':content', $news->getContent(), \PDO::PARAM_STR);
-
         $req->execute();
     }
 

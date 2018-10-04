@@ -12,7 +12,6 @@ use Julien\Models\Entity\News;
  */
 class CommentManager extends Manager
 {
-
     /**
      * @param $newsid
      * @return mixed

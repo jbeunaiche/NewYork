@@ -53,8 +53,6 @@ class MonumentManager extends Manager
         $req->bindValue(':lat', $monument->getLat(), \PDO::PARAM_STR);
         $req->bindValue(':lon', $monument->getLon(), \PDO::PARAM_STR);
         $req->bindValue(':price', $monument->getPrice(), \PDO::PARAM_STR);
-
-
         $req->execute();
     }
 

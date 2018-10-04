@@ -1457,13 +1457,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 
 
 //LocalScroll
-/**
- * Copyright (c) 2007-2014 Ariel Flesler - aflesler<a>gmail<d>com | http://flesler.blogspot.com
- * Licensed under MIT
- * @author Ariel Flesler
- * @version 1.3.5
- */
-;(function (a) {
+(function (a) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], a)
     } else {
@@ -1516,18 +1510,12 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             elem[f] = c
         }
         d.scrollTo(elem, b).trigger('notify.serialScroll', [elem])
-    };
+    }
     return h
 }));
 
 
-/**
- * Copyright (c) 2007-2014 Ariel Flesler - aflesler<a>gmail<d>com | http://flesler.blogspot.com
- * Licensed under MIT
- * @author Ariel Flesler
- * @version 1.4.12
- */
-;(function (a) {
+(function (a) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], a)
     } else {
@@ -1618,7 +1606,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 
     function both(a) {
         return $.isFunction(a) || typeof a == 'object' ? a : {top: a, left: a}
-    };
+    }
     return j
 }));
 
