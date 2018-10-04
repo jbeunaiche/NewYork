@@ -74,7 +74,7 @@ class AdminController extends Controller
      */
     public function addNews($title, $content)
     {
-        if( isset($_POST['upload']) ) // si formulaire soumis
+       /* if( isset($_POST['upload']) ) // si formulaire soumis
         {
             $content_dir = 'newsimage/'; // dossier où sera déplacé le fichier
             $tmp_file = $_FILES['fichier']['tmp_name'];
@@ -96,7 +96,7 @@ class AdminController extends Controller
             }
             echo "Le fichier a bien été uploadé";
         }
-
+*/
         if (isset($_SESSION['pseudo'])) {
             if (!empty($title) && !empty($content)) {
                 $news = new News(

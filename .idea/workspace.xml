@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="084a5e94-ee3b-4b9a-898a-4f4d033e9d90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/assets/js/._main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/._main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/._plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/._plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/vendor/._bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/vendor/._bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/vendor/._npm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/vendor/._npm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/vendor/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/vendor/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/vendor/npm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/vendor/npm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Manager/CommentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Manager/CommentManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Manager/MemberManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Manager/MemberManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Manager/MonumentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Manager/MonumentManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Manager/NewsManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Manager/NewsManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AdminController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +28,7 @@
           <entry key="css" value="19" />
           <entry key="js" value="766" />
           <entry key="md" value="51" />
-          <entry key="php" value="5826" />
+          <entry key="php" value="5832" />
           <entry key="sql" value="12" />
           <entry key="twig" value="2896" />
         </counts>
@@ -49,7 +38,7 @@
           <entry key="CSS" value="19" />
           <entry key="JavaScript" value="766" />
           <entry key="Markdown" value="51" />
-          <entry key="PHP" value="5826" />
+          <entry key="PHP" value="5832" />
           <entry key="SQL" value="12" />
           <entry key="Twig" value="2896" />
         </counts>
@@ -62,7 +51,7 @@
           <entry key="js" value="15" />
           <entry key="json" value="1" />
           <entry key="md" value="1" />
-          <entry key="php" value="256" />
+          <entry key="php" value="259" />
           <entry key="png" value="1" />
           <entry key="rst" value="1" />
           <entry key="sql" value="2" />
@@ -76,7 +65,7 @@
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="15" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="256" />
+          <entry key="PHP" value="259" />
           <entry key="ReST" value="1" />
           <entry key="SQL" value="2" />
           <entry key="Twig" value="202" />
@@ -111,28 +100,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/admin/administration.twig">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/NewsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/admin/comments.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/admin/edit-news.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="37" column="82" selection-start-line="37" selection-start-column="82" selection-end-line="37" selection-end-column="82" />
+            <state relative-caret-position="68">
+              <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+              <folding>
+                <element signature="e#39#69#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -176,13 +150,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Manager/CommentManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-544">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="408">
+              <caret line="69" column="28" lean-forward="true" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
               <folding>
                 <element signature="e#41#67#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/Entity/News.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/AdminController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="98" column="2" selection-start-line="98" selection-start-column="2" selection-end-line="98" selection-end-column="2" />
+              <folding>
+                <element signature="e#38#68#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -250,7 +245,6 @@
         <option value="$PROJECT_DIR$/src/views/admin/list-monuments.twig" />
         <option value="$PROJECT_DIR$/src/Controllers/MemberController.php" />
         <option value="$PROJECT_DIR$/src/views/admin/add-news.twig" />
-        <option value="$PROJECT_DIR$/src/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/src/views/singlenews.twig" />
@@ -267,6 +261,7 @@
         <option value="$PROJECT_DIR$/src/Models/Manager/MonumentManager.php" />
         <option value="$PROJECT_DIR$/src/Models/Manager/MemberManager.php" />
         <option value="$PROJECT_DIR$/src/Models/Manager/CommentManager.php" />
+        <option value="$PROJECT_DIR$/src/Controllers/AdminController.php" />
       </list>
     </option>
   </component>
@@ -427,12 +422,12 @@
       <updated>1536566339998</updated>
       <workItem from="1536566344141" duration="6465000" />
       <workItem from="1536839634160" duration="4267000" />
-      <workItem from="1536850192044" duration="151427000" />
+      <workItem from="1536850192044" duration="151501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162159000" />
+    <option name="totallyTimeSpent" value="162233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -605,16 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/NewsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-730">
-          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-          <folding>
-            <element signature="e#39#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/image.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -646,23 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Entity/News.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
-          <folding>
-            <element signature="e#38#68#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -838,10 +806,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Manager/CommentManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="408">
+          <caret line="69" column="28" lean-forward="true" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
           <folding>
             <element signature="e#41#67#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Entity/News.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/NewsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+          <folding>
+            <element signature="e#39#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="98" column="2" selection-start-line="98" selection-start-column="2" selection-end-line="98" selection-end-column="2" />
+          <folding>
+            <element signature="e#38#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
