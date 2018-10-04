@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="084a5e94-ee3b-4b9a-898a-4f4d033e9d90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsimage/Capture.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MemberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Manager/NewsManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Manager/NewsManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/add-news.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/add-news.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/edit-news.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/edit-news.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/list-monuments.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/list-monuments.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/admin/list-news.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin/list-news.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/layout.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +27,7 @@
         <counts>
           <entry key="css" value="19" />
           <entry key="js" value="766" />
+          <entry key="md" value="51" />
           <entry key="php" value="5811" />
           <entry key="sql" value="12" />
           <entry key="twig" value="2896" />
@@ -47,6 +37,7 @@
         <counts>
           <entry key="CSS" value="19" />
           <entry key="JavaScript" value="766" />
+          <entry key="Markdown" value="51" />
           <entry key="PHP" value="5811" />
           <entry key="SQL" value="12" />
           <entry key="Twig" value="2896" />
@@ -59,6 +50,7 @@
           <entry key="jpg" value="6" />
           <entry key="js" value="15" />
           <entry key="json" value="1" />
+          <entry key="md" value="1" />
           <entry key="php" value="251" />
           <entry key="png" value="1" />
           <entry key="rst" value="1" />
@@ -72,6 +64,7 @@
           <entry key="Image" value="8" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="15" />
+          <entry key="Markdown" value="1" />
           <entry key="PHP" value="251" />
           <entry key="ReST" value="1" />
           <entry key="SQL" value="2" />
@@ -85,7 +78,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -93,6 +86,18 @@
               <folding>
                 <element signature="e#38#68#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="68">
+                <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -214,6 +219,7 @@
         <option value="$PROJECT_DIR$/src/views/admin/add-news.twig" />
         <option value="$PROJECT_DIR$/src/Models/Manager/NewsManager.php" />
         <option value="$PROJECT_DIR$/src/Controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -387,12 +393,12 @@
       <updated>1536566339998</updated>
       <workItem from="1536566344141" duration="6465000" />
       <workItem from="1536839634160" duration="4267000" />
-      <workItem from="1536850192044" duration="150960000" />
+      <workItem from="1536850192044" duration="151081000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161692000" />
+    <option name="totallyTimeSpent" value="161813000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -449,9 +455,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/admin.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -796,6 +799,16 @@
           <folding>
             <element signature="e#38#68#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="68">
+            <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
